@@ -1,0 +1,223 @@
+/* =========================================================================
+   Hedlyner Design System — Colors & Type
+   Source of truth: hedlyner-ui-v5 src/index.css + Figma "New Component Library"
+   ========================================================================= */
+
+/* Fonts — Instrument Sans is THE brand family. Inter as dev fallback. Domine rare serif accent. */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Domine:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ---------- PRIMARY ---------- */
+  --hed-lime:        #CDEB09;   /* signature brand lime */
+  --hed-violet:      #BA87FF;   /* secondary primary for booker/buyer surfaces */
+
+  /* ---------- SECONDARY ACCENTS ---------- */
+  --hed-green:       #C9CD00;
+  --hed-yellow:      #D8B500;
+  --hed-orange:      #CB9B1F;
+  --hed-mauve:       #E0939C;
+  --hed-pink:        #D47EBF;
+
+  /* ---------- BRAND DEEPS ---------- */
+  --hed-deep-green:  #061C17;   /* signature deep background */
+  --hed-purple:      #BF80FF;   /* alt purple (extended) */
+
+  /* ---------- NEUTRAL SCALE (0=white → 1000=black) ---------- */
+  --neutral-0:    #FFFFFF;
+  --neutral-100:  #F5F5F5;
+  --neutral-200:  #DEDEDE;
+  --neutral-300:  #ACACAC;
+  --neutral-400:  #8B8B8B;
+  --neutral-500:  #646464;
+  --neutral-600:  #464646;
+  --neutral-700:  #333333;
+  --neutral-800:  #262626;
+  --neutral-900:  #121212;
+  --neutral-1000: #000000;
+
+  /* ---------- SEMANTIC / STATUS ---------- */
+  --success:     #198754;
+  --warning:     #D8B500;
+  --destructive: #E23453;
+  --info:        #016FD0;
+
+  /* ---------- TRANSPARENT OVERLAYS ---------- */
+  --white-10: rgba(255,255,255,0.10);
+  --white-20: rgba(255,255,255,0.20);
+  --white-40: rgba(255,255,255,0.40);
+  --white-60: rgba(255,255,255,0.60);
+  --white-80: rgba(255,255,255,0.80);
+  --black-10: rgba(0,0,0,0.10);
+  --black-20: rgba(0,0,0,0.20);
+  --black-40: rgba(0,0,0,0.40);
+  --black-60: rgba(0,0,0,0.60);
+  --black-80: rgba(0,0,0,0.80);
+
+  /* ---------- SEMANTIC TOKENS (default = dark, app shell vibe) ---------- */
+  --bg:           var(--neutral-900);   /* app shell */
+  --bg-elevated:  var(--neutral-800);   /* cards / surface-2 */
+  --bg-input:     var(--neutral-800);
+  --bg-muted:     var(--neutral-700);
+  --bg-hover:     var(--neutral-800);
+
+  --fg:           var(--neutral-0);
+  --fg-muted:     var(--neutral-400);
+  --fg-subtle:    var(--neutral-500);
+  --fg-on-lime:   var(--neutral-1000);
+
+  --border:       var(--neutral-700);
+  --border-hover: var(--neutral-600);
+  --ring:         var(--hed-lime);
+
+  --primary:      var(--hed-lime);
+  --primary-fg:   var(--neutral-1000);
+
+  /* ---------- RADII ---------- */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius:    12px;    /* shadcn default --radius 0.75rem */
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 40px;   /* pill / hamburger chip */
+  --radius-hero: 60px;  /* big display cards from figma */
+  --radius-full: 9999px;
+
+  /* ---------- SHADOWS ---------- */
+  --shadow-soft:    0 2px 8px -2px rgba(0,0,0,0.10), 0 4px 16px -8px rgba(0,0,0,0.10);
+  --shadow-soft-lg: 0 10px 15px -3px rgba(0,0,0,0.10), 0 4px 6px -4px rgba(0,0,0,0.10);
+  --shadow-card:    0 15px 35px rgba(103,110,118,0.08), 0 5px 15px rgba(0,0,0,0.12);
+  --shadow-pop:     0 0 16px 0 rgba(0,0,0,0.50);
+  --shadow-lime:    0 0 15px rgba(205,235,9,0.25);
+  --shadow-lime-lg: 0 0 0 8px rgba(193,232,0,0), 0 0 30px rgba(193,232,0,0.6);
+
+  /* ---------- SPACING (4px grid) ---------- */
+  --sp-1: 4px;   --sp-2: 8px;   --sp-3: 12px;
+  --sp-4: 16px;  --sp-5: 20px;  --sp-6: 24px;
+  --sp-8: 32px;  --sp-10: 40px; --sp-12: 48px;
+  --sp-16: 64px; --sp-20: 80px; --sp-24: 96px;
+
+  /* ---------- MOTION ---------- */
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 150ms;
+  --dur:      200ms;
+  --dur-slow: 300ms;
+
+  /* ---------- TYPOGRAPHY FAMILIES ---------- */
+  --font-sans:    'Instrument Sans', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Instrument Sans', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-serif:   'Domine', Georgia, serif;
+  --font-mono:    ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* ---------- TYPOGRAPHY SCALE (sizes / line-height / letter-spacing / paragraph) ----------
+     Matches Figma "Style Guide" exactly. Percentages converted to em for CSS fidelity. */
+  --fs-display-56: 56px; --lh-display-56: 1.00; --ls-display-56: -0.04em;
+  --fs-h1-44:      44px; --lh-h1-44:      1.10; --ls-h1-44:      -0.04em;
+  --fs-h2-38:      38px; --lh-h2-38:      1.10; --ls-h2-38:      -0.02em;
+  --fs-h3-32:      32px; --lh-h3-32:      1.20; --ls-h3-32:      -0.02em;
+  --fs-h4-26:      26px; --lh-h4-26:      1.20; --ls-h4-26:      -0.02em;
+  --fs-body-22:    22px; --lh-body-22:    1.20; --ls-body-22:    -0.01em;
+  --fs-body-20:    20px; --lh-body-20:    1.20; --ls-body-20:    -0.01em;
+  --fs-body-18:    18px; --lh-body-18:    1.33; --ls-body-18:    0;
+  --fs-body-16:    16px; --lh-body-16:    1.25; --ls-body-16:    0;
+  --fs-body-14:    14px; --lh-body-14:    1.15; --ls-body-14:    0.01em;
+  --fs-body-12:    12px; --lh-body-12:    1.35; --ls-body-12:    0.01em;
+}
+
+/* ---------- LIGHT VARIANT (opt-in via [data-theme="light"]) ---------- */
+[data-theme='light'] {
+  --bg:           var(--neutral-0);
+  --bg-elevated:  var(--neutral-100);
+  --bg-input:     var(--neutral-100);
+  --bg-muted:     var(--neutral-100);
+  --bg-hover:     var(--neutral-100);
+  --fg:           var(--neutral-1000);
+  --fg-muted:     var(--neutral-500);
+  --fg-subtle:    var(--neutral-400);
+  --border:       var(--neutral-200);
+  --border-hover: var(--neutral-300);
+}
+
+/* =========================================================================
+   SEMANTIC TYPE CLASSES
+   Use as classnames (h1 also maps native <h1>) to get Figma-accurate metrics
+   ========================================================================= */
+
+.h-display, .hed-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-display-56);
+  line-height: var(--lh-display-56);
+  letter-spacing: var(--ls-display-56);
+}
+
+h1, .h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-h1-44);
+  line-height: var(--lh-h1-44);
+  letter-spacing: var(--ls-h1-44);
+}
+
+h2, .h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-h2-38);
+  line-height: var(--lh-h2-38);
+  letter-spacing: var(--ls-h2-38);
+}
+
+h3, .h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-h3-32);
+  line-height: var(--lh-h3-32);
+  letter-spacing: var(--ls-h3-32);
+}
+
+h4, .h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-h4-26);
+  line-height: var(--lh-h4-26);
+  letter-spacing: var(--ls-h4-26);
+}
+
+p, .body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--fs-body-16);
+  line-height: var(--lh-body-16);
+}
+
+.body-lg  { font-family: var(--font-sans); font-size: var(--fs-body-20); line-height: var(--lh-body-20); letter-spacing: var(--ls-body-20); }
+.body     { font-family: var(--font-sans); font-size: var(--fs-body-16); line-height: var(--lh-body-16); }
+.body-sm  { font-family: var(--font-sans); font-size: var(--fs-body-14); line-height: var(--lh-body-14); letter-spacing: var(--ls-body-14); }
+.caption  { font-family: var(--font-sans); font-size: var(--fs-body-12); line-height: var(--lh-body-12); letter-spacing: var(--ls-body-12); color: var(--fg-muted); }
+
+/* Buttons inherit Title Case convention; use .btn-label or the button component. */
+.btn-label {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: var(--fs-body-16);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+/* Utilities — text colors */
+.text-lime    { color: var(--hed-lime); }
+.text-violet  { color: var(--hed-violet); }
+.text-muted   { color: var(--fg-muted); }
+.text-fg      { color: var(--fg); }
+
+/* Utilities — backgrounds */
+.bg-lime      { background: var(--hed-lime); color: var(--fg-on-lime); }
+.bg-violet    { background: var(--hed-violet); color: var(--fg-on-lime); }
+.bg-deep      { background: var(--hed-deep-green); color: var(--fg); }
+.bg-elev      { background: var(--bg-elevated); }
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}

@@ -1,0 +1,478 @@
+<!DOCTYPE html><html lang="en"><head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Artist Portal — Hedlyner</title>
+<link rel="icon" href="assets/logo-mark.svg">
+<link rel="stylesheet" href="colors_and_type.css">
+<link rel="stylesheet" href="https://unpkg.com/lucide-static@latest/font/lucide.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:#171717;color:#fff;font-family:var(--font-sans);-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+
+.wrap{max-width:1280px;margin:0 auto;padding:0 40px;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(23,23,23,0.92);backdrop-filter:blur(12px);border-bottom:1px solid #262626;}
+.navbar{display:flex;align-items:center;justify-content:space-between;height:72px;}
+.brand{display:flex;align-items:center;gap:10px;}
+.brand img{width:26px;height:28px;}
+.brand .wm{font-size:17px;font-weight:700;letter-spacing:0.08em;color:#CDEB09;}
+.nav-links{display:flex;gap:28px;font-size:14px;font-weight:500;color:#ACACAC;}
+.nav-links a{transition:color .15s;padding:4px 0;border-bottom:2px solid transparent;}
+.nav-links a:hover{color:#fff;}
+.nav-links a.active{color:#fff;border-bottom-color:#CDEB09;}
+.nav-auth{display:flex;gap:8px;align-items:center;}
+.btn{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 22px;border-radius:10px;font-weight:600;font-size:14px;cursor:pointer;border:1px solid transparent;font-family:inherit;transition:all .15s var(--ease-out);white-space:nowrap;}
+.btn-sm{height:36px;padding:0 16px;font-size:13px;}
+.btn-lg{height:52px;padding:0 28px;font-size:15px;}
+.btn-xl{height:58px;padding:0 32px;font-size:16px;}
+.btn-primary{background:#CDEB09;color:#000;box-shadow:0 0 20px rgba(205,235,9,0.2);}
+.btn-primary:hover{background:#b8d108;}
+.btn-outline{background:transparent;color:#fff;border-color:#464646;}
+.btn-outline:hover{border-color:#fff;}
+.btn-ghost{background:transparent;color:#fff;}
+.btn-ghost:hover{background:#262626;}
+.eyebrow{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:rgba(205,235,9,0.1);color:#CDEB09;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border:1px solid rgba(205,235,9,0.2);}
+
+/* HERO */
+.hero{position:relative;padding:108px 0 96px;overflow:hidden;background:#0e0e0e;}
+.hero::before{content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 70% 40%, rgba(205,235,9,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 10% 80%, rgba(205,235,9,0.06) 0%, transparent 40%);
+}
+.hero-inner{position:relative;z-index:2;max-width:740px;}
+.hero h1{font-size:clamp(48px,7vw,80px);line-height:0.96;letter-spacing:-0.04em;font-weight:500;margin:20px 0 20px;}
+.hero h1 em{font-style:normal;color:#CDEB09;}
+.hero-sub{font-size:18px;line-height:1.6;color:#C4C4C4;max-width:52ch;margin:0 0 36px;}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;}
+.hero-note{margin-top:20px;font-size:13px;color:#464646;}
+
+/* PROFILE PREVIEW */
+.profile-section{padding:80px 0;background:#111;border-bottom:1px solid #1e1e1e;}
+.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.profile-card{background:#1E1E1E;border:1px solid #2a2a2a;border-radius:24px;overflow:hidden;}
+.profile-header{background:linear-gradient(135deg, rgba(205,235,9,0.15), rgba(205,235,9,0.04));padding:32px;border-bottom:1px solid #2a2a2a;display:flex;align-items:center;gap:20px;}
+.profile-avatar{width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,#CDEB09,#8fa600);flex-shrink:0;}
+.profile-name strong{font-size:20px;font-weight:600;display:block;margin-bottom:4px;}
+.profile-name span{font-size:13px;color:#8B8B8B;}
+.profile-badges{display:flex;gap:6px;margin-top:8px;}
+.badge{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;background:rgba(205,235,9,0.15);color:#CDEB09;border:1px solid rgba(205,235,9,0.25);}
+.profile-body{padding:28px 32px;display:flex;flex-direction:column;gap:16px;}
+.profile-row{display:flex;justify-content:space-between;align-items:center;font-size:14px;padding-bottom:16px;border-bottom:1px solid #222;}
+.profile-row:last-child{border-bottom:none;padding-bottom:0;}
+.profile-row span{color:#8B8B8B;}
+.profile-row strong{font-weight:600;}
+.profile-row .lime{color:#CDEB09;font-weight:600;}
+
+.features-prose{display:flex;flex-direction:column;gap:28px;}
+.prose-feat{display:flex;gap:20px;align-items:flex-start;}
+.prose-icon{width:44px;height:44px;border-radius:12px;background:rgba(205,235,9,0.1);color:#CDEB09;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.prose-icon i{font-size:20px;}
+.prose-feat h3{font-size:17px;font-weight:600;margin-bottom:5px;letter-spacing:-0.01em;}
+.prose-feat p{font-size:14px;color:#8B8B8B;line-height:1.6;}
+
+/* OPPORTUNITIES */
+.opps{padding:96px 0;background:#171717;}
+.section-head{text-align:center;margin-bottom:60px;}
+.section-head .eyebrow{margin-bottom:16px;}
+.section-head h2{font-size:clamp(32px,4.5vw,52px);line-height:1.05;letter-spacing:-0.03em;font-weight:500;margin:0 auto 14px;max-width:22ch;}
+.section-head p{font-size:16px;color:#8B8B8B;max-width:52ch;margin:0 auto;line-height:1.6;}
+.opps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.opp-card{background:#1E1E1E;border:1px solid #262626;border-radius:16px;padding:24px;transition:border-color .2s,transform .2s;}
+.opp-card:hover{border-color:#3a3a3a;transform:translateY(-2px);}
+.opp-venue{font-size:13px;font-weight:700;color:#CDEB09;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.06em;}
+.opp-title{font-size:17px;font-weight:600;margin-bottom:4px;letter-spacing:-0.01em;}
+.opp-meta{font-size:13px;color:#8B8B8B;margin-bottom:16px;display:flex;gap:12px;}
+.opp-tag{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;background:#262626;color:#ACACAC;}
+.opp-pay{font-size:14px;font-weight:600;color:#fff;margin-top:12px;}
+
+/* WORKFLOW */
+.workflow{padding:96px 0;background:#0e0e0e;}
+.workflow-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.steps-list{display:flex;flex-direction:column;gap:0;}
+.step-item{display:flex;gap:20px;padding:24px 0;border-bottom:1px solid #1e1e1e;}
+.step-item:last-child{border-bottom:none;}
+.step-num{width:40px;height:40px;border-radius:50%;background:rgba(205,235,9,0.1);border:1px solid rgba(205,235,9,0.25);color:#CDEB09;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.step-item h3{font-size:16px;font-weight:600;margin-bottom:4px;}
+.step-item p{font-size:14px;color:#8B8B8B;line-height:1.6;}
+.workflow-visual{background:#1E1E1E;border:1px solid #2a2a2a;border-radius:20px;padding:28px;}
+.offer-card{background:#262626;border-radius:12px;padding:20px;margin-bottom:12px;}
+.offer-from{font-size:11px;font-weight:600;color:#8B8B8B;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;}
+.offer-venue{font-size:16px;font-weight:600;margin-bottom:4px;}
+.offer-details{font-size:13px;color:#ACACAC;margin-bottom:14px;}
+.offer-actions{display:flex;gap:8px;}
+.offer-accept{background:#CDEB09;color:#000;font-size:12px;font-weight:700;padding:7px 16px;border-radius:8px;cursor:pointer;border:none;}
+.offer-counter{background:#333;color:#fff;font-size:12px;font-weight:600;padding:7px 16px;border-radius:8px;cursor:pointer;border:none;}
+.offer-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;}
+.offer-badge.new{background:rgba(205,235,9,0.15);color:#CDEB09;}
+.offer-badge.confirm{background:rgba(25,135,84,0.15);color:#4ade80;}
+
+/* TESTIMONIALS */
+.testimonials{padding:96px 0;background:#111;}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.test-card{background:#1E1E1E;border:1px solid #262626;border-radius:16px;padding:28px;display:flex;flex-direction:column;}
+.test-quote{font-size:15px;line-height:1.65;color:#D4D4D4;flex:1;margin-bottom:20px;}
+.test-quote::before{content:"\201C";color:#CDEB09;font-size:20px;line-height:1;}
+.test-author{display:flex;align-items:center;gap:12px;}
+.test-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#CDEB09,#8fa600);flex-shrink:0;}
+.test-name strong{font-size:14px;font-weight:600;display:block;}
+.test-name span{font-size:12px;color:#8B8B8B;}
+
+/* CTA */
+.cta-band{padding:96px 0;background:#CDEB09;text-align:center;}
+.cta-band h2{font-size:clamp(36px,5vw,56px);font-weight:500;letter-spacing:-0.04em;line-height:1.0;color:#0a0a0a;margin-bottom:12px;}
+.cta-band p{font-size:17px;color:rgba(0,0,0,0.6);margin-bottom:36px;}
+.btn-black{background:#0a0a0a;color:#fff;border:none;}
+.btn-black:hover{background:#222;}
+
+footer{background:#0a0a0a;padding:64px 0 36px;border-top:1px solid #1a1a1a;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+.footer-col h4{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#464646;margin-bottom:14px;}
+.footer-col a{display:block;font-size:14px;color:#8B8B8B;padding:4px 0;transition:color .15s;}
+.footer-col a:hover{color:#CDEB09;}
+.footer-bottom{display:flex;justify-content:space-between;padding-top:24px;border-top:1px solid #1a1a1a;color:#464646;font-size:13px;}
+
+@media(max-width:900px){
+  .profile-grid,.workflow-grid{grid-template-columns:1fr;}
+  .opps-grid{grid-template-columns:1fr 1fr;}
+  .test-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+<style id="fusion-selection-styles">
+  .fusion-element-highlight {
+    outline: 2px solid rgb(26, 115, 235) !important;
+    outline-style: solid !important;
+  }
+
+  .fusion-element-selected {
+    outline: 4px solid rgb(26, 115, 235) !important;
+    outline-style: solid !important;
+    outline-offset: 0px !important;
+  }
+  
+  .fusion-selection-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(0, 0, 0, 0.05) !important;
+    z-index: 2147483647 !important;
+    cursor: crosshair !important;
+    pointer-events: none !important;
+  }
+  
+  .fusion-selection-tooltip {
+    position: fixed !important;
+    background: #1f2937 !important;
+    color: white !important;
+    padding: 8px 12px !important;
+    border-radius: 6px !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    z-index: 2147483648 !important;
+    pointer-events: none !important;
+    transform: translate(-50%, -100%) translateY(-10px) !important;
+    white-space: nowrap !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  .fusion-selection-tooltip::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    border: 5px solid transparent !important;
+    border-top-color: #1f2937 !important;
+  }
+  
+  
+  @keyframes fusion-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes fusion-label-bounce {
+    0% { 
+      opacity: 0;
+      transform: translateY(-10px) scale(0.9);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(0) scale(1.05);
+    }
+    100% { 
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+</style>  <link rel="stylesheet" href="assets/header.css">
+  <link rel="stylesheet" href="assets/footer.css">
+</head>
+<body data-cc-id="cc-1" style="cursor: crosshair;">
+
+<div id="site-header"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <span class="eyebrow"><i class="lucide lucide-music"></i> Hedlyner for Talent</span>
+      <h1>Your bookings, your payments,<br>your schedule — all in one place.</h1>
+      <p class="hero-sub">The professional platform for working talent. Build the profile bookers actually read, respond to offers in one click, sign contracts, and get paid — all in one place. No chasing. No middleman markup.</p>
+      <div class="hero-ctas">
+        <a href="https://app.hedlyner.com/signup" class="btn btn-primary btn-lg">Create Artist Profile <i class="lucide lucide-arrow-right"></i></a>
+      </div>
+      <p class="hero-note">Free forever for artists. No booking fees.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROFILE SECTION -->
+<section class="profile-section">
+  <div class="wrap">
+    <div class="profile-grid">
+      <div>
+        <span class="eyebrow" style="margin-bottom:18px;display:inline-flex;">Your Profile, Your EPK</span>
+        <h2 style="font-size:clamp(28px,3.5vw,42px);line-height:1.05;letter-spacing:-0.03em;font-weight:500;margin:12px 0 16px;">Everything a booker needs, in one place.</h2>
+        <p style="font-size:16px;color:#8B8B8B;line-height:1.6;margin-bottom:36px;">Your Hedlyner profile is your EPK, booking calendar, and contract hub — all rolled into one shareable link. Bookers find you. You manage the rest.</p>
+        <div class="features-prose">
+          <div class="prose-feat">
+            <div class="prose-icon"><i class="lucide lucide-music-2"></i></div>
+            <div>
+              <h3>Audio &amp; Social Integration</h3>
+              <p>Link your Spotify, SoundCloud, Instagram and streaming accounts. Your music and following — visible to every booker on the platform.</p>
+            </div>
+          </div>
+          <div class="prose-feat">
+            <div class="prose-icon"><i class="lucide lucide-calendar"></i></div>
+            <div>
+              <h3>Availability Calendar</h3>
+              <p>Set your availability once. Bookers only see your open dates — no back-and-forth to figure out if you're free.</p>
+            </div>
+          </div>
+          <div class="prose-feat">
+            <div class="prose-icon"><i class="lucide lucide-link"></i></div>
+            <div>
+              <h3>Shareable Profile Link</h3>
+              <p>Hand your link to a booker walking into the room. They submit themselves to you in a uniform way — you control the conversation from there.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="profile-card">
+        <div class="profile-header">
+          <div class="profile-avatar"></div>
+          <div class="profile-name">
+            <strong>Maj Rosales</strong>
+            <span>Singer-Songwriter — San Francisco, CA</span>
+            <div class="profile-badges">
+              <span class="badge">Verified</span>
+              <span class="badge">Active</span>
+            </div>
+          </div>
+        </div>
+        <div class="profile-body">
+          <div class="profile-row">
+            <span>Genres</span>
+            <strong>Folk, Indie, Americana</strong>
+          </div>
+          <div class="profile-row">
+            <span>Draw (avg)</span>
+            <strong>80 — 120 people</strong>
+          </div>
+          <div class="profile-row">
+            <span>Typical guarantee</span>
+            <strong class="lime">$300 — $600</strong>
+          </div>
+          <div class="profile-row">
+            <span>Next available</span>
+            <strong class="lime">Friday, May 2</strong>
+          </div>
+          <div class="profile-row">
+            <span>Bookings this year</span>
+            <strong>14 confirmed</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPEN OPPORTUNITIES -->
+<section class="opps" id="opportunities">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Open Right Now</span>
+      <h2>Your career, professionally managed.</h2>
+      <p>Hedlyner gives working talent the same tools bookers have — so you can respond faster, look more professional, and spend less time on admin and more time on stage.</p>
+    </div>
+    <div class="opps-grid">
+      <div class="opp-card">
+        <div class="opp-venue">Happy Valley Filling Station</div>
+        <div class="opp-title">Friday Night Live — May 9</div>
+        <div class="opp-meta"><span>Morgantown, WV</span><span>Indoors</span></div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span class="opp-tag">Folk</span>
+          <span class="opp-tag">Americana</span>
+          <span class="opp-tag">Country</span>
+        </div>
+        <div class="opp-pay">Guarantee: $250 + door split</div>
+      </div>
+      <div class="opp-card">
+        <div class="opp-venue">Blue Moon Brewing Co.</div>
+        <div class="opp-title">Patio Sessions — May 17</div>
+        <div class="opp-meta"><span>Denver, CO</span><span>Patio</span></div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span class="opp-tag">Jazz</span>
+          <span class="opp-tag">R&amp;B</span>
+          <span class="opp-tag">Soul</span>
+        </div>
+        <div class="opp-pay">Guarantee: $400</div>
+      </div>
+      <div class="opp-card">
+        <div class="opp-venue">Canyon Creek Winery</div>
+        <div class="opp-title">Sunday Acoustic — May 25</div>
+        <div class="opp-meta"><span>Napa, CA</span><span>Barrel Room</span></div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span class="opp-tag">Acoustic</span>
+          <span class="opp-tag">Classical</span>
+        </div>
+        <div class="opp-pay">Guarantee: $350 + tips</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:36px;">
+      <a href="https://app.hedlyner.com/signup" class="btn btn-primary btn-lg">See How It Works <i class="lucide lucide-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- WORKFLOW -->
+<section class="workflow">
+  <div class="wrap">
+    <div class="workflow-grid">
+      <div>
+        <span class="eyebrow" style="margin-bottom:18px;display:inline-flex;">From offer to payment</span>
+        <h2 style="font-size:clamp(28px,3.5vw,42px);line-height:1.05;letter-spacing:-0.03em;font-weight:500;margin:12px 0 28px;">Manage All Your Shows,<br>All in One Place.</h2>
+        <div class="steps-list">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div>
+              <h3>Receive the offer</h3>
+              <p>Bookers send you structured offers with guaranteed pay, date, venue details and hospitality terms — all in one clear view.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div>
+              <h3>Accept or counter</h3>
+              <p>Accept in one click, or counter with your terms. No email chains, no phone tag. Everything stays in the thread.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div>
+              <h3>Sign the contract</h3>
+              <p>E-sign directly in Hedlyner. The contract is timestamped and stored — both parties have a copy forever.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div>
+              <h3>Get paid</h3>
+              <p>Payment hits your account after the show. 1099s are handled automatically — no W-9 chasing, no tax season surprises.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="workflow-visual">
+        <div style="font-size:12px;font-weight:600;color:#646464;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px;">Offer Inbox</div>
+        <div class="offer-card">
+          <div class="offer-from">From Happy Valley Filling Station <span class="offer-badge new">New</span></div>
+          <div class="offer-venue">Friday Night Live — May 9, 2025</div>
+          <div class="offer-details">Morgantown, WV &nbsp;— 9:00 PM — 11:30 PM &nbsp;— Indoor stage</div>
+          <div style="font-size:14px;font-weight:600;color:#CDEB09;margin-bottom:12px;">$300 guarantee + 20% door</div>
+          <div class="offer-actions">
+            <button class="offer-accept">Accept Offer</button>
+            <button class="offer-counter">Counter</button>
+          </div>
+        </div>
+        <div class="offer-card">
+          <div class="offer-from">From Canyon Creek Winery <span class="offer-badge confirm">Confirmed</span></div>
+          <div class="offer-venue">Sunday Acoustic — Apr 27, 2025</div>
+          <div class="offer-details">Napa, CA &nbsp;— 2:00 PM — 5:00 PM &nbsp;— Barrel Room</div>
+          <div style="font-size:14px;font-weight:600;color:#4ade80;margin-bottom:12px;">$350 guaranteed — Contract signed</div>
+        </div>
+        <div style="text-align:center;margin-top:8px;font-size:12px;color:#464646;">2 active offers &nbsp;— 5 upcoming shows</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Artist Stories</span>
+      <h2>Hear from the community.</h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card">
+        <p class="test-quote">Since joining Hedlyner, I've booked more shows in six months than in the previous two years. The offer inbox alone replaced my entire email system.</p>
+        <div class="test-author">
+          <div class="test-avatar"></div>
+          <div class="test-name"><strong>Maj</strong><span>Singer-Songwriter, San Francisco</span></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">The shareable calendar link is a game changer. I hand it to a booker and they see exactly when I'm available — no back and forth at all.</p>
+        <div class="test-author">
+          <div class="test-avatar" style="background:linear-gradient(135deg,#BA87FF,#7344cc);"></div>
+          <div class="test-name"><strong>Derek Horne</strong><span>Jazz Guitarist, Chicago</span></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">Getting paid used to take weeks. Now it's in my account the day after the show. And the 1099 just appears at tax time — I don't have to do anything.</p>
+        <div class="test-author">
+          <div class="test-avatar" style="background:linear-gradient(135deg,#CDEB09,#556100);"></div>
+          <div class="test-name"><strong>Lucia Reyes</strong><span>Acoustic duo, Austin TX</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Get confirmed. Get paid. No chasing invoices.</h2>
+    <p>Venues and bookers who use Hedlyner send you structured offers with clear terms. You accept, sign, and show up. We handle the rest.</p>
+    <a href="https://app.hedlyner.com/signup" class="btn btn-black btn-xl">Create Your Artist Profile <i class="lucide lucide-arrow-right"></i></a>
+  </div>
+</section>
+
+    <div id="site-footer"></div>
+
+
+  <script src="assets/header.js"></script>
+  <script src="assets/footer.js"></script>
+</body></html>

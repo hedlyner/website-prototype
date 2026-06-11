@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Hedlyner — Built for the Live Music Industry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* =========================================================================
+       Hedlyner Design System — Colors & Type
+    ========================================================================= */
+    :root {
+      --hed-lime: #CDEB09;
+      --hed-violet: #BA87FF;
+      --hed-green: #C9CD00;
+      --hed-deep-green: #061C17;
+      --neutral-0: #FFFFFF;
+      --neutral-100: #F5F5F5;
+      --neutral-200: #DEDEDE;
+      --neutral-300: #ACACAC;
+      --neutral-400: #8B8B8B;
+      --neutral-500: #646464;
+      --neutral-600: #464646;
+      --neutral-700: #333333;
+      --neutral-800: #262626;
+      --neutral-900: #121212;
+      --neutral-1000: #000000;
+      --success: #198754;
+      --destructive: #E23453;
+      --white-10: rgba(255,255,255,0.10);
+      --white-20: rgba(255,255,255,0.20);
+      --white-40: rgba(255,255,255,0.40);
+      --white-60: rgba(255,255,255,0.60);
+      --bg: var(--neutral-900);
+      --bg-elevated: var(--neutral-800);
+      --bg-muted: var(--neutral-700);
+      --fg: var(--neutral-0);
+      --fg-muted: var(--neutral-400);
+      --fg-subtle: var(--neutral-500);
+      --border: var(--neutral-700);
+      --border-hover: var(--neutral-600);
+      --primary: var(--hed-lime);
+      --radius-xs: 4px; --radius-sm: 8px; --radius: 12px;
+      --radius-lg: 16px; --radius-xl: 24px; --radius-2xl: 40px;
+      --radius-full: 9999px;
+      --shadow-lime: 0 0 15px rgba(205,235,9,0.25);
+      --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 20px;
+      --sp-6: 24px; --sp-8: 32px; --sp-10: 40px; --sp-12: 48px; --sp-16: 64px;
+      --sp-20: 80px; --sp-24: 96px;
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --dur: 200ms;
+      --font-sans: 'Instrument Sans', 'Inter', ui-sans-serif, system-ui, sans-serif;
+      --font-display: 'Instrument Sans', 'Inter', ui-sans-serif, system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---- NAV ---- */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(18,18,18,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px; max-width: 1120px; margin: 0 auto; padding: 0 var(--sp-6);
+    }
+    .nav-logo {
+      display: flex; align-items: center;
+      text-decoration: none; color: var(--fg);
+    }
+    .nav-logo svg {
+      flex-shrink: 0;
+      transition: transform 0.3s var(--ease-out), filter 0.3s var(--ease-out);
+    }
+    .nav-logo:hover svg {
+      transform: scale(1.12);
+      filter: drop-shadow(0 0 10px rgba(205, 235, 9, 0.65));
+    }
+    .nav-links {
+      display: flex; list-style: none; gap: var(--sp-8); align-items: center;
+    }
+    .nav-links a {
+      font-size: 15px; color: var(--fg-muted); text-decoration: none;
+      transition: color var(--dur);
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--fg); }
+    .nav-actions { display: flex; align-items: center; gap: var(--sp-3); }
+    .nav-login { font-size: 15px; color: var(--fg-muted); text-decoration: none; transition: color var(--dur); }
+    .nav-login:hover { color: var(--fg); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: var(--sp-2); padding: 0 var(--sp-5); height: 40px;
+      font-family: var(--font-sans); font-weight: 600; font-size: 14px;
+      border-radius: var(--radius-sm); text-decoration: none;
+      border: 1.5px solid transparent; cursor: pointer;
+      transition: all var(--dur) var(--ease-out);
+    }
+    .btn-primary {
+      background: var(--hed-lime); color: var(--neutral-1000); border-color: var(--hed-lime);
+    }
+    .btn-primary:hover { opacity: 0.88; }
+    .btn-outline {
+      background: transparent; color: var(--fg); border-color: var(--border);
+    }
+    .btn-outline:hover { border-color: var(--border-hover); background: var(--bg-elevated); }
+
+    /* ---- PAGE HERO ---- */
+    .about-hero {
+      padding: var(--sp-24) var(--sp-6) var(--sp-20);
+      max-width: 1120px; margin: 0 auto; text-align: center;
+    }
+    .page-eyebrow {
+      display: inline-flex; align-items: center; gap: var(--sp-2);
+      background: var(--white-10); border: 1px solid var(--border);
+      border-radius: var(--radius-full); padding: 4px 14px;
+      font-size: 13px; font-weight: 500; color: var(--fg-muted);
+      margin-bottom: var(--sp-6); letter-spacing: 0.02em;
+    }
+    .about-hero h1 {
+      font-family: var(--font-display); font-size: clamp(40px, 6vw, 72px);
+      font-weight: 500; line-height: 1.1; letter-spacing: -0.02em;
+      margin-bottom: var(--sp-6); max-width: 800px; margin-left: auto; margin-right: auto;
+    }
+    .about-hero h1 em {
+      font-style: italic; color: var(--hed-lime);
+    }
+    .about-hero p {
+      font-size: clamp(16px, 2vw, 20px); color: var(--fg-muted);
+      max-width: 600px; margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ---- STATS BAR ---- */
+    .stats-bar {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: var(--sp-12) var(--sp-6);
+    }
+    .stats-bar-inner {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: var(--sp-8); max-width: 900px; margin: 0 auto;
+      text-align: center;
+    }
+    .stat-item { display: flex; flex-direction: column; gap: var(--sp-1); }
+    .stat-num {
+      font-family: var(--font-display); font-size: 42px;
+      font-weight: 700; color: var(--hed-lime);
+      letter-spacing: -0.02em; line-height: 1;
+    }
+    .stat-label { font-size: 14px; color: var(--fg-muted); }
+
+    /* ---- ORIGIN STORY ---- */
+    .origin-section {
+      padding: var(--sp-24) var(--sp-6);
+    }
+    .origin-inner {
+      max-width: 1120px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: var(--sp-16); align-items: center;
+    }
+    .origin-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--hed-lime);
+      margin-bottom: var(--sp-4);
+    }
+    .origin-content h2 {
+      font-family: var(--font-display); font-size: clamp(28px, 4vw, 44px);
+      font-weight: 500; line-height: 1.15; letter-spacing: -0.02em;
+      margin-bottom: var(--sp-6);
+    }
+    .origin-content p {
+      font-size: 16px; color: var(--fg-muted); line-height: 1.7;
+      margin-bottom: var(--sp-4);
+    }
+    .origin-content p:last-child { margin-bottom: 0; }
+    .origin-visual {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: var(--sp-10);
+      position: relative; overflow: hidden;
+    }
+    .origin-visual::before {
+      content: '';
+      position: absolute; top: -40px; right: -40px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(205,235,9,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .origin-quote {
+      font-family: var(--font-display);
+      font-size: 22px; font-weight: 500;
+      line-height: 1.4; color: var(--fg);
+      margin-bottom: var(--sp-6);
+      position: relative;
+    }
+    .origin-quote::before {
+      content: '"';
+      font-size: 64px; color: var(--hed-lime);
+      line-height: 0; position: relative; top: 22px;
+      font-family: Georgia, serif;
+      margin-right: var(--sp-1);
+    }
+    .origin-attribution {
+      font-size: 14px; color: var(--fg-muted);
+      display: flex; align-items: center; gap: var(--sp-2);
+    }
+    .origin-attribution::before {
+      content: '';
+      display: inline-block; width: 24px; height: 1px;
+      background: var(--hed-lime);
+    }
+
+    /* ---- TIMELINE ---- */
+    .timeline-section {
+      padding: var(--sp-24) var(--sp-6);
+      background: var(--bg-elevated);
+    }
+    .timeline-inner { max-width: 800px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: var(--sp-16); }
+    .section-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--hed-lime);
+      margin-bottom: var(--sp-4);
+    }
+    .section-header h2 {
+      font-family: var(--font-display); font-size: clamp(28px, 4vw, 40px);
+      font-weight: 500; letter-spacing: -0.02em; line-height: 1.15;
+    }
+    .timeline { position: relative; padding-left: var(--sp-8); }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 0; top: 8px;
+      width: 1px; height: calc(100% - 8px);
+      background: var(--border);
+    }
+    .timeline-item { position: relative; padding-bottom: var(--sp-12); }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-dot {
+      position: absolute; left: calc(-1 * var(--sp-8) - 5px); top: 8px;
+      width: 11px; height: 11px; border-radius: 50%;
+      background: var(--hed-lime);
+      box-shadow: 0 0 0 3px var(--bg-elevated), 0 0 0 5px rgba(205,235,9,0.3);
+    }
+    .timeline-year {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--hed-lime);
+      margin-bottom: var(--sp-2);
+    }
+    .timeline-title {
+      font-family: var(--font-display); font-size: 20px; font-weight: 600;
+      margin-bottom: var(--sp-2);
+    }
+    .timeline-desc { font-size: 15px; color: var(--fg-muted); line-height: 1.6; }
+
+    /* ---- MISSION / VALUES ---- */
+    .values-section {
+      padding: var(--sp-24) var(--sp-6);
+    }
+    .values-inner { max-width: 1120px; margin: 0 auto; }
+    .values-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-6); margin-top: var(--sp-12);
+    }
+    .value-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-8);
+      transition: border-color var(--dur);
+    }
+    .value-card:hover { border-color: var(--border-hover); }
+    .value-icon {
+      width: 44px; height: 44px;
+      background: var(--white-10);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: var(--sp-5);
+      font-size: 22px;
+    }
+    .value-card h3 {
+      font-family: var(--font-display); font-size: 18px; font-weight: 600;
+      margin-bottom: var(--sp-3);
+    }
+    .value-card p { font-size: 14px; color: var(--fg-muted); line-height: 1.6; }
+
+    /* ---- FOR EACH AUDIENCE ---- */
+    .for-section {
+      padding: var(--sp-24) var(--sp-6);
+      background: var(--bg-elevated);
+    }
+    .for-inner { max-width: 1120px; margin: 0 auto; }
+    .for-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-6); margin-top: var(--sp-12);
+    }
+    .for-card {
+      border-radius: var(--radius-lg);
+      padding: var(--sp-8);
+      border: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+    .for-card.lime-accent { border-color: rgba(205,235,9,0.3); }
+    .for-card.violet-accent { border-color: rgba(186,135,255,0.3); }
+    .for-card.neutral-accent { border-color: var(--border); }
+    .for-card-tag {
+      display: inline-flex; align-items: center;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 4px 10px;
+      border-radius: var(--radius-full); margin-bottom: var(--sp-5);
+    }
+    .for-card.lime-accent .for-card-tag { background: rgba(205,235,9,0.15); color: var(--hed-lime); }
+    .for-card.violet-accent .for-card-tag { background: rgba(186,135,255,0.15); color: var(--hed-violet); }
+    .for-card.neutral-accent .for-card-tag { background: var(--white-10); color: var(--fg-muted); }
+    .for-card h3 {
+      font-family: var(--font-display); font-size: 20px; font-weight: 600;
+      margin-bottom: var(--sp-3);
+    }
+    .for-card p { font-size: 14px; color: var(--fg-muted); line-height: 1.6; margin-bottom: var(--sp-5); }
+    .for-card a { font-size: 14px; font-weight: 600; text-decoration: none; }
+    .for-card.lime-accent a { color: var(--hed-lime); }
+    .for-card.violet-accent a { color: var(--hed-violet); }
+    .for-card.neutral-accent a { color: var(--fg-muted); }
+    .for-card a:hover { text-decoration: underline; }
+
+    /* ---- CONTACT / CTA ---- */
+    .contact-section {
+      padding: var(--sp-24) var(--sp-6);
+      text-align: center;
+    }
+    .contact-inner { max-width: 600px; margin: 0 auto; }
+    .contact-inner h2 {
+      font-family: var(--font-display); font-size: clamp(28px, 4vw, 44px);
+      font-weight: 500; letter-spacing: -0.02em; line-height: 1.15;
+      margin-bottom: var(--sp-5);
+    }
+    .contact-inner p {
+      font-size: 16px; color: var(--fg-muted); margin-bottom: var(--sp-8);
+    }
+    .contact-ctas { display: flex; gap: var(--sp-3); justify-content: center; flex-wrap: wrap; }
+
+    /* ---- NEWSLETTER ---- */
+    .newsletter-section {
+      border-top: 1px solid var(--border);
+      padding: var(--sp-16) var(--sp-6);
+    }
+    .newsletter-inner { max-width: 560px; margin: 0 auto; text-align: center; }
+    .newsletter-inner h3 { font-size: 24px; font-weight: 600; margin-bottom: var(--sp-2); }
+    .newsletter-inner p { font-size: 15px; color: var(--fg-muted); margin-bottom: var(--sp-6); }
+    .newsletter-form { display: flex; gap: var(--sp-2); flex-wrap: wrap; justify-content: center; }
+    .newsletter-form input[type="email"] {
+      flex: 1; min-width: 220px;
+      background: var(--bg-elevated); color: var(--fg);
+      border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 0 var(--sp-4); height: 44px; font-size: 14px;
+      font-family: var(--font-sans); outline: none;
+      transition: border-color var(--dur);
+    }
+    .newsletter-form input[type="email"]:focus { border-color: var(--hed-lime); }
+    .newsletter-form input[type="email"]::placeholder { color: var(--fg-subtle); }
+    .newsletter-form button {
+      height: 44px; padding: 0 var(--sp-6);
+      background: var(--hed-lime); color: var(--neutral-1000);
+      border: none; border-radius: var(--radius-sm);
+      font-family: var(--font-sans); font-weight: 600; font-size: 14px;
+      cursor: pointer; transition: opacity var(--dur); white-space: nowrap;
+    }
+    .newsletter-form button:hover { opacity: 0.88; }
+    .newsletter-consent {
+      font-size: 12px; color: var(--fg-subtle);
+      margin-top: var(--sp-4); display: flex; align-items: flex-start;
+      gap: var(--sp-2); justify-content: center; text-align: left;
+    }
+    .newsletter-consent input[type="checkbox"] { margin-top: 2px; flex-shrink: 0; accent-color: var(--hed-lime); }
+    .newsletter-msg { margin-top: var(--sp-4); font-size: 14px; display: none; }
+    .newsletter-msg.success { color: var(--hed-lime); display: block; }
+    .newsletter-msg.error { color: var(--destructive); display: block; }
+
+    /* ---- FOOTER ---- */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: var(--sp-12) 0;
+    }
+    .footer-inner {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--sp-8); max-width: 1120px; margin: 0 auto; padding: 0 var(--sp-6);
+    }
+    .footer-brand p { font-size: 14px; color: var(--fg-muted); }
+    .footer-col h5 {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--fg-subtle); margin-bottom: var(--sp-4);
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: var(--sp-3); }
+    .footer-col ul a { font-size: 14px; color: var(--fg-muted); text-decoration: none; transition: color var(--dur); }
+    .footer-col ul a:hover { color: var(--fg); }
+    .footer-bottom {
+      text-align: center; padding: var(--sp-6) var(--sp-6) 0;
+      border-top: 1px solid var(--border); margin-top: var(--sp-8);
+      max-width: 1120px; margin-left: auto; margin-right: auto;
+    }
+    .footer-bottom p { font-size: 13px; color: var(--fg-subtle); }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .origin-inner { grid-template-columns: 1fr; }
+      .stats-bar-inner { grid-template-columns: repeat(2, 1fr); gap: var(--sp-8) var(--sp-4); }
+      .values-grid { grid-template-columns: 1fr; }
+      .for-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/header.css">
+  <link rel="stylesheet" href="assets/footer.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <div id="site-header"></div>
+
+  <!-- HERO -->
+  <div class="about-hero">
+    <div class="page-eyebrow">Our Story</div>
+    <h1>Built by industry,<br><em>for the industry.</em></h1>
+    <p>Hedlyner started where most booking nightmares end — in a spreadsheet at 2 a.m., manually tracking 40 venue calendars. We built the platform we always wished existed.</p>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stats-bar-inner">
+      <div class="stat-item">
+        <div class="stat-num">1,000+</div>
+        <div class="stat-label">Artists connected</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Venues partnered</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">10k+</div>
+        <div class="stat-label">Shows booked</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Cities served</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORIGIN STORY -->
+  <section class="origin-section">
+    <div class="origin-inner">
+      <div class="origin-content">
+        <div class="origin-label">Why we exist</div>
+        <h2>San Francisco, 2021. The venues were empty. The artists were ready.</h2>
+        <p>When live music started coming back after the pandemic, something unexpected happened: the booking infrastructure had collapsed. Experienced talent buyers had moved on. Venues had no easy way to find and vet artists. Artists had no reliable way to get in front of decision-makers.</p>
+        <p>Our founders — a musician and a venue operator — had lived this problem from both sides. They set out to build a single platform where venues could discover vetted local talent, manage bookings end-to-end, and pay artists on time, every time.</p>
+        <p>The mission hasn't changed: <strong>help small businesses grow customer loyalty by regularly booking live music</strong> — and make it as easy as ordering supplies.</p>
+      </div>
+      <div class="origin-visual">
+        <div class="origin-quote">The spreadsheet era is over. Live music deserves better infrastructure.</div>
+        <div class="origin-attribution">Hector Corral, Co-founder & CEO</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="timeline-section">
+    <div class="timeline-inner">
+      <div class="section-header">
+        <div class="section-label">Our Journey</div>
+        <h2>From idea to industry platform</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2021</div>
+          <div class="timeline-title">Founded in San Francisco</div>
+          <div class="timeline-desc">Hedlyner is born out of frustration — a musician and a venue operator team up to rebuild the live music booking stack from scratch. First customers: three SF venues and a handful of local jazz artists.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2022</div>
+          <div class="timeline-title">MVP: Booking meets payments</div>
+          <div class="timeline-desc">First version ships with artist discovery, offer flow, and integrated payments. Venues stop chasing artists for W-9s. Artists start getting paid in days, not months. Word spreads fast.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2023</div>
+          <div class="timeline-title">Platform evolution — V2</div>
+          <div class="timeline-desc">Multi-venue management, calendar intelligence, and CRM-grade booking history land in V2. Talent buying agencies with 10+ venues adopt Hedlyner as their operating system for live music.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2024–Present</div>
+          <div class="timeline-title">Scaling the ecosystem</div>
+          <div class="timeline-desc">Now live in 50+ cities, Hedlyner connects thousands of artists to hundreds of venues. Enterprise agencies manage 40+ rooms on a single account. The mission is the same — the scope is bigger.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="values-section">
+    <div class="values-inner">
+      <div class="section-header">
+        <div class="section-label">What we stand for</div>
+        <h2>Our principles</h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">🎵</div>
+          <h3>Industry-first, always</h3>
+          <p>We come from live music. Every feature is built by people who've run venues, toured stages, or negotiated contracts — not just engineers who've read about it.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">⚡</div>
+          <h3>Speed over bureaucracy</h3>
+          <p>A booking should take minutes, not days. We obsess over removing every unnecessary step — from offer to deposit to show night — so venues and artists can focus on the music.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🤝</div>
+          <h3>Fair for both sides</h3>
+          <p>We don't play favorites. Hedlyner is built to give venues the tools to scale and artists the visibility to grow — because a healthy ecosystem requires both to win.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🔍</div>
+          <h3>Radical transparency</h3>
+          <p>No hidden fees. No surprise deductions. Artists see exactly what they'll earn. Venues see exactly what they'll pay. Every transaction is documented and traceable.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🌆</div>
+          <h3>Built for community</h3>
+          <p>Live music isn't just entertainment — it's the heartbeat of a neighborhood. We design Hedlyner to strengthen local scenes, not extract from them.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">📈</div>
+          <h3>Data-driven decisions</h3>
+          <p>Gut feelings are great on stage. Off stage, you need numbers. Hedlyner surfaces the data talent buyers need to book smarter — which artists perform, which nights sell, which venues scale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR EACH AUDIENCE -->
+  <section class="for-section">
+    <div class="for-inner">
+      <div class="section-header">
+        <div class="section-label">Who we serve</div>
+        <h2>Built for every corner of live music</h2>
+      </div>
+      <div class="for-grid">
+        <div class="for-card lime-accent">
+          <div class="for-card-tag">Talent Buyers & Agencies</div>
+          <h3>Manage every room from one dashboard</h3>
+          <p>Multi-venue booking management, artist discovery with real booking history, offer automation, and payments — all in one place. Built for agencies running 10 to 100+ venues.</p>
+          <a href="for-bookers.html">Explore for Talent Buyers →</a>
+        </div>
+        <div class="for-card violet-accent">
+          <div class="for-card-tag">Artists & Performers</div>
+          <h3>Get discovered. Get booked. Get paid.</h3>
+          <p>Build a verified profile, surface to venue buyers in your market, accept offers with one tap, and receive payment directly — no chasing invoices, no awkward conversations.</p>
+          <a href="for-artists.html">Explore for Artists →</a>
+        </div>
+        <div class="for-card neutral-accent">
+          <div class="for-card-tag">Venues & Hospitality</div>
+          <h3>Live music that fills seats, not spreadsheets</h3>
+          <p>Whether you're a single-location restaurant or a growing hospitality group, Hedlyner connects you to vetted local talent and handles everything from booking to payout compliance.</p>
+          <a href="for-bookers.html">Explore for Venues →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section class="contact-section">
+    <div class="contact-inner">
+      <h2>We'd love to hear from you</h2>
+      <p>Have a question, a partnership idea, or just want to talk shop about live music? Our team is always happy to connect.</p>
+      <div class="contact-ctas">
+        <a href="https://hedlyner.com/demo" class="btn btn-primary">Book a Demo</a>
+        <a href="mailto:hello@hedlyner.com" class="btn btn-outline">Say Hello</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+
+  <script>
+    async function handleNewsletterSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('newsletterEmail').value.trim();
+      const consent = document.getElementById('newsletterConsent').checked;
+      const btn = document.getElementById('newsletterBtn');
+      const msg = document.getElementById('newsletterMsg');
+      if (!consent) return;
+      btn.disabled = true;
+      btn.textContent = 'Subscribing…';
+      msg.className = 'newsletter-msg';
+      msg.textContent = '';
+      try {
+        const resp = await fetch('https://api.hedlyner.com/api/v5/zoho/email-subscription', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, recaptcha_token: '' })
+        });
+        if (resp.ok) {
+          msg.className = 'newsletter-msg success';
+          msg.textContent = "You're in! Welcome to the Hedlyner community.";
+          document.getElementById('newsletterForm').reset();
+        } else {
+          throw new Error('Server error');
+        }
+      } catch {
+        msg.className = 'newsletter-msg error';
+        msg.textContent = 'Something went wrong — please try again or email us at hello@hedlyner.com.';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Subscribe';
+      }
+    }
+  </script>
+
+  <script src="assets/header.js"></script>
+  <script src="assets/footer.js"></script>
+</body>
+</html>

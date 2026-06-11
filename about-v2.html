@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Hedlyner — Built by Industry, for the Industry</title>
+  <link rel="icon" href="assets/logo-mark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/lucide-static@latest/font/lucide.css">
+  <link rel="stylesheet" href="colors_and_type.css">
+  <link rel="stylesheet" href="assets/header.css">
+  <link rel="stylesheet" href="assets/footer.css">
+  <style>
+    /* ============================================================
+       About — Editorial / Infrastructure
+       ============================================================ */
+    :root {
+      --mono: 'JetBrains Mono', ui-monospace, monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #0a0a0a;
+      color: var(--fg);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 var(--sp-6); }
+    .wrap-narrow { max-width: 900px; margin: 0 auto; padding: 0 var(--sp-6); }
+
+    .mono { font-family: var(--mono); font-feature-settings: "tnum"; }
+    .eyebrow-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 12px; border-radius: var(--radius-full);
+      background: rgba(205,235,9,0.08); color: var(--hed-lime);
+      border: 1px solid rgba(205,235,9,0.22);
+      font-family: var(--mono); font-size: 11px; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+    }
+    .eyebrow-tag.violet {
+      background: rgba(186,135,255,0.08); color: var(--hed-violet);
+      border-color: rgba(186,135,255,0.22);
+    }
+    .eyebrow-tag.neutral {
+      background: rgba(255,255,255,0.04); color: var(--fg-muted);
+      border-color: rgba(255,255,255,0.08);
+    }
+    .eyebrow-tag::before {
+      content: ""; width: 5px; height: 5px; border-radius: 50%;
+      background: currentColor;
+      box-shadow: 0 0 8px currentColor;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 8px; height: 48px; padding: 0 22px; border-radius: var(--radius-sm);
+      font-family: var(--font-sans); font-weight: 600; font-size: 14px;
+      border: 1.5px solid transparent; cursor: pointer; text-decoration: none;
+      transition: all var(--dur) var(--ease-out);
+    }
+    .btn-primary { background: var(--hed-lime); color: #000; border-color: var(--hed-lime); }
+    .btn-primary:hover { box-shadow: 0 0 24px rgba(205,235,9,0.35); transform: translateY(-1px); }
+    .btn-violet { background: var(--hed-violet); color: #0a0a0a; border-color: var(--hed-violet); }
+    .btn-violet:hover { box-shadow: 0 0 24px rgba(186,135,255,0.35); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--fg); border-color: rgba(255,255,255,0.2); }
+    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.04); }
+
+    /* ============================================================
+       HERO — editorial, oversized type, grid backdrop
+       ============================================================ */
+    .hero {
+      position: relative;
+      padding: 140px 0 120px;
+      border-bottom: 1px solid #1a1a1a;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(ellipse 70% 80% at 50% 45%, #000 30%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 80% at 50% 45%, #000 30%, transparent 80%);
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 50% 40% at 80% 30%, rgba(186,135,255,0.10), transparent 65%),
+        radial-gradient(ellipse 60% 45% at 15% 75%, rgba(205,235,9,0.10), transparent 65%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr;
+      text-align: left;
+    }
+    .hero-meta {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 48px; flex-wrap: wrap;
+    }
+    .hero-meta-item {
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--fg-muted);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hero-meta-item .dot {
+      width: 5px; height: 5px; border-radius: 50%; background: var(--hed-lime);
+      box-shadow: 0 0 10px var(--hed-lime);
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(56px, 10vw, 148px);
+      font-weight: 500;
+      line-height: 0.92;
+      letter-spacing: -0.045em;
+      margin-bottom: 40px;
+      max-width: 15ch;
+    }
+    .hero h1 em {
+      font-style: italic; color: var(--hed-lime);
+      display: block;
+    }
+    .hero-sub {
+      font-size: clamp(18px, 2vw, 22px);
+      color: #C4C4C4;
+      max-width: 52ch;
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+    .hero-sub strong { color: #fff; font-weight: 600; }
+
+    .hero-footer {
+      position: absolute; left: 0; right: 0; bottom: 32px;
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 1200px; margin: 0 auto; padding: 0 var(--sp-6);
+      font-family: var(--mono); font-size: 11px; color: var(--fg-subtle);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      z-index: 2;
+    }
+    .hero-footer .scroll {
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .hero-footer .scroll .bar {
+      display: inline-block; width: 28px; height: 1px; background: var(--fg-muted);
+      position: relative; overflow: hidden;
+    }
+    .hero-footer .scroll .bar::after {
+      content: ""; position: absolute; inset: 0;
+      background: var(--hed-lime);
+      animation: scan 2.2s ease-in-out infinite;
+    }
+    @keyframes scan {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    /* ============================================================
+       STATS — industry readout ticker
+       ============================================================ */
+    .stats {
+      border-bottom: 1px solid #1a1a1a;
+      padding: 24px 0;
+      background: #0a0a0a;
+      overflow: hidden;
+      position: relative;
+    }
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .stat-cell {
+      padding: 36px 32px;
+      border-right: 1px solid #1a1a1a;
+      display: flex; flex-direction: column;
+      position: relative;
+    }
+    .stat-cell:last-child { border-right: none; }
+    .stat-cell::before {
+      content: attr(data-idx);
+      position: absolute; top: 16px; right: 18px;
+      font-family: var(--mono); font-size: 10px;
+      color: var(--fg-subtle); letter-spacing: 0.12em;
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: clamp(44px, 6vw, 72px);
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      color: #fff;
+      display: inline-flex; align-items: baseline;
+    }
+    .stat-num .plus { color: var(--hed-lime); margin-left: 2px; }
+    .stat-label {
+      font-family: var(--mono); font-size: 12px;
+      color: var(--fg-muted); margin-top: 14px;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    /* ============================================================
+       WHY WE EXIST — asymmetric with framed quote
+       ============================================================ */
+    .why {
+      padding: 140px 0;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .why-head { margin-bottom: 72px; display: grid; grid-template-columns: 1fr 1.8fr; gap: 80px; align-items: start; }
+    .why-head .label-col { padding-top: 8px; }
+    .why-head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 500; letter-spacing: -0.03em; line-height: 1.05;
+      margin-top: 20px;
+    }
+    .why-head h2 em { font-style: italic; color: var(--hed-lime); }
+
+    .why-body {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .why-paragraphs { display: flex; flex-direction: column; gap: 36px; }
+    .why-p {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 20px;
+    }
+    .why-p-num {
+      font-family: var(--mono); font-size: 11px;
+      color: var(--hed-lime); letter-spacing: 0.14em;
+      padding-top: 6px;
+      border-top: 1px solid rgba(205,235,9,0.4);
+      align-self: start;
+    }
+    .why-p p {
+      font-size: 17px; color: #C4C4C4; line-height: 1.65;
+    }
+    .why-p p strong { color: #fff; font-weight: 600; }
+
+    .why-exhibit {
+      position: sticky; top: 100px;
+      background: #111;
+      border: 1px solid #232323;
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      position: relative;
+    }
+    .why-exhibit::before {
+      content: "EXHIBIT A";
+      position: absolute; top: -1px; left: 32px;
+      transform: translateY(-50%);
+      background: #0a0a0a; padding: 4px 12px;
+      font-family: var(--mono); font-size: 10px;
+      letter-spacing: 0.18em; color: var(--fg-subtle);
+      border: 1px solid #232323; border-radius: 4px;
+    }
+    .exhibit-quote-mark {
+      font-family: var(--font-display);
+      font-size: 96px; line-height: 0.7;
+      color: var(--hed-lime);
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+    .exhibit-quote {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 2.6vw, 32px);
+      font-weight: 500; line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 32px;
+    }
+    .exhibit-attr {
+      display: grid; grid-template-columns: 48px 1fr;
+      gap: 14px; align-items: center;
+      padding-top: 24px;
+      border-top: 1px solid #232323;
+    }
+    .exhibit-attr-avatar {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: linear-gradient(135deg, #CDEB09, #7a8c00);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-weight: 600; color: #0a0a0a;
+      font-size: 18px; letter-spacing: -0.02em;
+    }
+    .exhibit-attr-name {
+      font-size: 15px; font-weight: 600; color: #fff;
+      margin-bottom: 2px;
+    }
+    .exhibit-attr-role {
+      font-family: var(--mono); font-size: 11px;
+      color: var(--fg-subtle); letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ============================================================
+       MISSION & VISION — two contrasting exhibits
+       ============================================================ */
+    .mv {
+      padding: 140px 0;
+      border-bottom: 1px solid #1a1a1a;
+      position: relative;
+    }
+    .mv-head { margin-bottom: 64px; max-width: 640px; }
+    .mv-head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 500; letter-spacing: -0.03em; line-height: 1.05;
+      margin-top: 20px;
+    }
+    .mv-head h2 .and {
+      display: inline-block;
+      font-family: var(--font-display); font-style: italic;
+      background: linear-gradient(90deg, var(--hed-lime), var(--hed-violet));
+      -webkit-background-clip: text; background-clip: text;
+      color: transparent;
+    }
+    .mv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .mv-card {
+      position: relative;
+      padding: 56px 48px;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      min-height: 520px;
+      display: flex; flex-direction: column;
+    }
+    .mv-card.mission {
+      background:
+        radial-gradient(ellipse 90% 70% at 100% 0%, rgba(205,235,9,0.18), transparent 60%),
+        linear-gradient(180deg, #141414 0%, #0e0e0e 100%);
+      border: 1px solid rgba(205,235,9,0.25);
+    }
+    .mv-card.vision {
+      background:
+        radial-gradient(ellipse 90% 70% at 0% 100%, rgba(186,135,255,0.20), transparent 60%),
+        linear-gradient(180deg, #141414 0%, #0e0e0e 100%);
+      border: 1px solid rgba(186,135,255,0.25);
+    }
+    .mv-mark {
+      font-family: var(--font-display);
+      font-style: italic; font-weight: 500;
+      font-size: 112px; line-height: 0.85;
+      letter-spacing: -0.04em;
+      margin-bottom: 24px;
+    }
+    .mv-card.mission .mv-mark { color: var(--hed-lime); }
+    .mv-card.vision .mv-mark { color: var(--hed-violet); }
+
+    .mv-card h3 {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 2.4vw, 30px);
+      font-weight: 500; letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      max-width: 22ch;
+    }
+    .mv-card p {
+      font-size: 16px; color: #B8B8B8; line-height: 1.7;
+      margin-top: auto;
+    }
+    .mv-meta {
+      font-family: var(--mono); font-size: 11px;
+      color: var(--fg-subtle); letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    /* ============================================================
+       TEAM — founder exhibit with numbered bio
+       ============================================================ */
+    .team {
+      padding: 140px 0;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .team-head { text-align: center; margin-bottom: 80px; }
+    .team-head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 500; letter-spacing: -0.03em; line-height: 1.05;
+      margin-top: 20px;
+    }
+    .founder {
+      max-width: 1000px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .founder-portrait {
+      position: sticky; top: 100px;
+    }
+    .founder-frame {
+      background: linear-gradient(160deg, #151515, #0f0f0f);
+      border: 1px solid #262626;
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      position: relative;
+    }
+    .founder-frame::before {
+      content: "01 / 01 — FOUNDERS";
+      position: absolute; top: -1px; left: 20px;
+      transform: translateY(-50%);
+      background: #0a0a0a; padding: 4px 12px;
+      font-family: var(--mono); font-size: 10px;
+      letter-spacing: 0.18em; color: var(--fg-subtle);
+      border: 1px solid #262626; border-radius: 4px;
+    }
+    .founder-avatar {
+      aspect-ratio: 1 / 1.15;
+      border-radius: var(--radius);
+      background:
+        radial-gradient(ellipse at 30% 30%, rgba(205,235,9,0.5), transparent 60%),
+        linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+      display: flex; align-items: flex-end; justify-content: flex-start;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .founder-avatar::after {
+      content: "HC";
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 120px; font-weight: 500;
+      color: rgba(205,235,9,0.9);
+      letter-spacing: -0.05em;
+      font-style: italic;
+    }
+    .founder-name-row {
+      margin-top: 18px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .founder-name {
+      font-size: 16px; font-weight: 600; color: #fff;
+    }
+    .founder-role {
+      font-family: var(--mono); font-size: 11px;
+      color: var(--hed-lime); letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .founder-social {
+      margin-top: 20px; padding-top: 20px;
+      border-top: 1px solid #222;
+      display: flex; gap: 8px;
+    }
+    .founder-social a {
+      width: 34px; height: 34px; border-radius: 8px;
+      border: 1px solid #262626;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--fg-muted);
+      transition: all var(--dur);
+    }
+    .founder-social a:hover {
+      border-color: var(--hed-lime); color: var(--hed-lime);
+    }
+    .founder-social i { font-size: 14px; }
+
+    .founder-bio h3 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.4vw, 40px);
+      font-weight: 500; letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .founder-bio h3 em { font-style: italic; color: var(--hed-lime); }
+
+    .founder-bio-grid { display: flex; flex-direction: column; gap: 36px; }
+    .founder-bio-p {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 20px;
+    }
+    .founder-bio-p .num {
+      font-family: var(--mono); font-size: 11px;
+      color: var(--fg-subtle); letter-spacing: 0.14em;
+      padding-top: 6px;
+      border-top: 1px solid #262626;
+    }
+    .founder-bio-p.highlight .num {
+      color: var(--hed-lime);
+      border-top-color: rgba(205,235,9,0.45);
+    }
+    .founder-bio-p p {
+      font-size: 17px; color: #C4C4C4; line-height: 1.65;
+    }
+    .founder-bio-p p strong { color: #fff; font-weight: 600; }
+    .founder-bio-p.highlight p {
+      color: #fff; font-size: 18px;
+      padding: 24px 28px;
+      background: rgba(205,235,9,0.05);
+      border-left: 2px solid var(--hed-lime);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+
+    /* ============================================================
+       PRINCIPLES — numbered tile wall
+       ============================================================ */
+    .principles {
+      padding: 140px 0;
+      border-bottom: 1px solid #1a1a1a;
+      background:
+        radial-gradient(ellipse at 100% 0%, rgba(205,235,9,0.04), transparent 50%),
+        #080808;
+    }
+    .principles-head {
+      margin-bottom: 72px;
+      display: grid; grid-template-columns: 1fr 2fr;
+      gap: 80px; align-items: end;
+    }
+    .principles-head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 500; letter-spacing: -0.03em; line-height: 1.05;
+      margin-top: 20px;
+    }
+    .principles-intro {
+      font-size: 16px; color: var(--fg-muted);
+      max-width: 48ch; line-height: 1.6;
+    }
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-top: 1px solid #1f1f1f;
+      border-left: 1px solid #1f1f1f;
+    }
+    .principle {
+      padding: 48px 36px;
+      border-right: 1px solid #1f1f1f;
+      border-bottom: 1px solid #1f1f1f;
+      background: rgba(20,20,20,0.3);
+      position: relative;
+      transition: background var(--dur);
+    }
+    .principle:hover { background: rgba(205,235,9,0.04); }
+    .principle-num {
+      font-family: var(--mono); font-size: 11px;
+      color: var(--hed-lime);
+      letter-spacing: 0.14em;
+      margin-bottom: 32px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .principle-num::after {
+      content: ""; flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(205,235,9,0.4), transparent);
+    }
+    .principle h3 {
+      font-family: var(--font-display);
+      font-size: 22px; font-weight: 500;
+      letter-spacing: -0.015em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .principle p {
+      font-size: 14.5px; color: #9a9a9a; line-height: 1.65;
+    }
+
+    /* ============================================================
+       WHO WE SERVE — overlapping audience cards
+       ============================================================ */
+    .serve {
+      padding: 140px 0;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .serve-head { margin-bottom: 64px; max-width: 640px; }
+    .serve-head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 500; letter-spacing: -0.03em; line-height: 1.05;
+      margin-top: 20px;
+    }
+    .serve-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .serve-card {
+      position: relative;
+      padding: 44px 36px;
+      border-radius: var(--radius-lg);
+      display: flex; flex-direction: column;
+      min-height: 340px;
+      background: #111;
+      border: 1px solid #222;
+      transition: all var(--dur) var(--ease-out);
+      overflow: hidden;
+    }
+    .serve-card:hover { transform: translateY(-4px); }
+    .serve-card.lime {
+      background:
+        radial-gradient(circle at 100% 0%, rgba(205,235,9,0.10), transparent 55%),
+        #111;
+      border-color: rgba(205,235,9,0.25);
+    }
+    .serve-card.lime:hover { border-color: var(--hed-lime); box-shadow: 0 20px 60px -30px rgba(205,235,9,0.3); }
+    .serve-card.violet {
+      background:
+        radial-gradient(circle at 100% 0%, rgba(186,135,255,0.12), transparent 55%),
+        #111;
+      border-color: rgba(186,135,255,0.25);
+    }
+    .serve-card.violet:hover { border-color: var(--hed-violet); box-shadow: 0 20px 60px -30px rgba(186,135,255,0.3); }
+    .serve-card.neutral:hover { border-color: rgba(205,235,9,0.25); }
+
+    .serve-card h3 {
+      font-family: var(--font-display);
+      font-size: 22px; font-weight: 500;
+      letter-spacing: -0.015em;
+      line-height: 1.25;
+      margin: 20px 0 16px;
+      max-width: 18ch;
+    }
+    .serve-card p {
+      font-size: 14.5px; color: #9a9a9a; line-height: 1.65;
+      margin-bottom: 32px;
+    }
+    .serve-card .serve-link {
+      margin-top: auto;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600;
+      padding-top: 20px; border-top: 1px solid #222;
+    }
+    .serve-card.lime .serve-link { color: var(--hed-lime); }
+    .serve-card.violet .serve-link { color: var(--hed-violet); }
+    .serve-card.neutral .serve-link { color: #C4C4C4; }
+    .serve-card .serve-link i { transition: transform var(--dur); }
+    .serve-card:hover .serve-link i { transform: translateX(4px); }
+
+    /* ============================================================
+       CTA — split dual-column
+       ============================================================ */
+    .cta {
+      padding: 140px 0 160px;
+    }
+    .cta-head { text-align: center; max-width: 700px; margin: 0 auto 64px; }
+    .cta-head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 5.5vw, 72px);
+      font-weight: 500; letter-spacing: -0.035em; line-height: 1.0;
+      margin-bottom: 24px;
+    }
+    .cta-head h2 em { font-style: italic; color: var(--hed-lime); }
+    .cta-head p {
+      font-size: 17px; color: #B8B8B8; line-height: 1.55;
+      max-width: 52ch; margin: 0 auto;
+    }
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      max-width: 980px; margin: 0 auto;
+    }
+    .cta-card {
+      padding: 40px 36px;
+      border-radius: var(--radius-lg);
+      border: 1px solid #222;
+      background: #111;
+      transition: all var(--dur);
+      display: flex; flex-direction: column;
+    }
+    .cta-card.lime { border-color: rgba(205,235,9,0.3); }
+    .cta-card.violet { border-color: rgba(186,135,255,0.3); }
+    .cta-card:hover { transform: translateY(-2px); }
+    .cta-card h4 {
+      font-family: var(--font-display);
+      font-size: 22px; font-weight: 500;
+      letter-spacing: -0.015em;
+      margin: 16px 0 10px;
+    }
+    .cta-card p {
+      font-size: 14px; color: #9a9a9a; line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .cta-card .btn { align-self: flex-start; }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 1000px) {
+      .why-head, .why-body, .principles-head { grid-template-columns: 1fr; gap: 32px; }
+      .why-exhibit { position: relative; top: 0; }
+      .mv-grid, .serve-grid, .cta-grid { grid-template-columns: 1fr; }
+      .founder { grid-template-columns: 1fr; gap: 48px; }
+      .founder-portrait { position: relative; top: 0; max-width: 340px; }
+      .principles-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .stat-cell:nth-child(2) { border-right: none; }
+      .stat-cell:nth-child(1), .stat-cell:nth-child(2) { border-bottom: 1px solid #1a1a1a; }
+    }
+    @media (max-width: 640px) {
+      .hero { padding: 100px 0 100px; }
+      .hero h1 { font-size: clamp(48px, 14vw, 72px); max-width: 100%; }
+      .why, .mv, .team, .principles, .serve, .cta { padding: 80px 0; }
+      .principles-grid { grid-template-columns: 1fr; }
+      .principle { padding: 36px 24px; }
+      .mv-card { padding: 40px 28px; min-height: auto; }
+      .mv-mark { font-size: 80px; }
+      .founder-bio h3 { font-size: 26px; }
+      .founder-bio-p { grid-template-columns: 1fr; gap: 12px; }
+      .founder-bio-p .num { width: max-content; }
+      .stat-cell { padding: 28px 20px; }
+      .hero-footer { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <!-- ========================================================
+       HERO
+       ======================================================== -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-inner">
+        <div class="hero-meta">
+          <span class="hero-meta-item"><span class="dot"></span> About Hedlyner</span>
+          <span class="hero-meta-item mono">/ EST. 2021 — SF, CA</span>
+          <span class="hero-meta-item mono">/ ED. 01</span>
+        </div>
+        <h1>Built by industry,<em>for the industry.</em></h1>
+        <p class="hero-sub">Live music is having its biggest moment in decades. The back office hasn't caught up. <strong>We built the platform that finally closes that gap.</strong></p>
+      </div>
+    </div>
+    <div class="hero-footer">
+      <span>Issue — About</span>
+      <span class="scroll"><span class="bar"></span> Scroll</span>
+      <span>§ 01 — 06</span>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       STATS
+       ======================================================== -->
+  <section class="stats">
+    <div class="wrap">
+      <div class="stats-row">
+        <div class="stat-cell" data-idx="/ 01">
+          <div class="stat-num">1,000<span class="plus">+</span></div>
+          <div class="stat-label">Artists on platform</div>
+        </div>
+        <div class="stat-cell" data-idx="/ 02">
+          <div class="stat-num">500<span class="plus">+</span></div>
+          <div class="stat-label">Venues partnered</div>
+        </div>
+        <div class="stat-cell" data-idx="/ 03">
+          <div class="stat-num">10k<span class="plus">+</span></div>
+          <div class="stat-label">Shows booked</div>
+        </div>
+        <div class="stat-cell" data-idx="/ 04">
+          <div class="stat-num">50<span class="plus">+</span></div>
+          <div class="stat-label">Cities active</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       WHY WE EXIST
+       ======================================================== -->
+  <section class="why">
+    <div class="wrap">
+      <div class="why-head">
+        <div class="label-col">
+          <span class="eyebrow-tag">§ 01 — Why we exist</span>
+        </div>
+        <div>
+          <h2>Live music is back at record levels. The booking workflow is still <em>stuck in 2005.</em></h2>
+        </div>
+      </div>
+      <div class="why-body">
+        <div class="why-paragraphs">
+          <div class="why-p">
+            <span class="why-p-num">01</span>
+            <p>Independent venues are selling out nights, growing their lineups, and expanding into new rooms — but the operational layer has not kept pace. Talent buyers are managing dozens of artists across spreadsheets, text threads, and email chains. Artists are waiting weeks for payment. Agencies running ten venues are running ten separate processes held together with copy-paste.</p>
+          </div>
+          <div class="why-p">
+            <span class="why-p-num">02</span>
+            <p>Hedlyner was built by people who know what that 2 a.m. spreadsheet looks like from the inside. Our founders came from venue operations and live music management — not Silicon Valley. Every workflow in the platform was designed around how bookings actually happen, not how someone imagined they might.</p>
+          </div>
+          <div class="why-p">
+            <span class="why-p-num">03</span>
+            <p>The mission: <strong>make live music booking as reliable and operationally simple as any other part of running a venue</strong> — as easy as ordering supplies.</p>
+          </div>
+        </div>
+        <div class="why-exhibit">
+          <div class="exhibit-quote-mark">&ldquo;</div>
+          <div class="exhibit-quote">The spreadsheet era is over. Live music deserves better infrastructure.</div>
+          <div class="exhibit-attr">
+            <div class="exhibit-attr-avatar">HC</div>
+            <div>
+              <div class="exhibit-attr-name">Hector Corral</div>
+              <div class="exhibit-attr-role">Co-founder &amp; CEO</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       MISSION & VISION
+       ======================================================== -->
+  <section class="mv">
+    <div class="wrap">
+      <div class="mv-head">
+        <span class="eyebrow-tag neutral">§ 02 — Where we're headed</span>
+        <h2>Mission <span class="and">&amp;</span> Vision</h2>
+      </div>
+      <div class="mv-grid">
+        <div class="mv-card mission">
+          <div class="mv-meta">Mission · M/01</div>
+          <div class="mv-mark">M.</div>
+          <h3>Remove the operational friction between great venues and great artists.</h3>
+          <p>Every hour a talent buyer spends chasing a W-9 or reconciling a payment is an hour not spent programming better music. Every week an artist waits to get paid is a week of financial uncertainty that shouldn't exist. Hedlyner exists to eliminate both — so the business of live music can finally match the quality of the music itself.</p>
+        </div>
+        <div class="mv-card vision">
+          <div class="mv-meta">Vision · V/01</div>
+          <div class="mv-mark">V.</div>
+          <h3>The operating system for live music — connecting every side of the market.</h3>
+          <p>A world where any venue can discover vetted talent in minutes, any artist can surface to the right buyers in their market, and any agency can manage hundreds of rooms from a single platform. Not a marketplace. An infrastructure layer — the one the live music industry never had but always needed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       TEAM / FOUNDER
+       ======================================================== -->
+  <section class="team">
+    <div class="wrap">
+      <div class="team-head">
+        <span class="eyebrow-tag">§ 03 — The team</span>
+        <h2>Built from the inside out</h2>
+      </div>
+      <div class="founder">
+        <div class="founder-portrait">
+          <div class="founder-frame">
+            <div class="founder-avatar"></div>
+            <div class="founder-name-row">
+              <span class="founder-name">Hector Corral</span>
+              <span class="founder-role">CEO</span>
+            </div>
+            <div class="founder-social">
+              <a href="#" aria-label="LinkedIn"><i class="lucide lucide-linkedin"></i></a>
+              <a href="#" aria-label="Twitter"><i class="lucide lucide-twitter"></i></a>
+              <a href="mailto:hector@hedlyner.com" aria-label="Email"><i class="lucide lucide-mail"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="founder-bio">
+          <h3>The person who knows where the live music industry is broken — and <em>exactly how to fix it.</em></h3>
+          <div class="founder-bio-grid">
+            <div class="founder-bio-p">
+              <span class="num">01</span>
+              <p>Hector Corral spent years inside the operational reality of live music before building Hedlyner. He has worked on both sides of the booking relationship — understanding firsthand how venues make programming decisions and how artists navigate the path from discovery to payment. That dual vantage point is not a coincidence. It is the product.</p>
+            </div>
+            <div class="founder-bio-p">
+              <span class="num">02</span>
+              <p>When Hector looked at the live music booking market, he saw an industry in a specific and solvable kind of pain: not a discovery problem, but an <strong>operations problem</strong>. The same venues that could sell out a Friday night were losing hours each week to manual workflows that no tool had been built to handle — because no tool had been built by someone who understood them at this level. Hedlyner was the answer he built for himself first.</p>
+            </div>
+            <div class="founder-bio-p highlight">
+              <span class="num">03</span>
+              <p>The platform's core design decisions — offer flow, integrated 1099 compliance, same-week payouts, multi-venue agency tooling — reflect choices made by someone who has sat in both the venue director's chair and the artist's green room. <strong>That is the unfair advantage Hedlyner carries into every competitive conversation.</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       PRINCIPLES
+       ======================================================== -->
+  <section class="principles">
+    <div class="wrap">
+      <div class="principles-head">
+        <div>
+          <span class="eyebrow-tag">§ 04 — What we stand for</span>
+          <h2>Our principles</h2>
+        </div>
+        <p class="principles-intro">Six non-negotiables that shape every decision we make — from the product roadmap to how we talk to a venue on a Tuesday afternoon.</p>
+      </div>
+      <div class="principles-grid">
+        <div class="principle">
+          <div class="principle-num">P / 01</div>
+          <h3>Industry-first, always</h3>
+          <p>We come from live music. Every feature is built by people who've run venues, toured stages, or negotiated contracts — not just engineers who've read about it.</p>
+        </div>
+        <div class="principle">
+          <div class="principle-num">P / 02</div>
+          <h3>Speed over bureaucracy</h3>
+          <p>A booking should take minutes, not days. We obsess over removing every unnecessary step — from offer to deposit to show night — so venues and artists can focus on the music.</p>
+        </div>
+        <div class="principle">
+          <div class="principle-num">P / 03</div>
+          <h3>Fair for both sides</h3>
+          <p>We don't play favorites. Hedlyner is built to give venues the tools to scale and artists the visibility to grow — because a healthy ecosystem requires both to win.</p>
+        </div>
+        <div class="principle">
+          <div class="principle-num">P / 04</div>
+          <h3>Radical transparency</h3>
+          <p>No hidden fees. No surprise deductions. Artists see exactly what they'll earn. Venues see exactly what they'll pay. Every transaction is documented and traceable.</p>
+        </div>
+        <div class="principle">
+          <div class="principle-num">P / 05</div>
+          <h3>Operational reliability</h3>
+          <p>Live music runs on trust. Venues trust artists to show up. Artists trust venues to pay on time. Hedlyner is the infrastructure that makes both sides of that trust automatic — not something anyone has to chase.</p>
+        </div>
+        <div class="principle">
+          <div class="principle-num">P / 06</div>
+          <h3>Data-driven decisions</h3>
+          <p>Gut feelings are great on stage. Off stage, you need numbers. Hedlyner surfaces the data talent buyers need to book smarter — which artists perform, which nights sell, which venues scale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       WHO WE SERVE
+       ======================================================== -->
+  <section class="serve">
+    <div class="wrap">
+      <div class="serve-head">
+        <span class="eyebrow-tag">§ 05 — Who we serve</span>
+        <h2>Built for every corner of live music</h2>
+      </div>
+      <div class="serve-grid">
+        <div class="serve-card lime">
+          <span class="eyebrow-tag">Talent Buyers</span>
+          <h3>Manage every room from one dashboard</h3>
+          <p>For venue operators and in-house talent buyers programming live music: artist discovery with verified booking history, offer automation, calendar management, and payment — all in one place. Stop running your music program from a spreadsheet.</p>
+          <a href="for-bookers.html" class="serve-link">Explore for Talent Buyers <i class="lucide lucide-arrow-right"></i></a>
+        </div>
+        <div class="serve-card violet">
+          <span class="eyebrow-tag violet">Talent &amp; Performers</span>
+          <h3>Get discovered. Get booked. Get paid.</h3>
+          <p>Build a verified profile, surface to venue buyers in your market, accept offers with one tap, and receive payment directly — no chasing invoices, no awkward conversations about rates.</p>
+          <a href="for-artists.html" class="serve-link">Explore for Talent <i class="lucide lucide-arrow-right"></i></a>
+        </div>
+        <div class="serve-card neutral">
+          <span class="eyebrow-tag neutral">Booking Agencies</span>
+          <h3>Scale your roster without scaling your overhead</h3>
+          <p>For agencies representing multiple artists: manage your full talent roster, track every offer and engagement across clients, handle payout compliance automatically, and give your artists maximum market visibility.</p>
+          <a href="for-bookers.html" class="serve-link">Explore for Agencies <i class="lucide lucide-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       CTA
+       ======================================================== -->
+  <section class="cta">
+    <div class="wrap">
+      <div class="cta-head">
+        <span class="eyebrow-tag neutral">§ 06 — Get in touch</span>
+        <h2>Ready to move beyond<br>the <em>spreadsheet?</em></h2>
+        <p>Whether you're a venue ready to streamline your booking operation, or you want to learn more about what we're building — we'd love to connect.</p>
+      </div>
+      <div class="cta-grid">
+        <div class="cta-card lime">
+          <span class="eyebrow-tag">For venues &amp; agencies</span>
+          <h4>See Hedlyner in action</h4>
+          <p>30-minute walkthrough. Bring your current booking pain points — we'll show you exactly how the platform fits your operation.</p>
+          <a href="https://hedlyner.com/demo" class="btn btn-primary">Book a Demo <i class="lucide lucide-arrow-right"></i></a>
+        </div>
+        <div class="cta-card violet">
+          <span class="eyebrow-tag violet">Investors &amp; press</span>
+          <h4>Let's talk shop</h4>
+          <p>Interested in what we're building, where we're headed, or want to cover the story? We're always happy to connect.</p>
+          <a href="mailto:hello@hedlyner.com" class="btn btn-violet">Get in Touch <i class="lucide lucide-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/header.js"></script>
+  <script src="assets/footer.js"></script>
+</body>
+</html>

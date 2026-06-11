@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Hedlyner — Built for the Live Music Industry</title>
+  <link rel="icon" href="assets/logo-mark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="colors_and_type.css">
+  <link rel="stylesheet" href="assets/header.css">
+  <link rel="stylesheet" href="assets/footer.css">
+  <style>
+    /* ========================================================
+       About — matches index.html aesthetic: bold weights,
+       deep-green hero, lime (not italic) emphasis, blocky cards
+       ======================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+    /* kill italics globally — use lime color for emphasis, not italic */
+    em { font-style: normal; color: var(--hed-lime); }
+
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 var(--sp-6); }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: var(--sp-2);
+      background: var(--white-10);
+      border: 1px solid rgba(205,235,9,0.2);
+      border-radius: var(--radius-full);
+      padding: 6px 14px;
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--hed-lime);
+    }
+    .eyebrow.violet {
+      color: var(--hed-violet);
+      border-color: rgba(186,135,255,0.25);
+    }
+    .eyebrow.neutral {
+      color: var(--fg-muted);
+      border-color: var(--border);
+    }
+    .eyebrow::before {
+      content: ""; width: 6px; height: 6px; border-radius: 50%;
+      background: currentColor;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 8px; height: 48px; padding: 0 22px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-sans); font-weight: 600; font-size: 15px;
+      border: 1.5px solid transparent; cursor: pointer; text-decoration: none;
+      transition: all var(--dur) var(--ease-out);
+    }
+    .btn-primary { background: var(--hed-lime); color: #000; border-color: var(--hed-lime); }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: var(--shadow-lime); }
+    .btn-violet { background: var(--hed-violet); color: #0a0a0a; border-color: var(--hed-violet); }
+    .btn-violet:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--fg); border-color: var(--border); }
+    .btn-outline:hover { border-color: var(--border-hover); background: var(--bg-elevated); }
+
+    /* ========================================================
+       HERO — deep-green bg (matches index)
+       ======================================================== */
+    .hero {
+      background: var(--hed-deep-green);
+      padding: var(--sp-24) 0 var(--sp-20);
+      border-bottom: 1px solid rgba(205,235,9,0.12);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 50% 40% at 80% 20%, rgba(186,135,255,0.10), transparent 60%),
+        radial-gradient(ellipse 60% 45% at 15% 80%, rgba(205,235,9,0.08), transparent 60%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      max-width: 900px; margin: 0 auto; padding: 0 var(--sp-6);
+      display: flex; flex-direction: column; align-items: center;
+      gap: var(--sp-6);
+    }
+    .hero h1 {
+      font-size: clamp(44px, 7.5vw, 80px);
+      font-weight: 600;
+      line-height: 1.0;
+      letter-spacing: -0.04em;
+      margin: 0;
+    }
+    .hero-sub {
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.5;
+      color: var(--fg-muted);
+      max-width: 620px;
+    }
+    .hero-sub strong { color: var(--fg); font-weight: 600; }
+
+    /* ========================================================
+       STATS — block grid with 1px seam borders (matches index)
+       ======================================================== */
+    .stats {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: var(--sp-12) 0;
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      overflow: hidden; max-width: 1000px; margin: 0 auto;
+    }
+    .stat-cell {
+      background: var(--bg);
+      padding: var(--sp-8) var(--sp-6);
+      text-align: center;
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 5vw, 54px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: var(--hed-lime);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 13px;
+      color: var(--fg-muted);
+      margin-top: var(--sp-3);
+      font-weight: 500;
+    }
+
+    /* ========================================================
+       SECTION header helper
+       ======================================================== */
+    .section { padding: var(--sp-24) 0; }
+    .section-header { text-align: center; margin-bottom: var(--sp-16); max-width: 760px; margin-left: auto; margin-right: auto; }
+    .section-header h2 {
+      font-size: clamp(32px, 4.5vw, 50px);
+      margin-top: var(--sp-4);
+    }
+    .section-header p.lede {
+      font-size: 17px; color: var(--fg-muted);
+      margin-top: var(--sp-5); line-height: 1.55;
+    }
+
+    /* ========================================================
+       WHY WE EXIST — two-column, blocky quote card
+       ======================================================== */
+    .why {
+      padding: var(--sp-24) 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .why-head { margin-bottom: var(--sp-16); max-width: 820px; }
+    .why-head h2 {
+      font-size: clamp(32px, 4.5vw, 54px);
+      margin-top: var(--sp-4);
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: var(--sp-16);
+      align-items: start;
+    }
+    .why-paragraphs p {
+      font-size: 16px;
+      color: var(--fg-muted);
+      line-height: 1.65;
+      margin-bottom: var(--sp-5);
+    }
+    .why-paragraphs p:last-child { margin-bottom: 0; }
+    .why-paragraphs p strong { color: var(--fg); font-weight: 600; }
+
+    .quote-card {
+      background: var(--bg-elevated);
+      border: 1px solid rgba(205,235,9,0.25);
+      border-radius: var(--radius-xl);
+      padding: var(--sp-10);
+      position: sticky; top: 100px;
+    }
+    .quote-card-tag {
+      display: inline-flex; align-items: center;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--hed-lime);
+      background: rgba(205,235,9,0.12);
+      padding: 4px 10px; border-radius: var(--radius-full);
+      margin-bottom: var(--sp-6);
+    }
+    .quote-body {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.4vw, 28px);
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--sp-6);
+    }
+    .quote-body::before {
+      content: "“";
+      display: block;
+      font-size: 60px;
+      color: var(--hed-lime);
+      line-height: 0.4;
+      margin-bottom: var(--sp-3);
+      font-weight: 700;
+    }
+    .quote-attr {
+      display: flex; align-items: center; gap: var(--sp-3);
+      padding-top: var(--sp-5);
+      border-top: 1px solid var(--border);
+    }
+    .quote-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--hed-lime);
+      color: #000; font-weight: 700; font-size: 15px;
+      display: flex; align-items: center; justify-content: center;
+      letter-spacing: 0.02em;
+    }
+    .quote-attr-name { font-size: 14px; font-weight: 600; color: var(--fg); }
+    .quote-attr-role { font-size: 13px; color: var(--fg-muted); margin-top: 2px; }
+
+    /* ========================================================
+       MISSION & VISION — two chunky cards
+       ======================================================== */
+    .mv {
+      background: var(--bg-elevated);
+      padding: var(--sp-24) 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .mv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-6);
+    }
+    .mv-card {
+      background: var(--bg);
+      border-radius: var(--radius-xl);
+      padding: var(--sp-10);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .mv-card.mission {
+      background:
+        radial-gradient(circle at 100% 0%, rgba(205,235,9,0.08), transparent 55%),
+        var(--bg);
+      border-color: rgba(205,235,9,0.25);
+    }
+    .mv-card.vision {
+      background:
+        radial-gradient(circle at 0% 100%, rgba(186,135,255,0.10), transparent 55%),
+        var(--bg);
+      border-color: rgba(186,135,255,0.25);
+    }
+    .mv-badge {
+      display: inline-flex; align-items: center;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 5px 12px; border-radius: var(--radius-full);
+      margin-bottom: var(--sp-8);
+    }
+    .mv-card.mission .mv-badge { background: rgba(205,235,9,0.15); color: var(--hed-lime); }
+    .mv-card.vision .mv-badge { background: rgba(186,135,255,0.15); color: var(--hed-violet); }
+    .mv-card h3 {
+      font-size: clamp(24px, 2.8vw, 32px);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: var(--sp-5);
+      letter-spacing: -0.02em;
+      max-width: 22ch;
+    }
+    .mv-card.mission h3 em { color: var(--hed-lime); }
+    .mv-card.vision h3 em { color: var(--hed-violet); }
+    .mv-card p {
+      font-size: 16px; color: var(--fg-muted); line-height: 1.65;
+    }
+
+    /* ========================================================
+       TEAM / FOUNDER — editorial split w/ photo + bio
+       ======================================================== */
+    .team {
+      padding: var(--sp-24) 0;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .founder-wrap {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      max-width: 1120px; margin: 0 auto;
+    }
+    .founder {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 0;
+      align-items: stretch;
+    }
+    .founder-portrait {
+      position: relative;
+      background: var(--hed-deep-green);
+      overflow: hidden;
+      min-height: 520px;
+      border-right: 1px solid var(--border);
+    }
+    .founder-portrait::before {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 55%;
+      background: var(--hed-lime);
+      z-index: 0;
+    }
+    .founder-photo {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 88%;
+      height: 92%;
+      object-fit: cover;
+      object-position: center top;
+      border-top-left-radius: var(--radius-lg);
+      border-top-right-radius: var(--radius-lg);
+      z-index: 1;
+      box-shadow: 0 -20px 40px -10px rgba(0,0,0,0.4);
+    }
+    .founder-tag {
+      position: absolute;
+      top: var(--sp-6); left: var(--sp-6);
+      z-index: 2;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(205,235,9,0.3);
+      color: var(--hed-lime);
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .founder-tag::before {
+      content: ""; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--hed-lime);
+      box-shadow: 0 0 10px var(--hed-lime);
+    }
+
+    .founder-bio {
+      padding: var(--sp-12) var(--sp-12);
+      display: flex; flex-direction: column; gap: var(--sp-8);
+    }
+    .founder-index {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      gap: var(--sp-4);
+      padding-bottom: var(--sp-6);
+      border-bottom: 1px solid var(--border);
+    }
+    .founder-index-num {
+      font-family: var(--font-display);
+      font-size: clamp(64px, 8vw, 96px);
+      font-weight: 600;
+      line-height: 0.9;
+      letter-spacing: -0.05em;
+      color: var(--hed-lime);
+    }
+    .founder-index-meta {
+      text-align: right;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+      line-height: 1.5;
+    }
+    .founder-index-meta span { display: block; }
+    .founder-index-meta .accent { color: var(--fg); }
+
+    .founder-name-block {
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .founder-name-lg {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.6vw, 40px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: var(--fg);
+    }
+    .founder-role-lg {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--hed-lime);
+      text-transform: uppercase;
+    }
+
+    .founder-para {
+      font-family: var(--font-sans);
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--fg-muted);
+    }
+    .founder-para strong {
+      color: var(--hed-lime);
+      font-weight: 600;
+    }
+    .founder-para::first-line {
+      color: var(--fg);
+    }
+
+    .founder-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-6);
+      padding-top: var(--sp-6);
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .founder-based {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 13px;
+      color: var(--fg-muted);
+      letter-spacing: 0.02em;
+    }
+    .founder-based svg { color: var(--hed-lime); }
+    .founder-social {
+      display: flex; gap: var(--sp-2);
+    }
+    .founder-social a {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--fg-muted);
+      transition: all var(--dur);
+    }
+    .founder-social a:hover {
+      border-color: var(--hed-lime);
+      color: var(--hed-lime);
+      background: rgba(205,235,9,0.06);
+      transform: translateY(-1px);
+    }
+
+    /* ========================================================
+       PRINCIPLES — 3x2 block grid (matches index stats style)
+       ======================================================== */
+    .principles {
+      background: var(--bg-elevated);
+      padding: var(--sp-24) 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .principle {
+      background: var(--bg);
+      padding: var(--sp-10) var(--sp-8);
+      transition: background var(--dur);
+      position: relative;
+    }
+    .principle:hover { background: var(--bg-elevated); }
+    .principle-icon {
+      width: 48px; height: 48px;
+      border-radius: var(--radius-sm);
+      background: rgba(205,235,9,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      margin-bottom: var(--sp-6);
+      color: var(--hed-lime);
+    }
+    .principle-icon i { font-size: 22px; }
+    .principle h3 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      margin-bottom: var(--sp-3);
+    }
+    .principle p {
+      font-size: 14.5px;
+      color: var(--fg-muted);
+      line-height: 1.6;
+    }
+
+    /* ========================================================
+       WHO WE SERVE — persona cards (matches index persona split)
+       ======================================================== */
+    .serve { padding: var(--sp-24) 0; border-bottom: 1px solid var(--border); }
+    .serve-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-4);
+    }
+    .serve-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: var(--sp-8);
+      transition: all var(--dur);
+      display: flex; flex-direction: column;
+    }
+    .serve-card:hover { transform: translateY(-2px); }
+    .serve-card.lime {
+      background: linear-gradient(135deg, rgba(205,235,9,0.04) 0%, var(--bg-elevated) 60%);
+      border-color: rgba(205,235,9,0.2);
+    }
+    .serve-card.lime:hover { border-color: var(--hed-lime); }
+    .serve-card.violet {
+      background: linear-gradient(135deg, rgba(186,135,255,0.05) 0%, var(--bg-elevated) 60%);
+      border-color: rgba(186,135,255,0.2);
+    }
+    .serve-card.violet:hover { border-color: var(--hed-violet); }
+    .serve-card.neutral:hover { border-color: var(--border-hover); }
+
+    .serve-badge {
+      display: inline-flex; align-items: center;
+      border-radius: var(--radius-full);
+      padding: 5px 12px;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      margin-bottom: var(--sp-5);
+      align-self: flex-start;
+    }
+    .serve-card.lime .serve-badge { background: rgba(205,235,9,0.12); color: var(--hed-lime); }
+    .serve-card.violet .serve-badge { background: rgba(186,135,255,0.12); color: var(--hed-violet); }
+    .serve-card.neutral .serve-badge { background: var(--white-10); color: var(--fg-muted); }
+
+    .serve-card h3 {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: var(--sp-4);
+    }
+    .serve-card p {
+      font-size: 15px;
+      color: var(--fg-muted);
+      line-height: 1.6;
+      margin-bottom: var(--sp-8);
+    }
+    .serve-link {
+      margin-top: auto;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 14px; font-weight: 600;
+    }
+    .serve-card.lime .serve-link { color: var(--hed-lime); }
+    .serve-card.violet .serve-link { color: var(--hed-violet); }
+    .serve-card.neutral .serve-link { color: var(--fg); }
+    .serve-link i { transition: transform var(--dur); font-size: 14px; }
+    .serve-card:hover .serve-link i { transform: translateX(4px); }
+
+    /* ========================================================
+       CTA — split dual
+       ======================================================== */
+    .cta { padding: var(--sp-24) 0 var(--sp-24); }
+    .cta-head { text-align: center; max-width: 720px; margin: 0 auto var(--sp-12); }
+    .cta-head h2 {
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 600;
+      letter-spacing: -0.035em;
+      line-height: 1.0;
+      margin: var(--sp-5) 0 var(--sp-5);
+    }
+    .cta-head p {
+      font-size: 17px; color: var(--fg-muted);
+      line-height: 1.55;
+    }
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-4);
+      max-width: 960px; margin: 0 auto;
+    }
+    .cta-card {
+      padding: var(--sp-10);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      background: var(--bg-elevated);
+      transition: all var(--dur);
+      display: flex; flex-direction: column;
+    }
+    .cta-card:hover { transform: translateY(-2px); }
+    .cta-card.lime {
+      background: linear-gradient(135deg, rgba(205,235,9,0.05) 0%, var(--bg-elevated) 60%);
+      border-color: rgba(205,235,9,0.25);
+    }
+    .cta-card.violet {
+      background: linear-gradient(135deg, rgba(186,135,255,0.06) 0%, var(--bg-elevated) 60%);
+      border-color: rgba(186,135,255,0.25);
+    }
+    .cta-card h4 {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      margin: var(--sp-5) 0 var(--sp-3);
+    }
+    .cta-card p {
+      font-size: 15px;
+      color: var(--fg-muted);
+      line-height: 1.6;
+      margin-bottom: var(--sp-8);
+    }
+    .cta-card .btn { align-self: flex-start; }
+
+    /* ========================================================
+       RESPONSIVE
+       ======================================================== */
+    @media (max-width: 1000px) {
+      .why-grid { grid-template-columns: 1fr; gap: var(--sp-10); }
+      .quote-card { position: relative; top: 0; }
+      .mv-grid, .serve-grid, .cta-grid { grid-template-columns: 1fr; }
+      .founder { grid-template-columns: 1fr; }
+      .founder-portrait { min-height: 440px; border-right: none; border-bottom: 1px solid var(--border); }
+      .founder-bio { padding: var(--sp-10) var(--sp-8); }
+      .principles-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .hero { padding: var(--sp-16) 0 var(--sp-16); }
+      .section, .why, .mv, .team, .principles, .serve, .cta { padding: var(--sp-16) 0; }
+      .principles-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .founder-bio { padding: var(--sp-8) var(--sp-6); }
+      .founder-portrait { min-height: 380px; }
+      .founder-footer { flex-direction: column; align-items: flex-start; gap: var(--sp-4); }
+      .mv-card { padding: var(--sp-6); }
+      .cta-card { padding: var(--sp-6); }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <!-- ========================================================
+       HERO
+       ======================================================== -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">About Hedlyner</span>
+      <h1>Built by industry,<br><em>for the industry.</em></h1>
+      <p class="hero-sub">Live music is having its biggest moment in decades. The back office hasn't caught up. <strong>We built the platform that finally closes that gap.</strong></p>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       STATS
+       ======================================================== -->
+  <section class="stats">
+    <div class="wrap">
+      <div class="stats-grid">
+        <div class="stat-cell">
+          <div class="stat-num">1,000+</div>
+          <div class="stat-label">Artists on platform</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">500+</div>
+          <div class="stat-label">Venues partnered</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">10k+</div>
+          <div class="stat-label">Shows booked</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">50+</div>
+          <div class="stat-label">Cities active</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       WHY WE EXIST
+       ======================================================== -->
+  <section class="why">
+    <div class="wrap">
+      <div class="why-head">
+        <span class="eyebrow">Why we exist</span>
+        <h2>The music was always there. The infrastructure to support it <em>never was.</em></h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-paragraphs">
+          <p>Across cities, the same thing was happening. Venues were closing — turning into condos, restaurants, anything that wasn't a room with a stage. Rents climbed. Artists moved. The texture of neighborhood life got quieter. It wasn't just a real estate story. It was a cultural one. The independent musicians who make a city feel like itself — the raw ones, the ones who play because they have to — were being priced out of the places that needed them most.</p>
+          <p>And here was the strange part: the demand was never the problem. Small businesses, bars, restaurants, community spaces — they wanted live music. Artists wanted the gigs. The will existed on both sides. What didn't exist was a way to actually make it happen without the process eating you alive. Red tape. Endless back-and-forth. No agreements, no payment structure, no follow-through. People would get halfway there and give up.</p>
+          <p>Then the pandemic came. Then it lifted. And when it did, audiences came back with something to prove — a hunger for real, physical, human experience that no algorithm could replicate. The renaissance was real. The appetite was there. And independent live music was exactly what people were reaching for. But the operational layer still hadn't caught up.</p>
+          <p>Hedlyner was built to close that gap. Not for the headliners. For the independent artists who deserve a real career. For the venues that know live music drives foot traffic, increases sales, and builds community — and want to do it right. For every booking that should have happened but didn't because the process was the problem.</p>
+        </div>
+        <div class="quote-card">
+          <span class="quote-card-tag">The mission</span>
+          <div class="quote-body">Make live music booking as reliable and operationally simple as any other part of running a venue — so the music can actually happen.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       MISSION & VISION
+       ======================================================== -->
+  <section class="mv">
+    <div class="wrap">
+      <div class="section-header">
+        <span class="eyebrow">Where we're headed</span>
+        <h2>Mission &amp; Vision</h2>
+      </div>
+      <div class="mv-grid">
+        <div class="mv-card mission">
+          <span class="mv-badge">Mission</span>
+          <h3>Remove the operational friction between great venues and <em>great artists.</em></h3>
+          <p>Every hour a talent buyer spends chasing a W-9 or reconciling a payment is an hour not spent programming better music. Every week an artist waits to get paid is a week of financial uncertainty that shouldn't exist. Hedlyner exists to eliminate both — so the business of live music can finally match the quality of the music itself.</p>
+        </div>
+        <div class="mv-card vision">
+          <span class="mv-badge">Vision</span>
+          <h3>The operating system for live music — connecting <em>every side</em> of the market.</h3>
+          <p>A world where any venue can discover vetted talent in minutes, any artist can surface to the right buyers in their market, and any agency can manage hundreds of rooms from a single platform. Not a marketplace. An infrastructure layer — the one the live music industry never had but always needed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       PRINCIPLES
+       ======================================================== -->
+  <section class="principles">
+    <div class="wrap">
+      <div class="section-header">
+        <span class="eyebrow">What we stand for</span>
+        <h2>Our principles</h2>
+        <p class="lede">Six non-negotiables that shape every decision — from the product roadmap to how we talk to a venue on a Tuesday afternoon.</p>
+      </div>
+      <div class="principles-grid">
+        <div class="principle">
+          <div class="principle-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+          <h3>Industry-first, always</h3>
+          <p>We come from live music. Every feature is built by people who've run venues, toured stages, or negotiated contracts — not just engineers who've read about it.</p>
+        </div>
+        <div class="principle">
+          <div class="principle-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <h3>Speed over bureaucracy</h3>
+          <p>A booking should take minutes, not days. We obsess over removing every unnecessary step — from offer to deposit to show night — so venues and artists can focus on the music.</p>
+        </div>
+        <div class="principle">
+          <div class="principle-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg></div>
+          <h3>Fair for both sides</h3>
+          <p>We don't play favorites. Hedlyner is built to give venues the tools to scale and artists the visibility to grow — because a healthy ecosystem requires both to win.</p>
+        </div>
+        <div class="principle">
+          <div class="principle-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+          <h3>Radical transparency</h3>
+          <p>No hidden fees. No surprise deductions. Artists see exactly what they'll earn. Venues see exactly what they'll pay. Every transaction is documented and traceable.</p>
+        </div>
+        <div class="principle">
+          <div class="principle-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <h3>Operational reliability</h3>
+          <p>Live music runs on trust. Venues trust artists to show up. Artists trust venues to pay on time. Hedlyner is the infrastructure that makes both sides of that trust automatic — not something anyone has to chase.</p>
+        </div>
+        <div class="principle">
+          <div class="principle-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+          <h3>Data-driven decisions</h3>
+          <p>Gut feelings are great on stage. Off stage, you need numbers. Hedlyner surfaces the data talent buyers need to book smarter — which artists perform, which nights sell, which venues scale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       WHO WE SERVE
+       ======================================================== -->
+  <section class="serve">
+    <div class="wrap">
+      <div class="section-header">
+        <span class="eyebrow">Who we serve</span>
+        <h2>Built for every corner of <em>live music.</em></h2>
+      </div>
+      <div class="serve-grid">
+        <div class="serve-card lime">
+          <span class="serve-badge">Talent Buyers</span>
+          <h3>Manage every room from one dashboard</h3>
+          <p>For venue operators and in-house talent buyers programming live music: artist discovery with verified booking history, offer automation, calendar management, and payment — all in one place. Stop running your music program from a spreadsheet.</p>
+          <a href="for-bookers.html" class="serve-link">Explore for Talent Buyers <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+        <div class="serve-card violet">
+          <span class="serve-badge">Artists &amp; Performers</span>
+          <h3>Get discovered. Get booked. Get paid.</h3>
+          <p>Build a verified profile, surface to venue buyers in your market, accept offers with one tap, and receive payment directly — no chasing invoices, no awkward conversations about rates.</p>
+          <a href="for-artists.html" class="serve-link">Explore for Artists <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+        <div class="serve-card neutral">
+          <span class="serve-badge">Booking Agencies</span>
+          <h3>Scale your roster without scaling your overhead</h3>
+          <p>For agencies representing multiple artists: manage your full talent roster, track every offer and engagement across clients, handle payout compliance automatically, and give your artists maximum market visibility.</p>
+          <a href="for-bookers.html" class="serve-link">Explore for Agencies <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       CTA
+       ======================================================== -->
+  <section class="cta">
+    <div class="wrap">
+      <div class="cta-head">
+        <span class="eyebrow">Get in touch</span>
+        <h2>Ready to move beyond<br>the <em>spreadsheet?</em></h2>
+        <p>Whether you're a venue ready to streamline your booking operation, or you want to learn more about what we're building — we'd love to connect.</p>
+      </div>
+      <div class="cta-grid">
+        <div class="cta-card lime">
+          <span class="serve-badge" style="background:rgba(205,235,9,0.12);color:var(--hed-lime);">For venues &amp; agencies</span>
+          <h4>See Hedlyner in action</h4>
+          <p>30-minute walkthrough. Bring your current booking pain points — we'll show you exactly how the platform fits your operation.</p>
+          <a href="https://hedlyner.com/demo" class="btn btn-primary">Book a Demo <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+        <div class="cta-card violet">
+          <span class="serve-badge" style="background:rgba(186,135,255,0.12);color:var(--hed-violet);">Investors &amp; press</span>
+          <h4>Let's talk shop</h4>
+          <p>Interested in what we're building, where we're headed, or want to cover the story? We're always happy to connect.</p>
+          <a href="mailto:hello@hedlyner.com" class="btn btn-violet">Get in Touch <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/header.js"></script>
+  <script src="assets/footer.js"></script>
+</body>
+</html>
