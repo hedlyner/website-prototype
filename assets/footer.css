@@ -1,0 +1,42 @@
+/* =========================================================================
+   Hedlyner — Global Site Footer (newsletter + footer) styles
+========================================================================= */
+.site-footer, .site-footer * { box-sizing: border-box; }
+.site-footer { font-family: 'Instrument Sans', 'Inter', ui-sans-serif, system-ui, sans-serif; color: #fff; }
+
+/* Newsletter */
+.site-footer .sf-newsletter { border-top: 1px solid #333; padding: 64px 24px; background: #121212; }
+.site-footer .sf-newsletter-inner { max-width: 560px; margin: 0 auto; text-align: center; }
+.site-footer .sf-newsletter-inner h3 { font-size: 24px; font-weight: 600; margin: 0 0 8px; color: #fff; letter-spacing: -0.02em; }
+.site-footer .sf-newsletter-inner p { font-size: 15px; color: #8B8B8B; margin: 0 0 24px; line-height: 1.5; }
+.site-footer .sf-form { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.site-footer .sf-form input[type="email"] { flex: 1; min-width: 220px; background: #262626; color: #fff; border: 1px solid #333; border-radius: 8px; padding: 0 16px; height: 44px; font-size: 14px; font-family: inherit; outline: none; transition: border-color .2s; }
+.site-footer .sf-form input[type="email"]:focus { border-color: #CDEB09; }
+.site-footer .sf-form input[type="email"]::placeholder { color: #646464; }
+.site-footer .sf-form button { height: 44px; padding: 0 24px; background: #CDEB09; color: #000; border: none; border-radius: 8px; font-family: inherit; font-weight: 600; font-size: 14px; cursor: pointer; transition: opacity .2s; white-space: nowrap; }
+.site-footer .sf-form button:hover { opacity: 0.88; }
+.site-footer .sf-consent { font-size: 12px; color: #646464; margin-top: 16px; display: flex; align-items: flex-start; gap: 8px; justify-content: center; text-align: left; }
+.site-footer .sf-consent input[type="checkbox"] { margin-top: 2px; flex-shrink: 0; accent-color: #CDEB09; }
+.site-footer .sf-msg { margin-top: 16px; font-size: 14px; display: none; }
+.site-footer .sf-msg.success { color: #CDEB09; display: block; }
+.site-footer .sf-msg.error { color: #E23453; display: block; }
+
+/* Footer */
+.site-footer .sf-foot { border-top: 1px solid #333; padding: 48px 0; background: #121212; }
+.site-footer .sf-foot-inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.site-footer .sf-brand a { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; text-decoration: none; }
+.site-footer .sf-brand svg { width: 20px; height: 21px; display: block; }
+.site-footer .sf-brand .sf-wm { font-family: inherit; font-weight: 700; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; }
+.site-footer .sf-brand p { font-size: 14px; color: #8B8B8B; line-height: 1.55; margin: 0; }
+.site-footer .sf-col h5 { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #646464; margin: 0 0 16px; }
+.site-footer .sf-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; margin: 0; padding: 0; }
+.site-footer .sf-col ul li { list-style: none; }
+.site-footer .sf-col ul a { font-size: 14px; color: #8B8B8B; text-decoration: none; transition: color .2s; }
+.site-footer .sf-col ul a:hover { color: #fff; }
+.site-footer .sf-bottom { text-align: center; padding: 24px; border-top: 1px solid #333; margin: 32px auto 0; max-width: 1120px; }
+.site-footer .sf-bottom p { font-size: 13px; color: #646464; margin: 0; }
+
+@media (max-width: 720px) {
+  .site-footer .sf-foot-inner { grid-template-columns: 1fr; gap: 32px; }
+  .site-footer .sf-newsletter { padding: 48px 20px; }
+}
