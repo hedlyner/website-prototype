@@ -1,0 +1,27 @@
+name: vendor-images
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download marketing images from builder.io CDN
+        run: |
+          mkdir -p assets/img
+          base="https://cdn.builder.io/api/v1/image/assets"
+          curl -fsSL -o assets/img/hero-crowd.webp        "$base/TEMP/fae4a59a6f69987919d09d1baca3b8fad4c09fa9?format=webp&width=1600"
+          curl -fsSL -o assets/img/artist-headphones.webp "$base/a49d302ccb814c998dbb48cd9fa06037/262fc408ca7e4d9ca1540e301f57421b?format=webp&width=1200"
+          curl -fsSL -o assets/img/venue-interior.webp    "$base/TEMP/eedf041a11a5b42efd3edb8bbe8516a1b37d14ec?format=webp&width=1200"
+          curl -fsSL -o assets/img/producer-sampler.webp  "$base/a49d302ccb814c998dbb48cd9fa06037/fef19c2447fd4beabbcfe737e6083e31?format=webp&width=1200"
+          curl -fsSL -o assets/img/profile-collage.webp   "$base/a49d302ccb814c998dbb48cd9fa06037/15ab3e28fba04fc29bb9d8c205abba14?format=webp&width=1200"
+          curl -fsSL -o assets/img/crowd-stage.webp       "$base/a49d302ccb814c998dbb48cd9fa06037/9a5bb9effce34bcf912a83ce7e1afba2?format=webp&width=1600"
+          ls -la assets/img
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/img
+          git commit -m "chore: vendor marketing images from builder.io CDN"
+          git push
