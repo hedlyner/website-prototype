@@ -4,7 +4,10 @@
    Auto-marks the active link from the current pathname.
    Logo: static flag mark that swaps to the animated equalizer bars on hover
    (ported from hedlyner-ui-v5 AnimatedLogo / useAnimatedLogo / logoAnimation).
-========================================================================= */
+   Behavior: header is fixed to the top and auto-hides when the cursor moves
+   away from the top of the page; it reappears when the cursor returns to the
+   top zone or hovers the header.
+   ========================================================================= */
 (function () {
   // Equalizer keyframes — same data as src/utils/logoAnimation.ts in hedlyner-ui-v5
   var LOGO_FRAMES = [
@@ -65,29 +68,29 @@
 
   var HEADER_HTML = '' +
     '<header class="site-header">' +
-      '<div class="sh-wrap">' +
-        '<a href="index.html" class="sh-brand" data-nav="home">' +
-          '<span class="sh-logo" style="display:inline-flex;width:37px;height:40px;">' +
-            '<svg class="sh-logo-static" width="26" height="28" viewBox="0 0 38 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">' +
-              '<path d="M8.86104 38.9833C4.95936 41.3198 0 38.5091 0 33.9613V7.81691C0 1.75321 6.61248 -1.99445 11.8147 1.12085L33.5649 14.1457C37.3599 16.4183 37.3599 21.9171 33.5649 24.1897L25.4196 29.0675C22.8184 30.6251 19.5122 28.7513 19.5122 25.7195V20.1433C19.5122 17.8534 17.6558 15.997 15.3659 15.997C13.0759 15.997 11.2195 17.8534 11.2195 20.1433V35.3593C11.2195 36.7312 10.4991 38.0024 9.322 38.7073L8.86104 38.9833Z" fill="#CDEB09"/>' +
-            '</svg>' +
-            '<svg class="sh-logo-bars" width="37" height="40" viewBox="0 0 76 82" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none;width:100%;height:100%;">' +
-              barsMarkup() +
-            '</svg>' +
-          '</span>' +
-          '<span class="sh-wm">HEDLYNER</span>' +
-        '</a>' +
-        '<ul class="sh-links">' +
-          '<li><a href="for-bookers.html" data-nav="for-bookers">For Bookers</a></li>' +
-          '<li><a href="for-artists.html" data-nav="for-artists">For Talent</a></li>' +
-          '<li><a href="pricing.html" data-nav="pricing">Pricing</a></li>' +
-          '<li><a href="index.html#how-it-works" data-nav="how">How It Works</a></li>' +
-        '</ul>' +
-        '<div class="sh-auth">' +
-          '<a href="https://app.hedlyner.com/login" class="sh-btn sh-btn-ghost">Log In</a>' +
-          '<a href="https://hedlyner.com/demo" class="sh-btn sh-btn-primary">Book a Demo</a>' +
-        '</div>' +
-      '</div>' +
+    '<div class="sh-wrap">' +
+    '<a href="index.html" class="sh-brand" data-nav="home">' +
+    '<span class="sh-logo" style="display:inline-flex;width:37px;height:40px;">' +
+    '<svg class="sh-logo-static" width="26" height="28" viewBox="0 0 38 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">' +
+    '<path d="M8.86104 38.9833C4.95936 41.3198 0 38.5091 0 33.9613V7.81691C0 1.75321 6.61248 -1.99445 11.8147 1.12085L33.5649 14.1457C37.3599 16.4183 37.3599 21.9171 33.5649 24.1897L25.4196 29.0675C22.8184 30.6251 19.5122 28.7513 19.5122 25.7195V20.1433C19.5122 17.8534 17.6558 15.997 15.3659 15.997C13.0759 15.997 11.2195 17.8534 11.2195 20.1433V35.3593C11.2195 36.7312 10.4991 38.0024 9.322 38.7073L8.86104 38.9833Z" fill="#CDEB09"/>' +
+    '</svg>' +
+    '<svg class="sh-logo-bars" width="37" height="40" viewBox="0 0 76 82" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none;width:100%;height:100%;">' +
+    barsMarkup() +
+    '</svg>' +
+    '</span>' +
+    '<span class="sh-wm">HEDLYNER</span>' +
+    '</a>' +
+    '<ul class="sh-links">' +
+    '<li><a href="for-bookers.html" data-nav="for-bookers">For Bookers</a></li>' +
+    '<li><a href="for-artists.html" data-nav="for-artists">For Talent</a></li>' +
+    '<li><a href="pricing.html" data-nav="pricing">Pricing</a></li>' +
+    '<li><a href="index.html#how-it-works" data-nav="how">How It Works</a></li>' +
+    '</ul>' +
+    '<div class="sh-auth">' +
+    '<a href="https://app.hedlyner.com/login" class="sh-btn sh-btn-ghost">Log In</a>' +
+    '<a href="https://hedlyner.com/demo" class="sh-btn sh-btn-primary">Book a Demo</a>' +
+    '</div>' +
+    '</div>' +
     '</header>';
 
   function initLogoAnimation(mount) {
@@ -159,6 +162,47 @@
     });
   }
 
+  /* -------------------------------------------------------------------------
+     Auto-hide: header stays fixed at the top but slides out of view when the
+     cursor moves away from the top of the page, and slides back in when the
+     cursor returns to the top zone (or hovers the header). Pointer devices
+     only — on touch screens the header stays fixed and always visible.
+     ------------------------------------------------------------------------- */
+  function initAutoHide(mount) {
+    var header = mount.querySelector('.site-header');
+    if (!header) return;
+
+    // Only auto-hide where there's a real hovering pointer (mouse/trackpad).
+    var canHover = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!canHover) return;
+
+    var REVEAL_ZONE = 100; // px from the top of the viewport that reveals the header
+
+    function show() { header.classList.remove('sh-hidden'); }
+    function hide() {
+      // Never hide while a header control holds keyboard focus.
+      if (header.contains(document.activeElement)) return;
+      header.classList.add('sh-hidden');
+    }
+
+    document.addEventListener('mousemove', function (e) {
+      if (e.clientY <= REVEAL_ZONE || header.matches(':hover')) {
+        show();
+      } else {
+        hide();
+      }
+    });
+
+    // Hide once the cursor leaves the browser window entirely.
+    document.addEventListener('mouseleave', hide);
+
+    // Keep the header visible during keyboard navigation of its links/buttons.
+    header.addEventListener('focusin', show);
+    header.addEventListener('focusout', function () {
+      if (!header.contains(document.activeElement)) hide();
+    });
+  }
+
   function render() {
     var mount = document.getElementById('site-header');
     if (!mount) return;
@@ -180,6 +224,7 @@
     }
 
     initLogoAnimation(mount);
+    initAutoHide(mount);
   }
 
   if (document.readyState === 'loading') {
