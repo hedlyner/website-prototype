@@ -1,781 +1,781 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hedlyner — Built for Talent Buyers</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    /* =========================================================================
-       Hedlyner Design System — Colors & Type
-       Source: colors_and_type.css (Design System project 094ac0e8)
-    ========================================================================= */
-    :root {
-      --hed-lime: #CDEB09;
-      --hed-violet: #BA87FF;
-      --hed-green: #C9CD00;
-      --hed-yellow: #D8B500;
-      --hed-orange: #CB9B1F;
-      --hed-mauve: #E0939C;
-      --hed-pink: #D47EBF;
-      --hed-deep-green: #061C17;
-      --hed-purple: #BF80FF;
-      --neutral-0: #FFFFFF;
-      --neutral-100: #F5F5F5;
-      --neutral-200: #DEDEDE;
-      --neutral-300: #ACACAC;
-      --neutral-400: #8B8B8B;
-      --neutral-500: #646464;
-      --neutral-600: #464646;
-      --neutral-700: #333333;
-      --neutral-800: #262626;
-      --neutral-900: #121212;
-      --neutral-1000: #000000;
-      --success: #198754;
-      --warning: #D8B500;
-      --destructive: #E23453;
-      --info: #016FD0;
-      --white-10: rgba(255,255,255,0.10);
-      --white-20: rgba(255,255,255,0.20);
-      --white-40: rgba(255,255,255,0.40);
-      --white-60: rgba(255,255,255,0.60);
-      --white-80: rgba(255,255,255,0.80);
-      --black-10: rgba(0,0,0,0.10);
-      --black-20: rgba(0,0,0,0.20);
-      --black-40: rgba(0,0,0,0.40);
-      --black-60: rgba(0,0,0,0.60);
-      --black-80: rgba(0,0,0,0.80);
-      --bg: var(--neutral-900);
-      --bg-elevated: var(--neutral-800);
-      --bg-input: var(--neutral-800);
-      --bg-muted: var(--neutral-700);
-      --bg-hover: var(--neutral-800);
-      --fg: var(--neutral-0);
-      --fg-muted: var(--neutral-400);
-      --fg-subtle: var(--neutral-500);
-      --fg-on-lime: var(--neutral-1000);
-      --border: var(--neutral-700);
-      --border-hover: var(--neutral-600);
-      --ring: var(--hed-lime);
-      --primary: var(--hed-lime);
-      --primary-fg: var(--neutral-1000);
-      --radius-xs: 4px;
-      --radius-sm: 8px;
-      --radius: 12px;
-      --radius-lg: 16px;
-      --radius-xl: 24px;
-      --radius-2xl: 40px;
-      --radius-hero: 60px;
-      --radius-full: 9999px;
-      --shadow-soft: 0 2px 8px -2px rgba(0,0,0,0.10), 0 4px 16px -8px rgba(0,0,0,0.10);
-      --shadow-card: 0 15px 35px rgba(103,110,118,0.08), 0 5px 15px rgba(0,0,0,0.12);
-      --shadow-lime: 0 0 15px rgba(205,235,9,0.25);
-      --shadow-lime-lg: 0 0 0 8px rgba(193,232,0,0), 0 0 30px rgba(193,232,0,0.6);
-      --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 20px;
-      --sp-6: 24px; --sp-8: 32px; --sp-10: 40px; --sp-12: 48px; --sp-16: 64px;
-      --sp-20: 80px; --sp-24: 96px;
-      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-      --dur: 200ms;
-      --font-sans: 'Instrument Sans', 'Inter', ui-sans-serif, system-ui, sans-serif;
-      --font-display: 'Instrument Sans', 'Inter', ui-sans-serif, system-ui, sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hedlyner — Built for Talent Buyers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================================
+Hedlyner Design System — Colors & Type
+Source: colors_and_type.css (Design System project 094ac0e8)
+========================================================================= */
+:root {
+--hed-lime: #CDEB09;
+--hed-violet: #BA87FF;
+--hed-green: #C9CD00;
+--hed-yellow: #D8B500;
+--hed-orange: #CB9B1F;
+--hed-mauve: #E0939C;
+--hed-pink: #D47EBF;
+--hed-deep-green: #061C17;
+--hed-purple: #BF80FF;
+--neutral-0: #FFFFFF;
+--neutral-100: #F5F5F5;
+--neutral-200: #DEDEDE;
+--neutral-300: #ACACAC;
+--neutral-400: #8B8B8B;
+--neutral-500: #646464;
+--neutral-600: #464646;
+--neutral-700: #333333;
+--neutral-800: #262626;
+--neutral-900: #121212;
+--neutral-1000: #000000;
+--success: #198754;
+--warning: #D8B500;
+--destructive: #E23453;
+--info: #016FD0;
+--white-10: rgba(255,255,255,0.10);
+--white-20: rgba(255,255,255,0.20);
+--white-40: rgba(255,255,255,0.40);
+--white-60: rgba(255,255,255,0.60);
+--white-80: rgba(255,255,255,0.80);
+--black-10: rgba(0,0,0,0.10);
+--black-20: rgba(0,0,0,0.20);
+--black-40: rgba(0,0,0,0.40);
+--black-60: rgba(0,0,0,0.60);
+--black-80: rgba(0,0,0,0.80);
+--bg: var(--neutral-900);
+--bg-elevated: var(--neutral-800);
+--bg-input: var(--neutral-800);
+--bg-muted: var(--neutral-700);
+--bg-hover: var(--neutral-800);
+--fg: var(--neutral-0);
+--fg-muted: var(--neutral-400);
+--fg-subtle: var(--neutral-500);
+--fg-on-lime: var(--neutral-1000);
+--border: var(--neutral-700);
+--border-hover: var(--neutral-600);
+--ring: var(--hed-lime);
+--primary: var(--hed-lime);
+--primary-fg: var(--neutral-1000);
+--radius-xs: 4px;
+--radius-sm: 8px;
+--radius: 12px;
+--radius-lg: 16px;
+--radius-xl: 24px;
+--radius-2xl: 40px;
+--radius-hero: 60px;
+--radius-full: 9999px;
+--shadow-soft: 0 2px 8px -2px rgba(0,0,0,0.10), 0 4px 16px -8px rgba(0,0,0,0.10);
+--shadow-card: 0 15px 35px rgba(103,110,118,0.08), 0 5px 15px rgba(0,0,0,0.12);
+--shadow-lime: 0 0 15px rgba(205,235,9,0.25);
+--shadow-lime-lg: 0 0 0 8px rgba(193,232,0,0), 0 0 30px rgba(193,232,0,0.6);
+--sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 20px;
+--sp-6: 24px; --sp-8: 32px; --sp-10: 40px; --sp-12: 48px; --sp-16: 64px;
+--sp-20: 80px; --sp-24: 96px;
+--ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+--dur: 200ms;
+--font-sans: 'Instrument Sans', 'Inter', ui-sans-serif, system-ui, sans-serif;
+--font-display: 'Instrument Sans', 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; }
 
-    body {
-      font-family: var(--font-sans);
-      background: var(--bg);
-      color: var(--fg);
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-    }
+body {
+font-family: var(--font-sans);
+background: var(--bg);
+color: var(--fg);
+line-height: 1.5;
+-webkit-font-smoothing: antialiased;
+}
 
-    /* ---- TYPOGRAPHY ---- */
-    .hed-display {
-      font-family: var(--font-display);
-      font-weight: 500;
-      font-size: clamp(40px, 6vw, 56px);
-      line-height: 1.0;
-      letter-spacing: -0.04em;
-    }
-    h1, .h1 { font-family: var(--font-display); font-weight: 500; font-size: clamp(32px, 5vw, 44px); line-height: 1.10; letter-spacing: -0.04em; }
-    h2, .h2 { font-family: var(--font-display); font-weight: 500; font-size: clamp(28px, 4vw, 38px); line-height: 1.10; letter-spacing: -0.02em; }
-    h3, .h3 { font-family: var(--font-display); font-weight: 500; font-size: clamp(22px, 3vw, 32px); line-height: 1.20; letter-spacing: -0.02em; }
-    h4, .h4 { font-family: var(--font-display); font-weight: 500; font-size: 26px; line-height: 1.20; letter-spacing: -0.02em; }
-    p, .body { font-size: 16px; line-height: 1.5; color: var(--fg-muted); }
-    .body-lg { font-size: 20px; line-height: 1.4; letter-spacing: -0.01em; color: var(--fg-muted); }
-    .body-sm { font-size: 14px; line-height: 1.4; color: var(--fg-muted); }
-    .caption { font-size: 12px; line-height: 1.35; letter-spacing: 0.01em; color: var(--fg-subtle); }
-    .text-lime { color: var(--hed-lime); }
-    .text-violet { color: var(--hed-violet); }
-    .text-fg { color: var(--fg); }
+/* ---- TYPOGRAPHY ---- */
+.hed-display {
+font-family: var(--font-display);
+font-weight: 500;
+font-size: clamp(40px, 6vw, 56px);
+line-height: 1.0;
+letter-spacing: -0.04em;
+}
+h1, .h1 { font-family: var(--font-display); font-weight: 500; font-size: clamp(32px, 5vw, 44px); line-height: 1.10; letter-spacing: -0.04em; }
+h2, .h2 { font-family: var(--font-display); font-weight: 500; font-size: clamp(28px, 4vw, 38px); line-height: 1.10; letter-spacing: -0.02em; }
+h3, .h3 { font-family: var(--font-display); font-weight: 500; font-size: clamp(22px, 3vw, 32px); line-height: 1.20; letter-spacing: -0.02em; }
+h4, .h4 { font-family: var(--font-display); font-weight: 500; font-size: 26px; line-height: 1.20; letter-spacing: -0.02em; }
+p, .body { font-size: 16px; line-height: 1.5; color: var(--fg-muted); }
+.body-lg { font-size: 20px; line-height: 1.4; letter-spacing: -0.01em; color: var(--fg-muted); }
+.body-sm { font-size: 14px; line-height: 1.4; color: var(--fg-muted); }
+.caption { font-size: 12px; line-height: 1.35; letter-spacing: 0.01em; color: var(--fg-subtle); }
+.text-lime { color: var(--hed-lime); }
+.text-violet { color: var(--hed-violet); }
+.text-fg { color: var(--fg); }
 
-    /* ---- LAYOUT ---- */
-    .container { max-width: 1120px; margin: 0 auto; padding: 0 var(--sp-6); }
-    section { padding: var(--sp-20) 0; }
+/* ---- LAYOUT ---- */
+.container { max-width: 1120px; margin: 0 auto; padding: 0 var(--sp-6); }
+section { padding: var(--sp-20) 0; }
 
-    /* ---- BUTTONS ---- */
-    .btn {
-      display: inline-flex; align-items: center; gap: var(--sp-2);
-      font-family: var(--font-sans); font-weight: 500; font-size: 16px;
-      border: none; cursor: pointer; text-decoration: none;
-      transition: all var(--dur) var(--ease-out);
-      border-radius: var(--radius-full);
-      padding: 14px 28px;
-      white-space: nowrap;
-    }
-    .btn-primary {
-      background: var(--hed-lime); color: var(--fg-on-lime);
-    }
-    .btn-primary:hover { box-shadow: var(--shadow-lime-lg); transform: translateY(-1px); }
-    .btn-violet {
-      background: var(--hed-violet); color: var(--neutral-1000);
-    }
-    .btn-violet:hover { opacity: 0.9; transform: translateY(-1px); }
-    .btn-outline {
-      background: transparent; color: var(--fg);
-      border: 1px solid var(--border);
-    }
-    .btn-outline:hover { border-color: var(--border-hover); background: var(--bg-elevated); }
+/* ---- BUTTONS ---- */
+.btn {
+display: inline-flex; align-items: center; gap: var(--sp-2);
+font-family: var(--font-sans); font-weight: 500; font-size: 16px;
+border: none; cursor: pointer; text-decoration: none;
+transition: all var(--dur) var(--ease-out);
+border-radius: var(--radius-full);
+padding: 14px 28px;
+white-space: nowrap;
+}
+.btn-primary {
+background: var(--hed-lime); color: var(--fg-on-lime);
+}
+.btn-primary:hover { box-shadow: var(--shadow-lime-lg); transform: translateY(-1px); }
+.btn-violet {
+background: var(--hed-violet); color: var(--neutral-1000);
+}
+.btn-violet:hover { opacity: 0.9; transform: translateY(-1px); }
+.btn-outline {
+background: transparent; color: var(--fg);
+border: 1px solid var(--border);
+}
+.btn-outline:hover { border-color: var(--border-hover); background: var(--bg-elevated); }
 
-    /* ---- NAV ---- */
-    .wrap{max-width:1280px;margin:0 auto;padding:0 40px;}
-    nav{position:sticky;top:0;z-index:100;background:rgba(23,23,23,0.92);backdrop-filter:blur(12px);border-bottom:1px solid #262626;}
-    .navbar{display:flex;align-items:center;justify-content:space-between;height:72px;}
-    .brand{display:flex;align-items:center;gap:10px;}
-    .brand img{width:26px;height:28px;}
-    .brand .wm{font-size:17px;font-weight:700;letter-spacing:0.08em;color:#CDEB09;}
-    .nav-links{display:flex;gap:28px;font-size:14px;font-weight:500;color:#ACACAC;list-style:none;}
-    .nav-links a{transition:color .15s;padding:4px 0;border-bottom:2px solid transparent;text-decoration:none;color:inherit;}
-    .nav-links a:hover{color:#fff;}
-    .nav-links a.active{color:#fff;border-bottom-color:#CDEB09;}
-    .nav-auth{display:flex;gap:8px;align-items:center;}
-    .btn-sm{height:36px;padding:0 16px;font-size:13px;}
-    .btn-ghost{background:transparent;color:#fff;border:1px solid transparent;border-radius:10px;font-weight:600;display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-family:inherit;transition:all .15s var(--ease-out);white-space:nowrap;text-decoration:none;}
-    .btn-ghost:hover{background:#262626;}
+/* ---- NAV ---- */
+.wrap{max-width:1280px;margin:0 auto;padding:0 40px;}
+nav{position:sticky;top:0;z-index:100;background:rgba(23,23,23,0.92);backdrop-filter:blur(12px);border-bottom:1px solid #262626;}
+.navbar{display:flex;align-items:center;justify-content:space-between;height:72px;}
+.brand{display:flex;align-items:center;gap:10px;}
+.brand img{width:26px;height:28px;}
+.brand .wm{font-size:17px;font-weight:700;letter-spacing:0.08em;color:#CDEB09;}
+.nav-links{display:flex;gap:28px;font-size:14px;font-weight:500;color:#ACACAC;list-style:none;}
+.nav-links a{transition:color .15s;padding:4px 0;border-bottom:2px solid transparent;text-decoration:none;color:inherit;}
+.nav-links a:hover{color:#fff;}
+.nav-links a.active{color:#fff;border-bottom-color:#CDEB09;}
+.nav-auth{display:flex;gap:8px;align-items:center;}
+.btn-sm{height:36px;padding:0 16px;font-size:13px;}
+.btn-ghost{background:transparent;color:#fff;border:1px solid transparent;border-radius:10px;font-weight:600;display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-family:inherit;transition:all .15s var(--ease-out);white-space:nowrap;text-decoration:none;}
+.btn-ghost:hover{background:#262626;}
 
-    /* ---- HERO ---- */
-    .hero {
-      padding: var(--sp-24) 0 var(--sp-20);
-      background:
-        linear-gradient(180deg, rgba(10,15,8,0.84) 0%, rgba(10,15,8,0.94) 100%),
-        url('assets/img/hero-crowd.webp') center 30% / cover no-repeat,
-        var(--hed-deep-green);
-      border-bottom: 1px solid rgba(205,235,9,0.12);
-    }
-    .hero-inner {
-      display: grid; grid-template-columns: 1fr; gap: var(--sp-12);
-      max-width: 1120px; margin: 0 auto; padding: 0 var(--sp-6);
-      text-align: center;
-    }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: var(--sp-2);
-      background: var(--white-10); border: 1px solid rgba(205,235,9,0.2);
-      border-radius: var(--radius-full); padding: 6px 16px;
-      font-size: 13px; font-weight: 500; letter-spacing: 0.04em;
-      text-transform: uppercase; color: var(--hed-lime);
-      margin: 0 auto;
-    }
-    .hero h1 {
-      font-size: clamp(40px, 7vw, 64px); font-weight: 600;
-      line-height: 1.0; letter-spacing: -0.04em;
-      color: var(--fg);
-    }
-    .hero h1 em { font-style: normal; color: var(--hed-lime); }
-    .hero-sub {
-      font-size: clamp(16px, 2vw, 20px); line-height: 1.5;
-      color: var(--fg-muted); max-width: 540px; margin: 0 auto;
-    }
-    .hero-ctas {
-      display: flex; align-items: center; justify-content: center;
-      gap: var(--sp-3); flex-wrap: wrap;
-    }
-    .hero-stats {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1px; background: var(--border);
-      border: 1px solid var(--border); border-radius: var(--radius-lg);
-      overflow: hidden; max-width: 640px; margin: var(--sp-6) auto 0;
-    }
-    .stat-cell {
-      background: var(--neutral-900); padding: var(--sp-6);
-      text-align: center;
-    }
-    .stat-num {
-      font-family: var(--font-display); font-size: 36px; font-weight: 600;
-      letter-spacing: -0.03em; color: var(--hed-lime); line-height: 1;
-    }
-    .stat-label { font-size: 13px; color: var(--fg-muted); margin-top: 4px; }
+/* ---- HERO ---- */
+.hero {
+padding: var(--sp-24) 0 var(--sp-20);
+background:
+linear-gradient(180deg, rgba(10,15,8,0.84) 0%, rgba(10,15,8,0.94) 100%),
+url('assets/img/hero-crowd.webp') center 30% / cover no-repeat,
+var(--hed-deep-green);
+border-bottom: 1px solid rgba(205,235,9,0.12);
+}
+.hero-inner {
+display: grid; grid-template-columns: 1fr; gap: var(--sp-12);
+max-width: 1120px; margin: 0 auto; padding: 0 var(--sp-6);
+text-align: center;
+}
+.hero-eyebrow {
+display: inline-flex; align-items: center; gap: var(--sp-2);
+background: var(--white-10); border: 1px solid rgba(205,235,9,0.2);
+border-radius: var(--radius-full); padding: 6px 16px;
+font-size: 13px; font-weight: 500; letter-spacing: 0.04em;
+text-transform: uppercase; color: var(--hed-lime);
+margin: 0 auto;
+}
+.hero h1 {
+font-size: clamp(40px, 7vw, 64px); font-weight: 600;
+line-height: 1.0; letter-spacing: -0.04em;
+color: var(--fg);
+}
+.hero h1 em { font-style: normal; color: var(--hed-lime); }
+.hero-sub {
+font-size: clamp(16px, 2vw, 20px); line-height: 1.5;
+color: var(--fg-muted); max-width: 540px; margin: 0 auto;
+}
+.hero-ctas {
+display: flex; align-items: center; justify-content: center;
+gap: var(--sp-3); flex-wrap: wrap;
+}
+.hero-stats {
+display: grid; grid-template-columns: repeat(3, 1fr);
+gap: 1px; background: var(--border);
+border: 1px solid var(--border); border-radius: var(--radius-lg);
+overflow: hidden; max-width: 640px; margin: var(--sp-6) auto 0;
+}
+.stat-cell {
+background: var(--neutral-900); padding: var(--sp-6);
+text-align: center;
+}
+.stat-num {
+font-family: var(--font-display); font-size: 36px; font-weight: 600;
+letter-spacing: -0.03em; color: var(--hed-lime); line-height: 1;
+}
+.stat-label { font-size: 13px; color: var(--fg-muted); margin-top: 4px; }
 
-    /* ---- PERSONA SPLIT ---- */
-    .persona-split {
-      display: grid; grid-template-columns: 2fr 1fr;
-      gap: var(--sp-4);
-    }
-    .persona-card {
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--border);
-      padding: var(--sp-10);
-      background: var(--bg-elevated);
-      transition: border-color var(--dur);
-    }
-    .persona-card:hover { border-color: var(--border-hover); }
-    .persona-card.booker {
-      border-color: rgba(205,235,9,0.2);
-      background: linear-gradient(135deg, rgba(205,235,9,0.04) 0%, var(--bg-elevated) 60%);
-    }
-    .persona-card.artist {
-      border-color: rgba(186,135,255,0.2);
-      background: linear-gradient(135deg, rgba(186,135,255,0.04) 0%, var(--bg-elevated) 60%);
-    }
-    .persona-badge {
-      display: inline-flex; align-items: center;
-      border-radius: var(--radius-full); padding: 4px 12px;
-      font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
-      text-transform: uppercase; margin-bottom: var(--sp-4);
-    }
-    .persona-badge.booker { background: rgba(205,235,9,0.12); color: var(--hed-lime); }
-    .persona-badge.artist { background: rgba(186,135,255,0.12); color: var(--hed-violet); }
-    .persona-card h3 { color: var(--fg); margin-bottom: var(--sp-3); }
-    .persona-card p { margin-bottom: var(--sp-6); }
-    .feature-list { list-style: none; display: flex; flex-direction: column; gap: var(--sp-3); }
-    .feature-list li {
-      display: flex; align-items: flex-start; gap: var(--sp-3);
-      font-size: 15px; color: var(--fg-muted);
-    }
-    .feature-list li::before {
-      content: '';
-      display: inline-block; width: 6px; height: 6px;
-      border-radius: 50%; margin-top: 8px; flex-shrink: 0;
-    }
-    .booker .feature-list li::before { background: var(--hed-lime); }
-    .artist .feature-list li::before { background: var(--hed-violet); }
-    .persona-cta { margin-top: var(--sp-8); }
+/* ---- PERSONA SPLIT ---- */
+.persona-split {
+display: grid; grid-template-columns: 2fr 1fr;
+gap: var(--sp-4);
+}
+.persona-card {
+border-radius: var(--radius-xl);
+border: 1px solid var(--border);
+padding: var(--sp-10);
+background: var(--bg-elevated);
+transition: border-color var(--dur);
+}
+.persona-card:hover { border-color: var(--border-hover); }
+.persona-card.booker {
+border-color: rgba(205,235,9,0.2);
+background: linear-gradient(135deg, rgba(205,235,9,0.04) 0%, var(--bg-elevated) 60%);
+}
+.persona-card.artist {
+border-color: rgba(186,135,255,0.2);
+background: linear-gradient(135deg, rgba(186,135,255,0.04) 0%, var(--bg-elevated) 60%);
+}
+.persona-badge {
+display: inline-flex; align-items: center;
+border-radius: var(--radius-full); padding: 4px 12px;
+font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+text-transform: uppercase; margin-bottom: var(--sp-4);
+}
+.persona-badge.booker { background: rgba(205,235,9,0.12); color: var(--hed-lime); }
+.persona-badge.artist { background: rgba(186,135,255,0.12); color: var(--hed-violet); }
+.persona-card h3 { color: var(--fg); margin-bottom: var(--sp-3); }
+.persona-card p { margin-bottom: var(--sp-6); }
+.feature-list { list-style: none; display: flex; flex-direction: column; gap: var(--sp-3); }
+.feature-list li {
+display: flex; align-items: flex-start; gap: var(--sp-3);
+font-size: 15px; color: var(--fg-muted);
+}
+.feature-list li::before {
+content: '';
+display: inline-block; width: 6px; height: 6px;
+border-radius: 50%; margin-top: 8px; flex-shrink: 0;
+}
+.booker .feature-list li::before { background: var(--hed-lime); }
+.artist .feature-list li::before { background: var(--hed-violet); }
+.persona-cta { margin-top: var(--sp-8); }
 
-    /* ---- SECTION HEADER ---- */
-    .section-header { text-align: center; margin-bottom: var(--sp-12); }
-    .section-eyebrow {
-      display: inline-block; font-size: 12px; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--hed-lime); margin-bottom: var(--sp-3);
-    }
-    .section-header h2 { color: var(--fg); margin-bottom: var(--sp-4); }
-    .section-header p { max-width: 520px; margin: 0 auto; }
+/* ---- SECTION HEADER ---- */
+.section-header { text-align: center; margin-bottom: var(--sp-12); }
+.section-eyebrow {
+display: inline-block; font-size: 12px; font-weight: 600;
+letter-spacing: 0.1em; text-transform: uppercase;
+color: var(--hed-lime); margin-bottom: var(--sp-3);
+}
+.section-header h2 { color: var(--fg); margin-bottom: var(--sp-4); }
+.section-header p { max-width: 520px; margin: 0 auto; }
 
-    /* ---- HOW IT WORKS ---- */
-    .how-it-works { background: var(--hed-deep-green); border-top: 1px solid rgba(205,235,9,0.08); border-bottom: 1px solid rgba(205,235,9,0.08); }
-    .steps-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: var(--sp-4);
-    }
-    .step-card {
-      background: var(--neutral-900); border: 1px solid var(--border);
-      border-radius: var(--radius-lg); padding: var(--sp-6);
-      transition: border-color var(--dur);
-    }
-    .step-card:hover { border-color: rgba(205,235,9,0.2); }
-    .step-num {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--hed-lime);
-      margin-bottom: var(--sp-3);
-    }
-    .step-card h4 { color: var(--fg); margin-bottom: var(--sp-2); font-size: 18px; }
-    .step-card p { font-size: 14px; }
+/* ---- HOW IT WORKS ---- */
+.how-it-works { background: var(--hed-deep-green); border-top: 1px solid rgba(205,235,9,0.08); border-bottom: 1px solid rgba(205,235,9,0.08); }
+.steps-grid {
+display: grid; grid-template-columns: repeat(3, 1fr);
+gap: var(--sp-4);
+}
+.step-card {
+background: var(--neutral-900); border: 1px solid var(--border);
+border-radius: var(--radius-lg); padding: var(--sp-6);
+transition: border-color var(--dur);
+}
+.step-card:hover { border-color: rgba(205,235,9,0.2); }
+.step-num {
+font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+text-transform: uppercase; color: var(--hed-lime);
+margin-bottom: var(--sp-3);
+}
+.step-card h4 { color: var(--fg); margin-bottom: var(--sp-2); font-size: 18px; }
+.step-card p { font-size: 14px; }
 
-    /* ---- FEATURE GRID ---- */
-    .feature-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: var(--sp-4);
-    }
-    .feature-item {
-      background: var(--bg-elevated); border: 1px solid var(--border);
-      border-radius: var(--radius-lg); padding: var(--sp-6);
-    }
-    .feature-icon {
-      width: 40px; height: 40px;
-      background: rgba(205,235,9,0.08); border-radius: var(--radius-sm);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: var(--sp-4);
-    }
-    .feature-item h4 { color: var(--fg); margin-bottom: var(--sp-2); font-size: 17px; }
-    .feature-item p { font-size: 14px; }
+/* ---- FEATURE GRID ---- */
+.feature-grid {
+display: grid; grid-template-columns: repeat(3, 1fr);
+gap: var(--sp-4);
+}
+.feature-item {
+background: var(--bg-elevated); border: 1px solid var(--border);
+border-radius: var(--radius-lg); padding: var(--sp-6);
+}
+.feature-icon {
+width: 40px; height: 40px;
+background: rgba(205,235,9,0.08); border-radius: var(--radius-sm);
+display: flex; align-items: center; justify-content: center;
+margin-bottom: var(--sp-4);
+}
+.feature-item h4 { color: var(--fg); margin-bottom: var(--sp-2); font-size: 17px; }
+.feature-item p { font-size: 14px; }
 
-    /* ---- CASE STUDY ---- */
-    .case-study {
-      background: linear-gradient(135deg, rgba(205,235,9,0.04) 0%, var(--bg-elevated) 50%, rgba(186,135,255,0.04) 100%);
-      border: 1px solid rgba(205,235,9,0.12);
-      border-radius: var(--radius-xl); padding: var(--sp-12);
-    }
-    .cs-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--hed-lime); margin-bottom: var(--sp-4); }
-    .cs-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-6); margin: var(--sp-8) 0; }
-    .cs-stat-num { font-family: var(--font-display); font-size: 42px; font-weight: 600; letter-spacing: -0.03em; color: var(--hed-lime); line-height: 1; }
-    .cs-stat-label { font-size: 13px; color: var(--fg-muted); margin-top: 6px; }
-    blockquote { font-size: 22px; font-weight: 500; line-height: 1.3; letter-spacing: -0.01em; color: var(--fg); margin: var(--sp-8) 0 var(--sp-4); font-style: italic; }
-    .quote-attr { font-size: 14px; color: var(--fg-muted); }
-    .quote-attr strong { color: var(--fg); }
+/* ---- CASE STUDY ---- */
+.case-study {
+background: linear-gradient(135deg, rgba(205,235,9,0.04) 0%, var(--bg-elevated) 50%, rgba(186,135,255,0.04) 100%);
+border: 1px solid rgba(205,235,9,0.12);
+border-radius: var(--radius-xl); padding: var(--sp-12);
+}
+.cs-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--hed-lime); margin-bottom: var(--sp-4); }
+.cs-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-6); margin: var(--sp-8) 0; }
+.cs-stat-num { font-family: var(--font-display); font-size: 42px; font-weight: 600; letter-spacing: -0.03em; color: var(--hed-lime); line-height: 1; }
+.cs-stat-label { font-size: 13px; color: var(--fg-muted); margin-top: 6px; }
+blockquote { font-size: 22px; font-weight: 500; line-height: 1.3; letter-spacing: -0.01em; color: var(--fg); margin: var(--sp-8) 0 var(--sp-4); font-style: italic; }
+.quote-attr { font-size: 14px; color: var(--fg-muted); }
+.quote-attr strong { color: var(--fg); }
 
-    /* ---- PRICING ---- */
-    .pricing-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: var(--sp-4); max-width: 900px; margin: 0 auto;
-    }
-    .price-card {
-      background: var(--bg-elevated); border: 1px solid var(--border);
-      border-radius: var(--radius-xl); padding: var(--sp-8);
-      display: flex; flex-direction: column;
-    }
-    .price-card.featured {
-      border-color: var(--hed-lime);
-      box-shadow: var(--shadow-lime);
-      background: linear-gradient(135deg, rgba(205,235,9,0.06) 0%, var(--bg-elevated) 60%);
-    }
-    .price-badge {
-      display: inline-block; background: var(--hed-lime); color: var(--fg-on-lime);
-      font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
-      border-radius: var(--radius-full); padding: 4px 10px; margin-bottom: var(--sp-4);
-      width: fit-content;
-    }
-    .price-tier { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-muted); margin-bottom: var(--sp-3); }
-    .price-name { font-size: 22px; font-weight: 600; color: var(--fg); margin-bottom: var(--sp-2); }
-    .price-amount { display: flex; align-items: baseline; gap: 4px; margin-bottom: var(--sp-2); }
-    .price-num { font-family: var(--font-display); font-size: 48px; font-weight: 600; letter-spacing: -0.04em; color: var(--fg); line-height: 1; }
-    .price-period { font-size: 14px; color: var(--fg-muted); }
-    .price-desc { font-size: 14px; color: var(--fg-muted); margin-bottom: var(--sp-6); min-height: 40px; }
-    .price-divider { height: 1px; background: var(--border); margin-bottom: var(--sp-6); }
-    .price-features { list-style: none; display: flex; flex-direction: column; gap: var(--sp-3); flex: 1; margin-bottom: var(--sp-8); }
-    .price-features li { display: flex; align-items: flex-start; gap: var(--sp-2); font-size: 14px; color: var(--fg-muted); }
-    .price-features li::before { content: '✓'; color: var(--hed-lime); font-weight: 700; flex-shrink: 0; }
-    .price-card .btn { width: 100%; justify-content: center; }
+/* ---- PRICING ---- */
+.pricing-grid {
+display: grid; grid-template-columns: repeat(3, 1fr);
+gap: var(--sp-4); max-width: 900px; margin: 0 auto;
+}
+.price-card {
+background: var(--bg-elevated); border: 1px solid var(--border);
+border-radius: var(--radius-xl); padding: var(--sp-8);
+display: flex; flex-direction: column;
+}
+.price-card.featured {
+border-color: var(--hed-lime);
+box-shadow: var(--shadow-lime);
+background: linear-gradient(135deg, rgba(205,235,9,0.06) 0%, var(--bg-elevated) 60%);
+}
+.price-badge {
+display: inline-block; background: var(--hed-lime); color: var(--fg-on-lime);
+font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+border-radius: var(--radius-full); padding: 4px 10px; margin-bottom: var(--sp-4);
+width: fit-content;
+}
+.price-tier { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-muted); margin-bottom: var(--sp-3); }
+.price-name { font-size: 22px; font-weight: 600; color: var(--fg); margin-bottom: var(--sp-2); }
+.price-amount { display: flex; align-items: baseline; gap: 4px; margin-bottom: var(--sp-2); }
+.price-num { font-family: var(--font-display); font-size: 48px; font-weight: 600; letter-spacing: -0.04em; color: var(--fg); line-height: 1; }
+.price-period { font-size: 14px; color: var(--fg-muted); }
+.price-desc { font-size: 14px; color: var(--fg-muted); margin-bottom: var(--sp-6); min-height: 40px; }
+.price-divider { height: 1px; background: var(--border); margin-bottom: var(--sp-6); }
+.price-features { list-style: none; display: flex; flex-direction: column; gap: var(--sp-3); flex: 1; margin-bottom: var(--sp-8); }
+.price-features li { display: flex; align-items: flex-start; gap: var(--sp-2); font-size: 14px; color: var(--fg-muted); }
+.price-features li::before { content: '✓'; color: var(--hed-lime); font-weight: 700; flex-shrink: 0; }
+.price-card .btn { width: 100%; justify-content: center; }
 
-    /* ---- TESTIMONIAL ---- */
-    .testimonial-section { background: var(--hed-deep-green); }
-    .testimonial-card {
-      background: var(--neutral-900); border: 1px solid var(--border);
-      border-radius: var(--radius-xl); padding: var(--sp-12);
-      text-align: center; max-width: 680px; margin: 0 auto;
-    }
-    .testimonial-quote { font-size: 24px; font-weight: 500; line-height: 1.35; letter-spacing: -0.01em; color: var(--fg); margin-bottom: var(--sp-6); font-style: italic; }
-    .testimonial-attr { display: flex; align-items: center; justify-content: center; gap: var(--sp-3); }
-    .testimonial-avatar {
-      width: 40px; height: 40px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--hed-lime), var(--hed-violet));
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: 16px; color: var(--fg-on-lime);
-    }
-    .testimonial-name { font-size: 15px; font-weight: 600; color: var(--fg); }
-    .testimonial-role { font-size: 13px; color: var(--fg-muted); }
+/* ---- TESTIMONIAL ---- */
+.testimonial-section { background: var(--hed-deep-green); }
+.testimonial-card {
+background: var(--neutral-900); border: 1px solid var(--border);
+border-radius: var(--radius-xl); padding: var(--sp-12);
+text-align: center; max-width: 680px; margin: 0 auto;
+}
+.testimonial-quote { font-size: 24px; font-weight: 500; line-height: 1.35; letter-spacing: -0.01em; color: var(--fg); margin-bottom: var(--sp-6); font-style: italic; }
+.testimonial-attr { display: flex; align-items: center; justify-content: center; gap: var(--sp-3); }
+.testimonial-avatar {
+width: 40px; height: 40px; border-radius: 50%;
+background: linear-gradient(135deg, var(--hed-lime), var(--hed-violet));
+display: flex; align-items: center; justify-content: center;
+font-weight: 700; font-size: 16px; color: var(--fg-on-lime);
+}
+.testimonial-name { font-size: 15px; font-weight: 600; color: var(--fg); }
+.testimonial-role { font-size: 13px; color: var(--fg-muted); }
 
-    /* ---- NEWSLETTER ---- */
-    .newsletter-section {
-      border-top: 1px solid var(--border);
-      padding: var(--sp-16) var(--sp-6);
-      background: var(--neutral-900);
-    }
-    .newsletter-inner {
-      max-width: 560px; margin: 0 auto; text-align: center;
-    }
-    .newsletter-inner h3 { font-size: 24px; font-weight: 600; margin-bottom: var(--sp-2); }
-    .newsletter-inner p { font-size: 15px; color: var(--fg-muted); margin-bottom: var(--sp-6); }
-    .newsletter-form {
-      display: flex; gap: var(--sp-2); flex-wrap: wrap; justify-content: center;
-    }
-    .newsletter-form input[type="email"] {
-      flex: 1; min-width: 220px;
-      background: var(--bg-elevated); color: var(--fg);
-      border: 1px solid var(--border); border-radius: var(--radius-sm);
-      padding: 0 var(--sp-4); height: 44px; font-size: 14px;
-      font-family: var(--font-sans); outline: none;
-      transition: border-color var(--dur);
-    }
-    .newsletter-form input[type="email"]:focus { border-color: var(--hed-lime); }
-    .newsletter-form input[type="email"]::placeholder { color: var(--fg-subtle); }
-    .newsletter-form button {
-      height: 44px; padding: 0 var(--sp-6);
-      background: var(--hed-lime); color: var(--neutral-1000);
-      border: none; border-radius: var(--radius-sm);
-      font-family: var(--font-sans); font-weight: 600; font-size: 14px;
-      cursor: pointer; transition: opacity var(--dur);
-      white-space: nowrap;
-    }
-    .newsletter-form button:hover { opacity: 0.88; }
-    .newsletter-consent {
-      font-size: 12px; color: var(--fg-subtle);
-      margin-top: var(--sp-4); display: flex; align-items: flex-start;
-      gap: var(--sp-2); justify-content: center; text-align: left;
-    }
-    .newsletter-consent input[type="checkbox"] { margin-top: 2px; flex-shrink: 0; accent-color: var(--hed-lime); }
-    .newsletter-msg {
-      margin-top: var(--sp-4); font-size: 14px;
-      display: none;
-    }
-    .newsletter-msg.success { color: var(--hed-lime); display: block; }
-    .newsletter-msg.error { color: var(--destructive); display: block; }
+/* ---- NEWSLETTER ---- */
+.newsletter-section {
+border-top: 1px solid var(--border);
+padding: var(--sp-16) var(--sp-6);
+background: var(--neutral-900);
+}
+.newsletter-inner {
+max-width: 560px; margin: 0 auto; text-align: center;
+}
+.newsletter-inner h3 { font-size: 24px; font-weight: 600; margin-bottom: var(--sp-2); }
+.newsletter-inner p { font-size: 15px; color: var(--fg-muted); margin-bottom: var(--sp-6); }
+.newsletter-form {
+display: flex; gap: var(--sp-2); flex-wrap: wrap; justify-content: center;
+}
+.newsletter-form input[type="email"] {
+flex: 1; min-width: 220px;
+background: var(--bg-elevated); color: var(--fg);
+border: 1px solid var(--border); border-radius: var(--radius-sm);
+padding: 0 var(--sp-4); height: 44px; font-size: 14px;
+font-family: var(--font-sans); outline: none;
+transition: border-color var(--dur);
+}
+.newsletter-form input[type="email"]:focus { border-color: var(--hed-lime); }
+.newsletter-form input[type="email"]::placeholder { color: var(--fg-subtle); }
+.newsletter-form button {
+height: 44px; padding: 0 var(--sp-6);
+background: var(--hed-lime); color: var(--neutral-1000);
+border: none; border-radius: var(--radius-sm);
+font-family: var(--font-sans); font-weight: 600; font-size: 14px;
+cursor: pointer; transition: opacity var(--dur);
+white-space: nowrap;
+}
+.newsletter-form button:hover { opacity: 0.88; }
+.newsletter-consent {
+font-size: 12px; color: var(--fg-subtle);
+margin-top: var(--sp-4); display: flex; align-items: flex-start;
+gap: var(--sp-2); justify-content: center; text-align: left;
+}
+.newsletter-consent input[type="checkbox"] { margin-top: 2px; flex-shrink: 0; accent-color: var(--hed-lime); }
+.newsletter-msg {
+margin-top: var(--sp-4); font-size: 14px;
+display: none;
+}
+.newsletter-msg.success { color: var(--hed-lime); display: block; }
+.newsletter-msg.error { color: var(--destructive); display: block; }
 
-    /* ---- FOOTER CTA ---- */
-    .footer-cta {
-      text-align: center; padding: var(--sp-20) var(--sp-6);
-      background: linear-gradient(180deg, var(--bg) 0%, rgba(205,235,9,0.03) 100%);
-    }
-    .footer-cta h2 { color: var(--fg); margin-bottom: var(--sp-4); }
-    .footer-cta p { max-width: 480px; margin: 0 auto var(--sp-8); }
-    .footer-cta .ctas { display: flex; align-items: center; justify-content: center; gap: var(--sp-3); flex-wrap: wrap; }
+/* ---- FOOTER CTA ---- */
+.footer-cta {
+text-align: center; padding: var(--sp-20) var(--sp-6);
+background: linear-gradient(180deg, var(--bg) 0%, rgba(205,235,9,0.03) 100%);
+}
+.footer-cta h2 { color: var(--fg); margin-bottom: var(--sp-4); }
+.footer-cta p { max-width: 480px; margin: 0 auto var(--sp-8); }
+.footer-cta .ctas { display: flex; align-items: center; justify-content: center; gap: var(--sp-3); flex-wrap: wrap; }
 
-    /* ---- FOOTER ---- */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: var(--sp-12) 0;
-    }
-    .footer-inner {
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: var(--sp-8); max-width: 1120px; margin: 0 auto; padding: 0 var(--sp-6);
-    }
-    .footer-brand .nav-wordmark { font-size: 16px; margin-bottom: var(--sp-3); display: block; }
-    .footer-brand p { font-size: 14px; color: var(--fg-muted); }
-    .footer-col h5 { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-subtle); margin-bottom: var(--sp-4); }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: var(--sp-3); }
-    .footer-col ul a { font-size: 14px; color: var(--fg-muted); text-decoration: none; transition: color var(--dur); }
-    .footer-col ul a:hover { color: var(--fg); }
-    .footer-bottom {
-      text-align: center; padding: var(--sp-6) 0 0;
-      border-top: 1px solid var(--border); margin-top: var(--sp-8);
-      max-width: 1120px; margin-left: auto; margin-right: auto; padding-left: var(--sp-6); padding-right: var(--sp-6);
-    }
-    .footer-bottom p { font-size: 13px; color: var(--fg-subtle); }
+/* ---- FOOTER ---- */
+footer {
+border-top: 1px solid var(--border);
+padding: var(--sp-12) 0;
+}
+.footer-inner {
+display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+gap: var(--sp-8); max-width: 1120px; margin: 0 auto; padding: 0 var(--sp-6);
+}
+.footer-brand .nav-wordmark { font-size: 16px; margin-bottom: var(--sp-3); display: block; }
+.footer-brand p { font-size: 14px; color: var(--fg-muted); }
+.footer-col h5 { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-subtle); margin-bottom: var(--sp-4); }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: var(--sp-3); }
+.footer-col ul a { font-size: 14px; color: var(--fg-muted); text-decoration: none; transition: color var(--dur); }
+.footer-col ul a:hover { color: var(--fg); }
+.footer-bottom {
+text-align: center; padding: var(--sp-6) 0 0;
+border-top: 1px solid var(--border); margin-top: var(--sp-8);
+max-width: 1120px; margin-left: auto; margin-right: auto; padding-left: var(--sp-6); padding-right: var(--sp-6);
+}
+.footer-bottom p { font-size: 13px; color: var(--fg-subtle); }
 
-    /* ---- UTILITY ---- */
-    .lime-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--hed-lime); }
-  </style>
-  <link rel="stylesheet" href="assets/header.css">
-  <link rel="stylesheet" href="assets/footer.css">
+/* ---- UTILITY ---- */
+.lime-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--hed-lime); }
+</style>
+<link rel="stylesheet" href="assets/header.css">
+<link rel="stylesheet" href="assets/footer.css">
 </head>
 <body>
 
-  <!-- NAV -->
-  <div id="site-header"></div>
+<!-- NAV -->
+<div id="site-header"></div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-inner">
-      <div>
-        <span class="hero-eyebrow">Built for the live music industry</span>
-      </div>
-      <h1>Run 40 Venues.<br><em>Not 40 Spreadsheets.</em></h1>
-      <p class="hero-sub">From first booking request to final payout — one platform handles every venue, every night. Built for agencies running live music at scale.</p>
-      <div class="hero-ctas">
-        <a href="https://hedlyner.com/demo" class="btn btn-primary">Book a Demo</a>
-        <a href="https://hedlyner.com/login" class="btn btn-outline" style="font-size:13px;opacity:0.7;">Or explore on your own →</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat-cell">
-          <div class="stat-num">200+</div>
-          <div class="stat-label">Venues managed</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-num">10K+</div>
-          <div class="stat-label">Bookings processed</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-num">$2M+</div>
-          <div class="stat-label">In artist payouts</div>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- HERO -->
+<section class="hero">
+<div class="hero-inner">
+<div>
+<span class="hero-eyebrow">Built for the live music industry</span>
+</div>
+<h1>Run 40 Venues.<br><em>Not 40 Spreadsheets.</em></h1>
+<p class="hero-sub">From first booking request to final payout — one platform handles every venue, every night. Built for agencies running live music at scale.</p>
+<div class="hero-ctas">
+<a href="https://hedlyner.com/demo" class="btn btn-primary">Book a Demo</a>
+<a href="https://hedlyner.com/login" class="btn btn-outline" style="font-size:13px;opacity:0.7;">Or explore on your own →</a>
+</div>
+<div class="hero-stats">
+<div class="stat-cell">
+<div class="stat-num">200+</div>
+<div class="stat-label">Venues managed</div>
+</div>
+<div class="stat-cell">
+<div class="stat-num">10K+</div>
+<div class="stat-label">Bookings processed</div>
+</div>
+<div class="stat-cell">
+<div class="stat-num">$2M+</div>
+<div class="stat-label">In artist payouts</div>
+</div>
+</div>
+</div>
+</section>
 
-  <!-- PERSONA SPLIT -->
-  <section id="personas">
-    <div class="container">
-      <div class="persona-split">
+<!-- PERSONA SPLIT -->
+<section id="personas">
+<div class="container">
+<div class="persona-split">
 
-        <!-- BOOKER CARD (primary — 2fr) -->
-        <div class="persona-card booker" id="bookers">
-          <span class="persona-badge booker">For Bookers &amp; Agencies</span>
-          <h3>One pipeline for every room you run.</h3>
-          <p class="body-lg">Stop juggling five tools and a group chat. Hedlyner gives talent buying agencies a single workflow — from talent discovery to signed contract to payout — across all your rooms at once.</p>
-          <ul class="feature-list">
-            <li>Talent discovery by genre, draw radius &amp; availability — cross all venues</li>
-            <li>Holds, confirms &amp; contract tracking per room, per night</li>
-            <li>Payouts, 1099s &amp; reports in one place — no more end-of-year scramble</li>
-            <li>Multi-venue views so your team books smarter, not harder</li>
-          </ul>
-          <div class="persona-cta">
-            <a href="https://hedlyner.com/demo" class="btn btn-primary">Book a Demo</a>
-          </div>
-        </div>
+<!-- BOOKER CARD (primary — 2fr) -->
+<div class="persona-card booker" id="bookers">
+<span class="persona-badge booker">For Bookers &amp; Agencies</span>
+<h3>One pipeline for every room you run.</h3>
+<p class="body-lg">Stop juggling five tools and a group chat. Hedlyner gives talent buying agencies a single workflow — from talent discovery to signed contract to payout — across all your rooms at once.</p>
+<ul class="feature-list">
+<li>Talent discovery by genre, draw radius &amp; availability — cross all venues</li>
+<li>Holds, confirms &amp; contract tracking per room, per night</li>
+<li>Payouts, 1099s &amp; reports in one place — no more end-of-year scramble</li>
+<li>Multi-venue views so your team books smarter, not harder</li>
+</ul>
+<div class="persona-cta">
+<a href="https://hedlyner.com/demo" class="btn btn-primary">Book a Demo</a>
+</div>
+</div>
 
-        <!-- ARTIST CARD (secondary — 1fr) -->
-        <div class="persona-card artist" id="artists">
-          <span class="persona-badge artist">For Talent</span>
-          <h3>Get Discovered. Get Booked. Get Paid.</h3>
-          <p>Build the profile bookers actually read. Respond to offers, sign contracts, and get paid — without chasing venues for weeks.</p>
-          <ul class="feature-list">
-            <li>Full EPK, audio &amp; calendar — always current</li>
-            <li>Offer inbox with negotiable terms</li>
-            <li>E-signed contracts &amp; 1099 compliance</li>
-          </ul>
-          <div class="persona-cta">
-            <a href="https://hedlyner.com/login" class="btn btn-outline" style="color:var(--hed-violet);border-color:rgba(186,135,255,0.3);">Join as Talent</a>
-          </div>
-        </div>
+<!-- ARTIST CARD (secondary — 1fr) -->
+<div class="persona-card artist" id="artists">
+<span class="persona-badge artist">For Talent</span>
+<h3>Get Discovered. Get Booked. Get Paid.</h3>
+<p>Build the profile bookers actually read. Respond to offers, sign contracts, and get paid — without chasing venues for weeks.</p>
+<ul class="feature-list">
+<li>Full EPK, audio &amp; calendar — always current</li>
+<li>Offer inbox with negotiable terms</li>
+<li>E-signed contracts &amp; 1099 compliance</li>
+</ul>
+<div class="persona-cta">
+<a href="https://hedlyner.com/login" class="btn btn-outline" style="color:var(--hed-violet);border-color:rgba(186,135,255,0.3);">Join as Talent</a>
+</div>
+</div>
 
-      </div>
-    </div>
-  </section>
+</div>
+</div>
+</section>
 
-  <!-- PROBLEM -->
-  <section style="background:var(--hed-deep-green);border-top:1px solid rgba(205,235,9,0.08);border-bottom:1px solid rgba(205,235,9,0.08);">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-eyebrow">The Problem</span>
-        <h2>Booking talent is broken.<br>You already know it.</h2>
-        <p>Agencies managing multiple venues are held together by spreadsheets, group chats, and hope. Every venue has a different system. Nothing talks to anything else.</p>
-      </div>
-      <div class="feature-grid">
-        <div class="feature-item">
-          <h4 class="text-fg" style="font-size:17px;margin-bottom:8px;">Spreadsheet hell</h4>
+<!-- PROBLEM -->
+<section style="background:var(--hed-deep-green);border-top:1px solid rgba(205,235,9,0.08);border-bottom:1px solid rgba(205,235,9,0.08);">
+<div class="container">
+<div class="section-header">
+<span class="section-eyebrow">The Problem</span>
+<h2>Booking talent is broken.<br>You already know it.</h2>
+<p>Agencies managing multiple venues are held together by spreadsheets, group chats, and hope. Every venue has a different system. Nothing talks to anything else.</p>
+</div>
+<div class="feature-grid">
+<div class="feature-item">
+<h4 class="text-fg" style="font-size:17px;margin-bottom:8px;">Spreadsheet hell</h4>
 
-          <p style="font-size:14px;">One for each room. None of them current. Half your Monday is reconciling what actually got confirmed last week.</p>
-        </div>
-        <div class="feature-item">
-          <h4 class="text-fg" style="font-size:17px;margin-bottom:8px;">Email rabbit holes</h4>
-          <p style="font-size:14px;">Offers buried in inboxes. Contracts attached to threads from three months ago. Artists wondering if they're actually confirmed.</p>
-        </div>
-        <div class="feature-item">
-          <h4 class="text-fg" style="font-size:17px;margin-bottom:8px;">Payment chaos</h4>
-          <p style="font-size:14px;">Venmo, check, wire — whatever the artist prefers. 1099s at year end require archaeological digs through your records.</p>
-        </div>
-        <div class="feature-item">
-          <h4 class="text-fg" style="font-size:17px;margin-bottom:8px;">No visibility across rooms</h4>
-          <p style="font-size:14px;">Your team is booking in silos. You can't see across venues until something goes wrong — then you're fixing it live.</p>
-        </div>
-        <div class="feature-item">
-          <h4 class="text-fg" style="font-size:17px;margin-bottom:8px;">Artist discovery is manual</h4>
-          <p style="font-size:14px;">You rely on gut feel and personal networks. Finding new regional talent for specific rooms takes hours you don't have.</p>
-        </div>
-        <div class="feature-item">
-          <h4 class="text-fg" style="font-size:17px;margin-bottom:8px;">Reporting doesn't exist</h4>
-          <p style="font-size:14px;">Which nights drew? What did you spend on talent? Which rooms are profitable? You're guessing at best, flying blind at worst.</p>
-        </div>
-      </div>
-      <p style="text-align:center;font-size:17px;color:var(--fg-muted);max-width:560px;margin:var(--sp-10) auto 0;line-height:1.6;">You didn't get into live music to manage spreadsheets. Hedlyner gives your agency one system — from discovery to payout.</p>
-    </div>
-  </section>
+<p style="font-size:14px;">One for each room. None of them current. Half your Monday is reconciling what actually got confirmed last week.</p>
+</div>
+<div class="feature-item">
+<h4 class="text-fg" style="font-size:17px;margin-bottom:8px;">Email rabbit holes</h4>
+<p style="font-size:14px;">Offers buried in inboxes. Contracts attached to threads from three months ago. Artists wondering if they're actually confirmed.</p>
+</div>
+<div class="feature-item">
+<h4 class="text-fg" style="font-size:17px;margin-bottom:8px;">Payment chaos</h4>
+<p style="font-size:14px;">Venmo, check, wire — whatever the artist prefers. 1099s at year end require archaeological digs through your records.</p>
+</div>
+<div class="feature-item">
+<h4 class="text-fg" style="font-size:17px;margin-bottom:8px;">No visibility across rooms</h4>
+<p style="font-size:14px;">Your team is booking in silos. You can't see across venues until something goes wrong — then you're fixing it live.</p>
+</div>
+<div class="feature-item">
+<h4 class="text-fg" style="font-size:17px;margin-bottom:8px;">Artist discovery is manual</h4>
+<p style="font-size:14px;">You rely on gut feel and personal networks. Finding new regional talent for specific rooms takes hours you don't have.</p>
+</div>
+<div class="feature-item">
+<h4 class="text-fg" style="font-size:17px;margin-bottom:8px;">Reporting doesn't exist</h4>
+<p style="font-size:14px;">Which nights drew? What did you spend on talent? Which rooms are profitable? You're guessing at best, flying blind at worst.</p>
+</div>
+</div>
+<p style="text-align:center;font-size:17px;color:var(--fg-muted);max-width:560px;margin:var(--sp-10) auto 0;line-height:1.6;">You didn't get into live music to manage spreadsheets. Hedlyner gives your agency one system — from discovery to payout.</p>
+</div>
+</section>
 
-  <!-- HOW IT WORKS -->
-  <section class="how-it-works" id="how-it-works">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-eyebrow">One Workflow</span>
-        <h2>From first offer to final payment.<br>In one place.</h2>
-        <p>No more spreadsheets, missed emails, or chasing contracts. Everything a show needs — from discovery through payout — lives on Hedlyner.</p>
-      </div>
-      <div class="steps-grid">
-        <div class="step-card">
-          <div class="step-num">01 — Discover</div>
-          <h4>Find the right artist, fast</h4>
-          <p>Search regional artists by genre, draw, radius and availability. Every profile is vetted and current. Filter across all your venues at once.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-num">02 — Offer</div>
-          <h4>Send offers in minutes</h4>
-          <p>Offer templates with guarantee, door split, hospitality and holds. Artists counter in one click. No email chains.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-num">03 — Confirm</div>
-          <h4>Contracts &amp; holds, automated</h4>
-          <p>E-sign contracts. Hold dates with automatic release. Every version audit-logged. Your team sees status across every room.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-num">04 — Communicate</div>
-          <h4>One thread per booking</h4>
-          <p>A dedicated thread keeps every production note, rider and logistics detail together — visible to everyone on your team.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-num">05 — Pay</div>
-          <h4>Payouts &amp; 1099s, done</h4>
-          <p>Pay artists directly from the booking. Tax forms and 1099s collected &amp; filed automatically. No year-end scramble.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-num">06 — Report</div>
-          <h4>See what's actually working</h4>
-          <p>Which nights drew, what you spent on talent, what you netted — per month, per room, per booker. Real data for real decisions.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- HOW IT WORKS -->
+<section class="how-it-works" id="how-it-works">
+<div class="container">
+<div class="section-header">
+<span class="section-eyebrow">One Workflow</span>
+<h2>From first offer to final payment.<br>In one place.</h2>
+<p>No more spreadsheets, missed emails, or chasing contracts. Everything a show needs — from discovery through payout — lives on Hedlyner.</p>
+</div>
+<div class="steps-grid">
+<div class="step-card">
+<div class="step-num">01 — Discover</div>
+<h4>Find the right artist, fast</h4>
+<p>Search regional artists by genre, draw, radius and availability. Every profile is vetted and current. Filter across all your venues at once.</p>
+</div>
+<div class="step-card">
+<div class="step-num">02 — Offer</div>
+<h4>Send offers in minutes</h4>
+<p>Offer templates with guarantee, door split, hospitality and holds. Artists counter in one click. No email chains.</p>
+</div>
+<div class="step-card">
+<div class="step-num">03 — Confirm</div>
+<h4>Contracts &amp; holds, automated</h4>
+<p>E-sign contracts. Hold dates with automatic release. Every version audit-logged. Your team sees status across every room.</p>
+</div>
+<div class="step-card">
+<div class="step-num">04 — Communicate</div>
+<h4>One thread per booking</h4>
+<p>A dedicated thread keeps every production note, rider and logistics detail together — visible to everyone on your team.</p>
+</div>
+<div class="step-card">
+<div class="step-num">05 — Pay</div>
+<h4>Payouts &amp; 1099s, done</h4>
+<p>Pay artists directly from the booking. Tax forms and 1099s collected &amp; filed automatically. No year-end scramble.</p>
+</div>
+<div class="step-card">
+<div class="step-num">06 — Report</div>
+<h4>See what's actually working</h4>
+<p>Which nights drew, what you spent on talent, what you netted — per month, per room, per booker. Real data for real decisions.</p>
+</div>
+</div>
+</div>
+</section>
 
-  <!-- CASE STUDY -->
-  <section>
-    <div class="container">
-      <div class="case-study">
-        <div class="cs-eyebrow">Customer Story</div>
-        <h2 style="color:var(--fg);max-width:560px;">How one network manages 40+ venues without 40 spreadsheets.</h2>
-        <div class="cs-stats">
-          <div>
-            <div class="cs-stat-num">40+</div>
-            <div class="cs-stat-label">Venues on one account</div>
-          </div>
-          <div>
-            <div class="cs-stat-num">200+</div>
-            <div class="cs-stat-label">Artists booked</div>
-          </div>
-          <div>
-            <div class="cs-stat-num">0</div>
-            <div class="cs-stat-label">Booking fees charged</div>
-          </div>
-          <div>
-            <div class="cs-stat-num">100%</div>
-            <div class="cs-stat-label">Contracts e-signed</div>
-          </div>
-        </div>
-        <blockquote>"We replaced three spreadsheets and a group chat with Hedlyner. My bookers got their Fridays back."</blockquote>
-        <p class="quote-attr"><strong>Angela</strong>, Owner — Happy Valley Filling Station</p>
-      </div>
-    </div>
-  </section>
+<!-- CASE STUDY -->
+<section>
+<div class="container">
+<div class="case-study">
+<div class="cs-eyebrow">Customer Story</div>
+<h2 style="color:var(--fg);max-width:560px;">How one network manages 40+ venues without 40 spreadsheets.</h2>
+<div class="cs-stats">
+<div>
+<div class="cs-stat-num">40+</div>
+<div class="cs-stat-label">Venues on one account</div>
+</div>
+<div>
+<div class="cs-stat-num">200+</div>
+<div class="cs-stat-label">Artists booked</div>
+</div>
+<div>
+<div class="cs-stat-num">0</div>
+<div class="cs-stat-label">Booking fees charged</div>
+</div>
+<div>
+<div class="cs-stat-num">100%</div>
+<div class="cs-stat-label">Contracts e-signed</div>
+</div>
+</div>
+<blockquote>"We replaced three spreadsheets and a group chat with Hedlyner. My bookers got their Fridays back."</blockquote>
+<p class="quote-attr"><strong>Angela</strong>, Owner — Happy Valley Filling Station</p>
+</div>
+</div>
+</section>
 
-  <!-- PRICING -->
-  <section id="pricing">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-eyebrow">Pricing</span>
-        <h2>Transparent pricing.<br>No booking fees.</h2>
-        <p>Start free, upgrade as your programming grows. Subscription pricing scales with your operation — no per-booking charges, ever.</p>
-      </div>
-      <div class="pricing-grid">
+<!-- PRICING -->
+<section id="pricing">
+<div class="container">
+<div class="section-header">
+<span class="section-eyebrow">Pricing</span>
+<h2>Transparent pricing.<br>No booking fees.</h2>
+<p>Unlimited bookings on every paid plan. Subscription pricing scales with your operation — no per-booking charges, ever.</p>
+</div>
+<div class="pricing-grid">
 
-        <!-- GIG READY -->
-        <div class="price-card">
-          <div class="price-badge" style="background:rgba(205,235,9,0.15);color:#CDEB09;border:1px solid rgba(205,235,9,0.3);">Free Forever</div>
-          <div class="price-tier">Gig Ready</div>
-          <div class="price-name">For Venues Getting Started</div>
-          <div class="price-amount">
-            <span class="price-num">$0</span>
-            <span class="price-period">/ always</span>
-          </div>
-          <p class="price-desc">Explore the platform risk-free. No credit card required.</p>
-          <div class="price-divider"></div>
-          <ul class="price-features">
-            <li>Up to 3 bookings / mo</li>
-            <li>Talent search &amp; discovery</li>
-            <li>Contracts &amp; e-sign</li>
-            <li>Payouts &amp; 1099 filing</li>
-          </ul>
-          <a href="https://hedlyner.com/login" class="btn btn-outline">Get Started Free</a>
-        </div>
+<!-- GIG READY -->
+<div class="price-card">
+<div class="price-badge" style="background:rgba(205,235,9,0.15);color:#CDEB09;border:1px solid rgba(205,235,9,0.3);">Free Forever</div>
+<div class="price-tier">Gig Ready</div>
+<div class="price-name">For Venues Getting Started</div>
+<div class="price-amount">
+<span class="price-num">$0</span>
+<span class="price-period">/ always</span>
+</div>
+<p class="price-desc">Start booking with no subscription. Unlimited bookings from day one.</p>
+<div class="price-divider"></div>
+<ul class="price-features">
+<li>Unlimited bookings</li>
+<li>Talent search &amp; discovery</li>
+<li>Contracts &amp; e-sign</li>
+<li>Payouts &amp; 1099 filing</li>
+</ul>
+<a href="https://hedlyner.com/login" class="btn btn-outline">Get Started Free</a>
+</div>
 
-        <!-- VENUE HQ -->
-        <div class="price-card featured">
-          <div class="price-badge">Most Popular</div>
-          <div class="price-tier">Venue HQ</div>
-          <div class="price-name">For Active Bookers</div>
-          <div class="price-amount">
-            <span class="price-num">$79</span>
-            <span class="price-period">/ mo per venue</span>
-          </div>
-          <p class="price-desc">Unlimited bookings. No per-show fees. Best value for rooms with regular programming.</p>
-          <div class="price-divider"></div>
-          <ul class="price-features">
-            <li>Unlimited bookings per venue</li>
-            <li>Full talent discovery &amp; search</li>
-            <li>Contracts, holds &amp; e-sign</li>
-            <li>Payouts &amp; 1099 filing</li>
-            <li>Team access &amp; reporting</li>
-            <li>NIVA member eligible</li>
-          </ul>
-          <a href="https://hedlyner.com/demo" class="btn btn-primary">Start Booking</a>
-        </div>
+<!-- VENUE HQ -->
+<div class="price-card">
+<div class="price-tier">Venue HQ</div>
+<div class="price-name">For Active Venues</div>
+<div class="price-amount">
+<span class="price-num">$99</span>
+<span class="price-period">/ mo</span>
+</div>
+<p class="price-desc">Unlimited bookings with series booking, analytics, and full reporting. Or $990/yr.</p>
+<div class="price-divider"></div>
+<ul class="price-features">
+<li>Up to 3 custom venue templates</li>
+<li>Series booking &amp; rotation</li>
+<li>Advanced reporting &amp; analytics</li>
+<li>Payouts &amp; 1099 filing</li>
+<li>5 team seats &amp; roles</li>
+</ul>
+<a href="https://hedlyner.com/demo" class="btn btn-primary">Start Booking</a>
+</div>
 
-        <!-- ENTERPRISE -->
-        <div class="price-card">
-          <div class="price-tier">Enterprise</div>
-          <div class="price-name">For Agencies &amp; Multi-Venue</div>
-          <div class="price-amount">
-            <span class="price-num" style="font-size:36px;">Custom</span>
-          </div>
-          <p class="price-desc">Managing multiple venues? Get a rate that reflects your scale.</p>
-          <div class="price-divider"></div>
-          <ul class="price-features">
-            <li>Everything in Venue HQ</li>
-            <li>Multi-venue dashboard</li>
-            <li>Agency-level reporting</li>
-            <li>Dedicated onboarding</li>
-            <li>Volume pricing</li>
-          </ul>
-          <a href="https://hedlyner.com/demo" class="btn btn-outline">Talk to Sales</a>
-        </div>
+<!-- AGENCY PRO -->
+<div class="price-card featured">
+<div class="price-badge">Recommended</div>
+<div class="price-tier">Agency Pro</div>
+<div class="price-name">For Agencies &amp; Multi-Venue</div>
+<div class="price-amount">
+<span class="price-num">$199</span>
+<span class="price-period">/ mo</span>
+</div>
+<p class="price-desc">Run your entire roster across venues, markets, and booking teams. Or $1,990/yr.</p>
+<div class="price-divider"></div>
+<ul class="price-features">
+<li>Everything in Venue HQ</li>
+<li>Up to 10 custom venue templates</li>
+<li>Multi-venue dashboard</li>
+<li>Agency-level reporting</li>
+<li>White-label &amp; dedicated onboarding</li>
+</ul>
+<a href="https://hedlyner.com/demo" class="btn btn-primary">Get started</a>
+</div>
 
-      </div>
-      <p style="text-align:center;font-size:13px;color:var(--fg-subtle);margin-top:var(--sp-6);">Credit card processing 3.5% · ACH transfers 1% · Pass-through payment fees, not Hedlyner revenue. <a href="pricing.html" style="color:var(--hed-lime);text-decoration:none;">See all plans →</a></p>
-    </div>
-  </section>
+</div>
+<p style="text-align:center;font-size:13px;color:var(--fg-subtle);margin-top:var(--sp-6);">Credit card processing 3.5% · ACH transfers 1% · Pass-through payment fees, not Hedlyner revenue. Managing a large network? Enterprise plans available. <a href="pricing.html" style="color:var(--hed-lime);text-decoration:none;">See all plans →</a></p>
+</div>
+</section>
 
-  <!-- TESTIMONIAL -->
-  <section class="testimonial-section">
-    <div class="container">
-      <div class="testimonial-card">
-        <p class="testimonial-quote">"We replaced three spreadsheets and a group chat with Hedlyner. My bookers got their Fridays back."</p>
-        <div class="testimonial-attr">
-          <div class="testimonial-avatar">A</div>
-          <div>
-            <div class="testimonial-name">Angela</div>
-            <div class="testimonial-role">Owner, Happy Valley Filling Station</div>
-          </div>
-        </div>
-      </div>
-    </div>
- "</section>
+<!-- TESTIMONIAL -->
+<section class="testimonial-section">
+<div class="container">
+<div class="testimonial-card">
+<p class="testimonial-quote">"We replaced three spreadsheets and a group chat with Hedlyner. My bookers got their Fridays back."</p>
+<div class="testimonial-attr">
+<div class="testimonial-avatar">A</div>
+<div>
+<div class="testimonial-name">Angela</div>
+<div class="testimonial-role">Owner, Happy Valley Filling Station</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-  <!-- FOOTER CTA -->
-  <div class="footer-cta">
-    <h2>Ready to book smarter?</h2>
-    <p class="body-lg" style="color:var(--fg-muted);">See Hedlyner in action — 30 minutes, no pressure. We'll show you exactly how it fits your operation.</p>
-    <div class="ctas">
-      <a href="https://hedlyner.com/demo" class="btn btn-primary">Book a Demo</a>
-    </div>
-  </div>
+<!-- FOOTER CTA -->
+<div class="footer-cta">
+<h2>Ready to book smarter?</h2>
+<p class="body-lg" style="color:var(--fg-muted);">See Hedlyner in action — 30 minutes, no pressure. We'll show you exactly how it fits your operation.</p>
+<div class="ctas">
+<a href="https://hedlyner.com/demo" class="btn btn-primary">Book a Demo</a>
+</div>
+</div>
 
-  <div id="site-footer"></div>
+<div id="site-footer"></div>
 
-  <script>
-    async function handleNewsletterSubmit(e) {
-      e.preventDefault();
-      const email = document.getElementById('newsletterEmail').value.trim();
-      const consent = document.getElementById('newsletterConsent').checked;
-      const btn = document.getElementById('newsletterBtn');
-      const msg = document.getElementById('newsletterMsg');
-      if (!consent) { return; }
-      btn.disabled = true;
-      btn.textContent = 'Subscribing…';
-      msg.className = 'newsletter-msg';
-      msg.textContent = '';
-      try {
-        const resp = await fetch('https://api.hedlyner.com/api/v5/zoho/email-subscription', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, recaptcha_token: '' })
-        });
-        if (resp.ok) {
-          msg.className = 'newsletter-msg success';
-          msg.textContent = "You're in! Welcome to the Hedlyner community.";
-          document.getElementById('newsletterForm').reset();
-        } else {
-          throw new Error('Server error');
-        }
-      } catch {
-        msg.className = 'newsletter-msg error';
-        msg.textContent = 'Something went wrong — please try again or email us at hello@hedlyner.com.';
-      } finally {
-        btn.disabled = false;
-        btn.textContent = 'Subscribe';
-      }
-    }
-  </script>
+<script>
+async function handleNewsletterSubmit(e) {
+e.preventDefault();
+const email = document.getElementById('newsletterEmail').value.trim();
+const consent = document.getElementById('newsletterConsent').checked;
+const btn = document.getElementById('newsletterBtn');
+const msg = document.getElementById('newsletterMsg');
+if (!consent) { return; }
+btn.disabled = true;
+btn.textContent = 'Subscribing…';
+msg.className = 'newsletter-msg';
+msg.textContent = '';
+try {
+const resp = await fetch('https://api.hedlyner.com/api/v5/zoho/email-subscription', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ email, recaptcha_token: '' })
+});
+if (resp.ok) {
+msg.className = 'newsletter-msg success';
+msg.textContent = "You're in! Welcome to the Hedlyner community.";
+document.getElementById('newsletterForm').reset();
+} else {
+throw new Error('Server error');
+}
+} catch {
+msg.className = 'newsletter-msg error';
+msg.textContent = 'Something went wrong — please try again or email us at hello@hedlyner.com.';
+} finally {
+btn.disabled = false;
+btn.textContent = 'Subscribe';
+}
+}
+</script>
 
-  <script src="assets/header.js"></script>
-  <script src="assets/footer.js"></script>
+<script src="assets/header.js"></script>
+<script src="assets/footer.js"></script>
 </body>
 </html>
