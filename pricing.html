@@ -260,6 +260,14 @@ pointer-events: none;
 .roster-right .amt { font-size: 56px; font-weight: 700; letter-spacing: -0.04em; line-height: 1; }
 .roster-right .per { font-size: 13px; color: #8B8B8B; margin: 4px 0 20px; }
 
+/* === ENTERPRISE CUSTOM BAND === */
+.enterprise-band { margin-top: 12px; border-radius: 20px; padding: 28px 36px; display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap; background: linear-gradient(160deg, #141414 0%, #100f14 100%); border: 1px solid #1f1f1f; }
+.enterprise-band .eb-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #646464; margin-bottom: 8px; }
+.enterprise-band h3 { font-size: 24px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 8px; }
+.enterprise-band p { font-size: 14px; color: #8B8B8B; line-height: 1.55; max-width: 64ch; }
+.enterprise-band .eb-cta { flex-shrink: 0; }
+@media (max-width: 720px) { .enterprise-band { flex-direction: column; align-items: flex-start; } }
+
 /* === ARTIST SECTION === */
 .artist-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 880px; }
 .artist-card { position: relative; border-radius: 24px; padding: 40px; display: flex; flex-direction: column; min-height: 520px; overflow: hidden; }
@@ -411,51 +419,7 @@ Every plan includes the core booking workflow and unlimited bookings. Upgrade as
 </div>
 </div>
 
-<!-- FEATURED: VENUE HQ -->
-<div class="featured-slab">
-<div class="featured-grid">
-<div class="featured-left">
-<div class="featured-badge"><i class="lucide lucide-sparkles" style="font-size:12px;"></i> Most Popular</div>
-<h3>Venue HQ</h3>
-<p class="tag">The full stack for serious venue operators. Series booking, analytics, multi-user, full reporting.</p>
-<div class="featured-price">
-<span class="amt">$99</span>
-<span class="per">/ mo</span>
-</div>
-<div class="featured-billing">$990 billed annually <span class="save-pill">Save $198</span></div>
-<div class="featured-stats">
-<div>
-<span class="s-val">Up to 3</span>
-<span class="s-lbl">Venue templates</span>
-</div>
-<div>
-<span class="s-val">Unlimited</span>
-<span class="s-lbl">Bookings</span>
-</div>
-<div>
-<span class="s-val">5</span>
-<span class="s-lbl">Team seats</span>
-</div>
-</div>
-<a href="https://hedlyner.com/demo" class="btn btn-primary featured-cta">Start Booking <i class="lucide lucide-arrow-right"></i></a>
-</div>
-<div class="featured-right">
-<h4>What's included</h4>
-<ul class="featured-features">
-<li><span class="chk"></span>Everything in Venue Solo</li>
-<li><span class="chk"></span>Up to 3 custom venue templates</li>
-<li><span class="chk"></span>Series booking &amp; rotation</li>
-<li><span class="chk"></span>Bulk editing</li>
-<li><span class="chk"></span>Advanced reporting &amp; analytics</li>
-<li><span class="chk"></span>Holds &amp; conflict detection</li>
-<li><span class="chk"></span>5 team seats &amp; roles</li>
-<li><span class="chk"></span>Priority support</li>
-</ul>
-</div>
-</div>
-</div>
-
-<!-- OTHER TIERS -->
+<!-- TIERS -->
 <div class="tier-grid">
 
 <!-- GIG READY -->
@@ -514,6 +478,36 @@ Every plan includes the core booking workflow and unlimited bookings. Upgrade as
 </div>
 </div>
 
+<!-- VENUE HQ -->
+<div class="plan-card">
+<div class="plan-badge badge-empty">placeholder</div>
+<div class="plan-tier">Venue HQ</div>
+<div class="plan-tagline">The full stack for serious venue operators — series booking, analytics, and full reporting.</div>
+<div class="plan-price-row">
+<span class="plan-amount">$99</span>
+<span class="plan-period">/ mo</span>
+</div>
+<div class="plan-billing">billed monthly</div>
+<div class="plan-annual">$990/yr <span class="save-pill">Save $198</span></div>
+<div class="plan-stats-row">
+<div><span class="v">Up to 3</span><span class="l">Venue templates</span></div>
+<div><span class="v">∞</span><span class="l">Bookings</span></div>
+<div><span class="v">5</span><span class="l">Seats</span></div>
+</div>
+<ul class="plan-features">
+<li><span class="chk"></span>Everything in Venue Solo</li>
+<li><span class="chk"></span>Up to 3 custom venue templates</li>
+<li><span class="chk"></span>Series booking &amp; rotation</li>
+<li><span class="chk"></span>Bulk editing</li>
+<li><span class="chk"></span>Advanced reporting &amp; analytics</li>
+<li><span class="chk"></span>Holds &amp; conflict detection</li>
+<li><span class="chk"></span>Priority support</li>
+</ul>
+<div class="plan-cta">
+<a href="https://hedlyner.com/demo" class="btn btn-primary btn-lg">Get started</a>
+</div>
+</div>
+
 <!-- AGENCY PRO -->
 <div class="plan-card power">
 <div class="plan-badge badge-power"><i class="lucide lucide-zap"></i> Recommended</div>
@@ -543,33 +537,16 @@ Every plan includes the core booking workflow and unlimited bookings. Upgrade as
 </div>
 </div>
 
-<!-- ENTERPRISE -->
-<div class="plan-card">
-<div class="plan-badge badge-empty">placeholder</div>
-<div class="plan-tier">Enterprise</div>
-<div class="plan-tagline">Large networks managing many venues — a rate that reflects your scale.</div>
-<div class="plan-price-row">
-<span class="plan-amount-sm">Custom</span>
-</div>
-<div class="plan-billing">Annual only</div>
-<div class="plan-annual">Negotiated pricing</div>
-<div class="plan-stats-row">
-<div><span class="v">Unlimited</span><span class="l">Venue templates</span></div>
-<div><span class="v">Unlimited</span><span class="l">Seats</span></div>
-</div>
-<ul class="plan-features">
-<li><span class="chk"></span>Everything in Agency Pro</li>
-<li><span class="chk"></span>Unlimited venue templates &amp; seats</li>
-<li><span class="chk"></span>Custom configuration</li>
-<li><span class="chk"></span>SSO &amp; SAML</li>
-<li><span class="chk"></span>Custom SLA &amp; contracts</li>
-<li><span class="chk"></span>Dedicated customer success</li>
-</ul>
-<div class="plan-cta">
-<a href="https://hedlyner.com/demo" class="btn btn-outline btn-lg">Talk to Sales</a>
-</div>
 </div>
 
+<!-- ENTERPRISE — CUSTOM BAND -->
+<div class="enterprise-band">
+<div class="eb-left">
+<div class="eb-label">Enterprise</div>
+<h3>Need more?</h3>
+<p>Managing a large network of venues? We'll customize a plan to your needs — unlimited venue templates and team seats, SSO &amp; SAML, custom SLAs and contracts, and a dedicated customer success manager.</p>
+</div>
+<a href="https://hedlyner.com/demo" class="btn btn-outline eb-cta">Talk to Sales <i class="lucide lucide-arrow-right"></i></a>
 </div>
 
 <!-- ARTIST ROSTER EPK ADD-ON -->
