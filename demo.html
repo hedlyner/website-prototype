@@ -137,7 +137,7 @@
       </div>
       <div class="hero-video">
         <video autoplay muted loop playsinline poster="https://cdn.builder.io/api/v1/image/assets%2Fa49d302ccb814c998dbb48cd9fa06037%2F1577ad18aadf4e3a8fdce50d7099e259?format=webp&width=600">
-          <source src="https://cdn.builder.io/o/assets%2Fa49d302ccb814c998dbb48cd9fa06037%2F11615a032b2644f0949be501320b6410?alt=media" type="video/mp4">
+          <source src="https://cdn.builder.io/o/assets%2Fa49d302ccb814c998dbb48cd9fa06037%2F11615a032b2644f0949be501320b6410?alt=media&token=08cfbc1d-5a9a-4e0d-bbf4-331252e04f3e&apiKey=a49d302ccb814c998dbb48cd9fa06037" type="video/mp4">
         </video>
       </div>
     </div>
@@ -211,7 +211,7 @@
         <p class="case-lede">Five years of history, a year-ahead calendar, and every booking, email and payout tracked in one place.</p>
         <div class="case-media">
           <video autoplay muted loop playsinline poster="https://cdn.builder.io/api/v1/image/assets%2Fa49d302ccb814c998dbb48cd9fa06037%2F6e2356b98874430d90e561a5d84ddff5?format=webp&width=900">
-            <source src="https://cdn.builder.io/o/assets%2Fa49d302ccb814c998dbb48cd9fa06037%2Fbf085693f8d64b3fb68a826c1b2ed5d2?alt=media" type="video/mp4">
+            <source src="https://cdn.builder.io/o/assets%2Fa49d302ccb814c998dbb48cd9fa06037%2Fbf085693f8d64b3fb68a826c1b2ed5d2?alt=media&token=fc7122ad-e352-4d48-ab6d-8b350c8c7874&apiKey=a49d302ccb814c998dbb48cd9fa06037" type="video/mp4">
           </video>
         </div>
       </div>
@@ -345,6 +345,12 @@
 // Same Zoho lead pipeline as the live early-adopter page:
 // POST api.hedlyner.com/api/v5/zoho/partner-lead with the High-Touch/Nurture tag rule.
 (function () {
+  // Match the live page's video pacing
+  var heroV = document.querySelector('.hero-video video');
+  var caseV = document.querySelector('.case-media video');
+  function setRate(v, r){ if(!v) return; var f=function(){ v.playbackRate=r; }; f(); v.addEventListener('loadedmetadata', f); v.addEventListener('play', f); }
+  setRate(heroV, 0.75); setRate(caseV, 0.6);
+
   var form = document.getElementById('demo-form');
   var status = document.getElementById('form-status');
 
