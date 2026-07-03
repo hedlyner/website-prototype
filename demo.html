@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Demo — Hedlyner</title>
+<link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="colors_and_type.css">
+<link rel="stylesheet" href="assets/header.css">
+<link rel="stylesheet" href="assets/footer.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#0a0a0a;color:#fff;font-family:'Instrument Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;}
+  a{text-decoration:none;color:inherit;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(205,235,9,0.08);border:1px solid rgba(205,235,9,0.25);border-radius:999px;padding:6px 16px;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#CDEB09;}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 28px;border-radius:14px;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;border:none;font-family:inherit;}
+  .btn-primary{background:#CDEB09;color:#0a0a0a;}
+  .btn-primary:hover{background:#ddff00;transform:scale(1.03);}
+  .btn-outline{background:transparent;color:#fff;border:1px solid #333;}
+  .btn-outline:hover{border-color:#CDEB09;color:#CDEB09;}
+
+  /* HERO */
+  .hero{position:relative;padding:100px 0 80px;background:#0e0e0e;border-bottom:1px solid #1c1c1c;overflow:hidden;}
+  .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(205,235,9,0.07),transparent 55%);}
+  .hero-grid{position:relative;display:grid;grid-template-columns:1.2fr 0.8fr;gap:64px;align-items:center;}
+  .hero h1{font-size:clamp(38px,5.5vw,60px);line-height:1.02;letter-spacing:-0.035em;font-weight:500;margin:22px 0 18px;}
+  .hero h1 em{font-style:normal;color:#CDEB09;}
+  .hero-sub{font-size:18px;line-height:1.6;color:#C4C4C4;max-width:50ch;margin-bottom:14px;}
+  .hero-note{font-size:15px;line-height:1.6;color:#8B8B8B;max-width:48ch;margin-bottom:32px;}
+  .hero-video{position:relative;border-radius:28px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);background:#000;max-width:300px;justify-self:center;}
+  .hero-video video{display:block;width:100%;height:auto;}
+
+  /* PILLARS */
+  .pillars{padding:80px 0;background:#0a0a0a;}
+  .pillar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .pillar{background:#141414;border:1px solid #222;border-radius:20px;padding:28px;}
+  .pillar h3{font-size:20px;font-weight:600;color:#CDEB09;margin-bottom:10px;}
+  .pillar p{font-size:14px;line-height:1.6;color:#ACACAC;}
+
+  /* WORKFLOW */
+  .flow{padding:88px 0;background:#111;border-top:1px solid #1c1c1c;border-bottom:1px solid #1c1c1c;}
+  .flow-head{max-width:640px;margin-bottom:56px;}
+  .flow-head h2{font-size:clamp(30px,4vw,44px);line-height:1.05;letter-spacing:-0.03em;font-weight:500;margin:16px 0 14px;}
+  .flow-head p{font-size:16px;color:#ACACAC;line-height:1.6;}
+  .flow-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .step{background:#161616;border:1px solid #242424;border-radius:20px;padding:30px;}
+  .step .num{font-size:13px;font-weight:700;letter-spacing:0.12em;color:#CDEB09;margin-bottom:12px;display:block;}
+  .step h3{font-size:19px;font-weight:600;margin-bottom:10px;}
+  .step p{font-size:14px;line-height:1.65;color:#ACACAC;}
+
+  /* CASE STUDY */
+  .case{padding:88px 0;background:#0a0a0a;}
+  .case-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+  .case h2{font-size:clamp(28px,3.6vw,40px);line-height:1.08;letter-spacing:-0.03em;font-weight:500;margin:16px 0 12px;}
+  .case-lede{font-size:16px;color:#ACACAC;line-height:1.65;margin-bottom:32px;}
+  .case-media{position:relative;border-radius:28px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);background:#000;}
+  .case-media video{display:block;width:100%;height:280px;object-fit:cover;}
+  .cs-label{font-size:12px;font-weight:700;letter-spacing:0.1em;color:#8B8B8B;text-transform:uppercase;margin:28px 0 14px;}
+  .cs-nums{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .cs-num{background:#141414;border:1px solid #222;border-radius:16px;padding:20px;}
+  .cs-num strong{display:block;font-size:26px;letter-spacing:-0.02em;color:#CDEB09;margin-bottom:4px;}
+  .cs-num span{font-size:13px;color:#ACACAC;line-height:1.45;display:block;}
+  .impact-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin:14px 0 28px;}
+  .impact-list li{position:relative;padding-left:22px;font-size:14.5px;line-height:1.6;color:#C4C4C4;}
+  .impact-list li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;background:#CDEB09;}
+  blockquote{border-left:3px solid #CDEB09;padding-left:20px;font-size:16.5px;line-height:1.65;color:#E4E4E4;font-style:italic;margin:22px 0 10px;}
+  .quote-attr{font-size:14px;color:#8B8B8B;}
+
+  /* ONBOARDING STRIP */
+  .onboard{padding:80px 0;background:#0E1A08;background:linear-gradient(180deg,#101a06 0%,#0a0f04 100%);border-top:1px solid rgba(205,235,9,0.15);border-bottom:1px solid rgba(205,235,9,0.15);}
+  .onboard h2{font-size:clamp(28px,3.6vw,40px);letter-spacing:-0.03em;font-weight:500;margin:16px 0 12px;}
+  .onboard p.lede{font-size:16px;color:#C4C4C4;max-width:60ch;line-height:1.65;margin-bottom:26px;}
+  .onboard ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 32px;max-width:880px;}
+  .onboard li{position:relative;padding-left:26px;font-size:15px;line-height:1.6;color:#E4E4E4;}
+  .onboard li::before{content:"✓";position:absolute;left:0;color:#CDEB09;font-weight:700;}
+
+  /* FORM */
+  .apply{padding:88px 0;background:#111;border-bottom:1px solid #1c1c1c;}
+  .apply-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:56px;align-items:start;}
+  .apply h2{font-size:clamp(30px,4vw,44px);line-height:1.05;letter-spacing:-0.03em;font-weight:500;margin:16px 0 14px;}
+  .apply .lede{font-size:16px;color:#ACACAC;line-height:1.65;margin-bottom:22px;}
+  .form-card{background:#161616;border:1px solid #262626;border-radius:24px;padding:36px;}
+  .f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .f-field{margin-bottom:16px;display:flex;flex-direction:column;gap:6px;}
+  .f-field label{font-size:13px;font-weight:600;color:#C4C4C4;}
+  .f-field input,.f-field select,.f-field textarea{background:#0e0e0e;border:1px solid #2c2c2c;border-radius:12px;padding:12px 14px;font-size:15px;color:#fff;font-family:inherit;outline:none;transition:border-color .15s;}
+  .f-field input:focus,.f-field select:focus,.f-field textarea:focus{border-color:#CDEB09;}
+  .f-consent{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;color:#8B8B8B;line-height:1.55;margin:6px 0 18px;}
+  .f-consent input{margin-top:3px;accent-color:#CDEB09;}
+  .f-privacy{font-size:12.5px;color:#666;margin-bottom:18px;}
+  .f-privacy a{color:#CDEB09;}
+  .f-note{font-size:13px;color:#8B8B8B;margin-top:14px;text-align:center;}
+  .f-status{display:none;margin-top:14px;font-size:14px;text-align:center;border-radius:10px;padding:12px;}
+  .f-status.ok{display:block;background:rgba(205,235,9,0.1);color:#CDEB09;border:1px solid rgba(205,235,9,0.3);}
+  .f-status.err{display:block;background:rgba(255,90,90,0.08);color:#ff8080;border:1px solid rgba(255,90,90,0.3);}
+
+  /* FAQ */
+  .faq{padding:88px 0;background:#0a0a0a;}
+  .faq h2{font-size:clamp(28px,3.6vw,40px);letter-spacing:-0.03em;font-weight:500;margin:16px 0 10px;}
+  .faq .lede{font-size:16px;color:#ACACAC;margin-bottom:40px;}
+  .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .faq-item{background:#141414;border:1px solid #222;border-radius:18px;padding:26px;}
+  .faq-item h3{font-size:17px;font-weight:600;margin-bottom:10px;color:#fff;}
+  .faq-item p{font-size:14px;line-height:1.65;color:#ACACAC;}
+
+  /* FINAL CTA */
+  .final{padding:96px 0;background:linear-gradient(180deg,#0e0e0e 0%,#101a06 100%);text-align:center;}
+  .final h2{font-size:clamp(30px,4.4vw,48px);letter-spacing:-0.035em;font-weight:500;margin-bottom:14px;}
+  .final p{font-size:16px;color:#ACACAC;max-width:52ch;margin:0 auto 30px;line-height:1.6;}
+  .final .fine{font-size:12.5px;color:#666;margin-top:22px;}
+  .final .fine a{color:#CDEB09;}
+
+  @media(max-width:900px){
+    .hero-grid,.case-grid,.apply-grid{grid-template-columns:1fr;}
+    .pillar-grid,.flow-grid,.faq-grid,.cs-nums{grid-template-columns:1fr;}
+    .onboard ul{grid-template-columns:1fr;}
+    .f-row{grid-template-columns:1fr;}
+    .hero-video{max-width:260px;}
+  }
+</style>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Book a Demo</span>
+        <h1>Run bookings across dozens of venues — <em>with a small team</em></h1>
+        <p class="hero-sub">One booking kicks off invites, confirmations, checklists, payments, and reporting — so small teams can run complex venue programs without growing headcount.</p>
+        <p class="hero-note">Centralize outreach, holds, confirmations, and payouts so every show follows the same playbook.</p>
+        <a href="#book-demo" class="btn btn-primary">Book a 20-minute demo</a>
+      </div>
+      <div class="hero-video">
+        <video autoplay muted loop playsinline poster="https://cdn.builder.io/api/v1/image/assets%2Fa49d302ccb814c998dbb48cd9fa06037%2F1577ad18aadf4e3a8fdce50d7099e259?format=webp&width=600">
+          <source src="https://cdn.builder.io/o/assets%2Fa49d302ccb814c998dbb48cd9fa06037%2F11615a032b2644f0949be501320b6410?alt=media" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars">
+  <div class="wrap">
+    <div class="pillar-grid">
+      <div class="pillar">
+        <h3>Connect</h3>
+        <p>Import and manage industry relationships from one master directory. Keep all talent info organized in one searchable location.</p>
+      </div>
+      <div class="pillar">
+        <h3>Book</h3>
+        <p>Create bookings, send bulk booking invitations, automate offers, capture confirmations, and keep audit-grade timestamps.</p>
+      </div>
+      <div class="pillar">
+        <h3>Advance</h3>
+        <p>Turn bookings into action automatically. Templates, reminders, and booking-triggered communications keep venues, talent, and teams aligned — without endless follow-ups.</p>
+      </div>
+      <div class="pillar">
+        <h3>Pay</h3>
+        <p>Handle deposits, guarantees, payouts, and tax compliance in-platform so the admin work around money stays tied to every booking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKFLOW -->
+<section class="flow">
+  <div class="wrap">
+    <div class="flow-head">
+      <span class="eyebrow">Workflow Overview</span>
+      <h2>How Hedlyner makes booking work</h2>
+      <p>Import, automate, book and pay — one workflow that keeps every show on track.</p>
+    </div>
+    <div class="flow-grid">
+      <div class="step">
+        <span class="num">01 — IMPORT YOUR CONTACTS</span>
+        <h3>Bring everyone into one directory</h3>
+        <p>Upload spreadsheets to bring artists, agents and venues into one clean, searchable directory. We match and normalize names, emails and acts so every past show, note and rider follows the person.</p>
+      </div>
+      <div class="step">
+        <span class="num">02 — SET UP YOUR AUTOMATIONS</span>
+        <h3>Configure once, reuse everywhere</h3>
+        <p>Create venue defaults, offer templates and notification flows once — then reuse them. Stages, tech specs, terms and reminders auto-fill every offer so your shows are accurate and consistent.</p>
+      </div>
+      <div class="step">
+        <span class="num">03 — CREATE A BOOKING</span>
+        <h3>From date to confirmed, in one thread</h3>
+        <p>With venue defaults set, add date, time and booking details, pick who to invite, and send offers. Responses attach to the booking thread and statuses (Hold → Offered → Confirmed) keep the whole team aligned.</p>
+      </div>
+      <div class="step">
+        <span class="num">04 — SET UP PAYMENTS</span>
+        <h3>Money stays tied to the booking</h3>
+        <p>Collect deposits and guarantees, schedule artist payouts and keep every payment tied to its booking. Export accounting-ready reports — and when payments are processed through Hedlyner, we handle 1099 compliance for you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section class="case">
+  <div class="wrap">
+    <div class="case-grid">
+      <div>
+        <span class="eyebrow">Case Study</span>
+        <h2>A small talent booking agency runs their whole business in Hedlyner</h2>
+        <p class="case-lede">Five years of history, a year-ahead calendar, and every booking, email and payout tracked in one place.</p>
+        <div class="case-media">
+          <video autoplay muted loop playsinline poster="https://cdn.builder.io/api/v1/image/assets%2Fa49d302ccb814c998dbb48cd9fa06037%2F6e2356b98874430d90e561a5d84ddff5?format=webp&width=900">
+            <source src="https://cdn.builder.io/o/assets%2Fa49d302ccb814c998dbb48cd9fa06037%2Fbf085693f8d64b3fb68a826c1b2ed5d2?alt=media" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div>
+        <div class="cs-label">The numbers that matter</div>
+        <div class="cs-nums">
+          <div class="cs-num"><strong>40+ venues</strong><span>customized with venue-specific terms and defaults</span></div>
+          <div class="cs-num"><strong>3,500 bookings</strong><span>imported across five years of history</span></div>
+          <div class="cs-num"><strong>$1.2M+ payouts</strong><span>tracked on the platform</span></div>
+          <div class="cs-num"><strong>100+ emails weekly</strong><span>offers, confirmations, and reminders automated</span></div>
+        </div>
+        <div class="cs-label">Impact</div>
+        <ul class="impact-list">
+          <li>Runs day-to-day in Hedlyner — calendars, offers and payouts live in one trusted workspace.</li>
+          <li>Venue defaults and reusable templates automate offers and email flows for every venue and show.</li>
+          <li>A single, auditable workflow for bookings, communications and payments — predictable operations that scale without new hires.</li>
+        </ul>
+        <blockquote>"We were tangled in spreadsheets for years. Hedlyner fixed that. Offers, confirmations and payouts live together now, and we actually trust the numbers — which lets us plan more while keeping the same headcount."</blockquote>
+        <p class="quote-attr">— Owner, small talent booking agency</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ONBOARDING -->
+<section class="onboard">
+  <div class="wrap">
+    <span class="eyebrow">What You Get</span>
+    <h2>Hands-on onboarding, from day one</h2>
+    <p class="lede">Every team gets white-glove setup and direct access to the people building the product — so your first offers go out the same day.</p>
+    <ul>
+      <li>White-glove migration so your existing shows, contacts, and venues come with you</li>
+      <li>Dedicated onboarding team to configure automations, templates, and venue defaults</li>
+      <li>Priority support with direct access to the product team</li>
+      <li>Accounting-ready reporting and 1099 support on platform-processed payouts</li>
+    </ul>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="apply" id="book-demo">
+  <div class="wrap">
+    <div class="apply-grid">
+      <div>
+        <span class="eyebrow">Book a Demo</span>
+        <h2>See Hedlyner in action</h2>
+        <p class="lede">Share a few details about your booking volume and we'll set up a 20-minute walkthrough tailored to how your operation runs.</p>
+        <p class="lede" style="color:#8B8B8B;font-size:14px;">30 minutes max. No pressure. We'll show you exactly how Hedlyner fits your workflow — and if you switch, we migrate your bookings for you.</p>
+      </div>
+      <div class="form-card">
+        <form id="demo-form" novalidate>
+          <div class="f-row">
+            <div class="f-field"><label for="first_name">First name</label><input id="first_name" name="first_name" required autocomplete="given-name"></div>
+            <div class="f-field"><label for="last_name">Last name</label><input id="last_name" name="last_name" required autocomplete="family-name"></div>
+          </div>
+          <div class="f-row">
+            <div class="f-field"><label for="email">Work email</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+            <div class="f-field"><label for="phone">Phone (optional)</label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
+          </div>
+          <div class="f-row">
+            <div class="f-field"><label for="company">Company</label><input id="company" name="company" required autocomplete="organization"></div>
+            <div class="f-field"><label for="role">Role</label>
+              <select id="role" name="role" required>
+                <option value="" disabled selected>Select your role</option>
+                <option>Founder</option>
+                <option>Lead Booker</option>
+                <option>Solo/Freelance</option>
+                <option>Venue Owner</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="f-row">
+            <div class="f-field"><label for="venues">Number of venues you manage</label><input id="venues" name="venues" type="number" min="0" required></div>
+            <div class="f-field"><label for="shows">Shows per year</label><input id="shows" name="shows" type="number" min="0" required></div>
+          </div>
+          <div class="f-field"><label for="referral">Anything else we should know? (optional)</label><textarea id="referral" name="referral" rows="3"></textarea></div>
+          <label class="f-consent"><input type="checkbox" id="marketing-consent" required> By submitting this form, you agree that we may contact you about Hedlyner and related services. You can opt out at any time.</label>
+          <p class="f-privacy">We respect your inbox and your privacy. Read our <a href="https://hedlyner.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+          <button type="submit" class="btn btn-primary" style="width:100%;">Book my demo</button>
+          <div class="f-status" id="form-status"></div>
+          <p class="f-note">We aim to respond within 48 hours.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="wrap">
+    <span class="eyebrow">Quick Answers</span>
+    <h2>A few common questions</h2>
+    <p class="lede">What teams usually ask before their demo.</p>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h3>How fast is setting up?</h3>
+        <p>Set up is fast. One venue takes minutes to configure and automations are instant. Our onboarding team is there to make setup run smoothly and get your first offers out the same day.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What support do new teams get?</h3>
+        <p>Hands-on onboarding, priority support and a direct product channel. We work with your team to configure venues, templates and email flows, and iterate based on your feedback.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How are payouts and tax obligations handled?</h3>
+        <p>Payments are tied to bookings: deposits, guarantees and artist payouts are recorded and reconciled in-platform. When payouts are processed through Hedlyner, we provide accounting-ready records and support 1099 compliance for qualifying payments.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do artists also need to sign up?</h3>
+        <p>Artists do not need accounts — they can reply to invites and offers without signing up, and their replies attach to the booking thread. Artist accounts are optional if you want them to manage profiles or access extra features. If payments are processed through Hedlyner, artists will need an account to add their financial details; we'll walk you through how we meet financial and regulatory requirements with our payments partner.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2>Ready to see your booking workflow in one place?</h2>
+    <p>Tell us about your operation and we'll reply within 48 hours with next steps.</p>
+    <a href="#book-demo" class="btn btn-primary">Book a Demo</a>
+    <p class="fine">We use your information only to respond to your inquiry. See our <a href="https://hedlyner.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> for details.</p>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="assets/header.js"></script>
+<script src="assets/footer.js"></script>
+<script>
+// Same Zoho lead pipeline as the live early-adopter page:
+// POST api.hedlyner.com/api/v5/zoho/partner-lead with the High-Touch/Nurture tag rule.
+(function () {
+  var form = document.getElementById('demo-form');
+  var status = document.getElementById('form-status');
+
+  function leadTag(venues, shows) {
+    return (venues >= 5 || shows >= 100) ? 'High-Touch / Early Adopter Candidate' : 'Nurture';
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+
+    var venues = parseInt(document.getElementById('venues').value, 10) || 0;
+    var shows = parseInt(document.getElementById('shows').value, 10) || 0;
+    var role = document.getElementById('role').value;
+
+    var payload = {
+      first_name: document.getElementById('first_name').value.trim(),
+      last_name: document.getElementById('last_name').value.trim(),
+      company: document.getElementById('company').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      roles: role ? [role] : [],
+      number_of_venues: venues,
+      shows_per_year: shows,
+      what_should_we_know: document.getElementById('referral').value.trim() || undefined,
+      tag: leadTag(venues, shows),
+      page_variant: 'agency'
+    };
+
+    var btn = form.querySelector('button[type=submit]');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    status.className = 'f-status';
+
+    fetch('https://api.hedlyner.com/api/v5/zoho/partner-lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json().catch(function () { return {}; });
+    }).then(function () {
+      status.textContent = "Thanks — you're booked in our queue. We'll reply within 48 hours to schedule your demo.";
+      status.className = 'f-status ok';
+      form.reset();
+      btn.textContent = 'Book my demo'; btn.disabled = false;
+    }).catch(function () {
+      status.textContent = "Something went wrong sending your request. Email us at hello@hedlyner.com and we'll set up your demo.";
+      status.className = 'f-status err';
+      btn.textContent = 'Book my demo'; btn.disabled = false;
+    });
+  });
+})();
+</script>
+</body>
+</html>
