@@ -27,7 +27,7 @@
               '<svg viewBox="0 0 38 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.86104 38.9833C4.95936 41.3198 0 38.5091 0 33.9613V7.81691C0 1.75321 6.61248 -1.99445 11.8147 1.12085L33.5649 14.1457C37.3599 16.4183 37.3599 21.9171 33.5649 24.1897L25.4196 29.0675C22.8184 30.6251 19.5122 28.7513 19.5122 25.7195V20.1433C19.5122 17.8534 17.6558 15.997 15.3659 15.997C13.0759 15.997 11.2195 17.8534 11.2195 20.1433V35.3593C11.2195 36.7312 10.4991 38.0024 9.322 38.7073L8.86104 38.9833Z" fill="#CDEB09"/></svg>' +
               '<span class="sf-wm">HEDLYNER</span>' +
             '</a>' +
-            '<p>Booking talent made easy.<br>Built by and for the live music industry.</p>' +
+            '<p>The booking operations platform for independent talent buyers and agencies.<br>Built by and for the live music industry.</p>' +
           '</div>' +
           '<div class="sf-col">' +
             '<h5>Product</h5>' +
