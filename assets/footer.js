@@ -35,6 +35,7 @@
               '<li><a href="for-artists.html">For Talent</a></li>' +
               '<li><a href="for-bookers.html">For Bookers</a></li>' +
               '<li><a href="pricing.html">Pricing</a></li>' +
+              '<li><a href="demo.html">Book a Demo</a></li>' +
             '</ul>' +
           '</div>' +
           '<div class="sf-col">' +

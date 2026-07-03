@@ -88,7 +88,7 @@
     '</ul>' +
     '<div class="sh-auth">' +
     '<a href="https://app.hedlyner.com/login" class="sh-btn sh-btn-ghost">Log In</a>' +
-    '<a href="https://hedlyner.com/demo" class="sh-btn sh-btn-primary">Book a Demo</a>' +
+    '<a href="demo.html" class="sh-btn sh-btn-primary">Book a Demo</a>' +
     '</div>' +
     '</div>' +
     '</header>';
